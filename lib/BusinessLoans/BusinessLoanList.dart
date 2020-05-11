@@ -73,6 +73,8 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
               itemBuilder: (_,int index){
                 var item=businessLoans[index];
                 return Card(
+                  elevation: 10,
+
                   child: Table(
 
                     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
