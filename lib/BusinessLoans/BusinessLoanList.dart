@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessData.dart';
+import 'BusinessLoanDetails.dart';
+
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
@@ -60,7 +62,7 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Ammount"),
+              Text("Amount"),
               Text("Tennure"),
             ],
           ),
@@ -74,6 +76,10 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                 var item=businessLoans[index];
                 return Card(
                   elevation: 10,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
+
+                  ),
 
                   child: Table(
 
@@ -81,7 +87,7 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                     children: [
                       TableRow(
                           children:[
-                            Image.asset(item['logo'],fit: BoxFit.scaleDown,),
+                            Image.asset(item['logo'],fit: BoxFit.scaleDown,height: 125,width: 125,),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -110,7 +116,11 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                                 ),
                                 SizedBox(height: 30,),
 
-                                Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),)
+                                GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>BusinessLoanDetails(index: index,)));
+                },
+                                    child: Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),))
                               ],
                             )
                           ]
