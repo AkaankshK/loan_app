@@ -29,7 +29,7 @@ var lendingkart={
   "processing fee":"2%",
   "eligibility":"Age 21 - 60 Years\n >2 Lakh Monthly Sales \nBusines Vintage>=2 years for\n Residence - Rented,Office-Rented\n Business Vintage>=1year for all\nother cases\n Servicable Pin Code List(PFA)\n Must have Business Registration Proof\n We dont accept saving A/c",
   "documents":null,
-  "repayment":"to Borrows Account",
+  "repayment":"To Borrowers Account",
   "earlyrepayment":"No Prepayment charges after 1st\nEMI. Only full prepayment possible.",
   "overdue":null,
   "loandisbursal":null,

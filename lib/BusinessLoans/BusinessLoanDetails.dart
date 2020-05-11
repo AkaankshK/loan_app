@@ -46,15 +46,17 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   }
 
   getBody() {
-    return Stack(
-      children: [
-      Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Image.asset("assets/background.png",fit: BoxFit.fill,),
+    return SingleChildScrollView(
+      child: Stack(
+        children: [
+        Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset("assets/background.png",fit: BoxFit.fill,),
+        ),
+          getContents(),
+        ],
       ),
-        getContents(),
-      ],
     );
   }
 
@@ -180,6 +182,7 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   }
 
   getDetails() {
+    var item=businessLoans[widget.index];
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(
@@ -199,7 +202,105 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
               ],
             ),
             SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Table(
+                children: [
+                  (item['eligibility']!=null)?
+                      TableRow(
+                        children: [
+                          Text("Eligibility Criteria",style: TextStyle(color: Colors.grey)),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 15),
+                            child: Text(item['eligibility']),
+                          )
+                        ]
+                      ):TableRow(
+                    children: [
+                      Text(""),
+                      Text(""),
+                    ]
+                  ),
+                  (item['loandisbursal']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Loan Disbursal",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['loandisbursal']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['documents']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Documents Required",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['documents']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['repayment']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Repayment",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['repayment']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['earlyrepayment']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Early Repayment",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['earlyrepayment']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['overdue']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Over Due Rule",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['overdue']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
 
+
+                ],
+              ),
+            )
           ],
         ),
       ),
