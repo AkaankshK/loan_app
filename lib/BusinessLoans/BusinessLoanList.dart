@@ -27,6 +27,7 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
+  var amountSelection;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +63,58 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Amount"),
-              Text("Tennure"),
+              DropdownButton(
+
+                hint: Text("Amount"),
+                onChanged: (val){},
+                icon: Icon(Icons.arrow_drop_down),
+                value: amountSelection,
+                items: [
+                  DropdownMenuItem(
+                    child: Text("Amount"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("Less than \u20b9 5,000"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("\u20b9 5,000 to \u20b9 10,000"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("\u20b9 10,000 to \u20b9 50,000"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("\u20b9 50,000 to \u20b91Lac"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("greater than \u20b91Lac"),
+                  ),
+
+                ],
+              ),
+              DropdownButton(
+                onChanged: (val){},
+                icon: Icon(Icons.arrow_drop_down),
+                value: amountSelection,
+                items: [
+                  DropdownMenuItem(
+                    child: Text("Tenure"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("Less than 3 Months"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("3-6 Months"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("6-12 Months"),
+                  ),
+
+                  DropdownMenuItem(
+                    child: Text("greater than 12 Months"),
+                  ),
+
+                ],
+              ),
             ],
           ),
         ),

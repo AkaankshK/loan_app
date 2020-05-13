@@ -171,7 +171,7 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.asset("assets/Tenure.png",height: 50,width: 50,),
+                          child: Image.asset("assets/pfee.png",height: 50,width: 50,),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),

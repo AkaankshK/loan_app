@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
 import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
+import 'package:loanapp/LoansAgainstProperty/LoanAgainstDetails.dart';
+import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
 
 Map<int, Color> colors =
 {
@@ -710,7 +712,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 3,)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
                           },
                         ),
                       ),
