@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
               TableRow(
                 children: [
                   Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Personal Loan.png",),),
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/home Loan.png"),),
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/home loan.png"),),
                   Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Loan againt property.png"),),
 
                 ]
@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 475,
+            height: 450,
             child:
             Card(
               elevation: 10,
@@ -307,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 20,),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 475,
+            height: 450,
             child:
             Card(
               elevation: 10,
@@ -446,7 +446,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 20,),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 475,
+            height: 450,
             child:
             Card(
               elevation: 10,

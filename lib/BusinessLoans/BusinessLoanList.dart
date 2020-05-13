@@ -68,7 +68,7 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height/1.5,
+          height: MediaQuery.of(context).size.height/1.4,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
               itemCount: businessLoans.length,
@@ -81,54 +81,57 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
 
                   ),
 
-                  child: Table(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Table(
 
-                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                    children: [
-                      TableRow(
-                          children:[
-                            Image.asset(item['logo'],fit: BoxFit.scaleDown,height: 125,width: 125,),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("\u20B9${item['maxamount']}",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("Max Amount",style: TextStyle(color: Colors.grey),),
-                                Text("Tenure:${item['tenure']} Months"),
-                                Text("Interest:${item['interest']}/year",),
-                                Text("Proc.Fee: ${item['processing fee']}"),
-                                SizedBox(height: 10,)
+                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                      children: [
+                        TableRow(
+                            children:[
+                              Image.asset(item['logo'],fit: BoxFit.scaleDown,height: 125,width: 125,),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(item['name'],style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                                  Text("\u20B9${item['maxamount']}",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text("Max Amount",style: TextStyle(color: Colors.grey),),
+                                  Text("Tenure:${item['tenure']} Months"),
+                                  Text("Interest:${item['interest']}/year",),
+                                  Text("Proc.Fee: ${item['processing fee']}"),
+                                  SizedBox(height: 10,)
 
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                              children: [
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)
+                                children: [
+                                  RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    color: buttonColor,
+                                    child: Text("Apply",style: TextStyle(color: Colors.white),),
+                                    onPressed: (){},
                                   ),
-                                  color: buttonColor,
-                                  child: Text("Apply",style: TextStyle(color: Colors.white),),
-                                  onPressed: (){},
-                                ),
-                                SizedBox(height: 30,),
+                                  SizedBox(height: 30,),
 
-                                GestureDetector(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>BusinessLoanDetails(index: index,)));
+                                  GestureDetector(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>BusinessLoanDetails(index: index,)));
                 },
-                                    child: Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),))
-                              ],
-                            )
-                          ]
-                      ),
+                                      child: Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),))
+                                ],
+                              )
+                            ]
+                        ),
 
 
 
-                    ],
+                      ],
+                    ),
                   ),
                 );
               }

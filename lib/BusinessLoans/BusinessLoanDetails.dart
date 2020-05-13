@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'BusinessData.dart';
 
@@ -30,7 +31,7 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
-
+  bool terms=false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +43,7 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
         elevation: 0,
       ),
       body: getBody(),
+      bottomNavigationBar: getBottom(),
     );
   }
 
@@ -62,25 +64,34 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
 
   getContents() {
     var item=businessLoans[widget.index];
+
     return Column(
 
       children: [
         Row(
-          children: [
-            Image.asset(item['logo2'],height: 125,width: 125,),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(item['name'],style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
-                Text("Indifi is blah blah\nblah\blah",style: TextStyle(color: Colors.white),)
-              ],
-            )
-          ],
-        ),
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Image.asset(item['logo2'],height: 125,width: 125,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+              Wrap(
+                direction: Axis.vertical,
+                children: [
+                  Text(item['desc'],style: TextStyle(color: Colors.white,fontSize: 10),),
+                ],
+              )
+            ],
+          )
+        ],
+          ),
         SizedBox(height: 20,),
       getTable(),
         SizedBox(height: 10,),
         getDetails(),
+        getIcons(),
       ],
     );
   }
@@ -196,14 +207,15 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Loan Terms",style: TextStyle(color: lightBlueColor,fontWeight: FontWeight.bold),),
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text("Loan Terms",style: TextStyle(color: lightBlueColor,fontWeight: FontWeight.bold,fontSize: 15),),
                 ),
               ],
             ),
+            Divider(),
             SizedBox(height: 5,),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(15.0),
               child: Table(
                 children: [
                   (item['eligibility']!=null)?
@@ -300,8 +312,106 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
 
                 ],
               ),
-            )
+            ),
+
           ],
+        ),
+      ),
+    );
+  }
+
+  getIcons() {
+    return Column(
+
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 15,left: 30,bottom: 10),
+          child: Row(
+            children: [
+              Text("How to apply",style: TextStyle(color: lightBlueColor,fontWeight: FontWeight.bold,fontSize: 20),)
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset("assets/app Install.png",height: 50,width: 50,),
+                Text("Apply Now",style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
+            ),
+            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset("assets/Apply loan.png",height: 50,width: 50,),
+                Text("Install Lenders App",style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
+            ),
+            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset("assets/money tranfer bank.png",height: 50,width: 50,),
+                Text("Get your money",style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
+            ),
+          ],
+        ),
+
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width*0.8,
+              child: StatefulBuilder(
+                builder: (context,setState){
+                  return CheckboxListTile(
+                    onChanged: (val){
+                      setState(() {
+                        terms=val;
+                      });
+                    },
+                    value: terms,
+                    title: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("I agree to "),
+                        Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
+                      ],
+                    ),
+                  );
+                },
+              )
+          ),
+        ),
+        SizedBox(
+          height: 30,
+        )
+      ],
+    );
+  }
+
+  getBottom() {
+    return BottomAppBar(
+      child: Container(
+        height: 60,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30)
+            ),
+            color: buttonColor,
+
+            child: Text("Apply Now",style: TextStyle(color: Colors.white),),
+            onPressed: (){},
+          ),
         ),
       ),
     );
