@@ -8,6 +8,7 @@ import 'package:loanapp/HomeLoans/HomeLoanList.dart';
 import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
 import 'package:loanapp/LoansAgainstProperty/LoanAgainstDetails.dart';
 import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
+import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
 
 Map<int, Color> colors =
 {
