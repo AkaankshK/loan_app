@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
+import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
 import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
 import 'package:loanapp/LoansAgainstProperty/LoanAgainstDetails.dart';
@@ -854,7 +855,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 4,)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditCardList()));
                           },
                         ),
                       ),
