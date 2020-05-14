@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,19 @@ class _CalculatorState extends State<Calculator> {
   MaterialColor yellowColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   MaterialColor darkBlueColor = MaterialColor(0xff0f3f81, colors);
+  double interest=0.0;
+  final amountController=TextEditingController();
+  var emi=0.0;
+  var tpa=0.0;
+  var pa=0.0;
+  var tpi=0.0;
+  var years=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
+  var months=[0,1,2,3,4,5,6,7,8,9,10,11,12];
+  var year;
+  var month;
+  String emiString="";
+  String tpaString="";
+  String tpiString="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +98,7 @@ class _CalculatorState extends State<Calculator> {
                   height: 50,
                   width: MediaQuery.of(context).size.width/1.3,
                                 child: TextField(
+                                  controller: amountController,
                     decoration: InputDecoration(hintText: "Enter Amount from Rs.50,000-10 Crore"),
                   ),
                 ),
@@ -95,35 +111,67 @@ class _CalculatorState extends State<Calculator> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   DropdownButton(
+                    value: year,
                     hint: Text("Years",style: TextStyle(color: Colors.black),),
-                    onChanged: (dynamic){},
-                    items: [
-
-                    ],
+                    onChanged: (val){
+                      setState(() {
+                        year=val;
+                      });
+                    },
+                    items: years.map((val){
+                      return DropdownMenuItem(
+                        child: Text("$val"),
+                        value: val,
+                      );
+                    }).toList(),
 
                   ),
                   DropdownButton(
-                    hint: Text("Months",style: TextStyle(color: Colors.black)),
-                    onChanged: (dynamic){},
-                    items: [
-                      
-                    ],
+                    value: month,
+                    hint: Text("Months",style: TextStyle(color: Colors.black),),
+                    onChanged: (val){
+                      setState(() {
+                        month=val;
+                      });
+                    },
+                    items: months.map((val){
+                      return DropdownMenuItem(
+                        child: Text("$val"),
+                        value: val,
+                      );
+                    }).toList(),
 
                   ),
-                  
 
+
+
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15,top: 10),
+                    child: Text("Interest",style: TextStyle(fontSize: 15),),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15,top: 10),
+                    child: Text("$interest",style: TextStyle(fontSize: 15,color: lightBlueColor,fontWeight: FontWeight.bold),),
+                  ),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15,top: 10),
-                child: Text("Interest",style: TextStyle(fontSize: 15),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15,top: 10),
-                child: Slider(onChanged: (dynamic){},
+                child: Slider(
+                  divisions: 100,
+                  onChanged: (val){
+                  setState(() {
+                    interest=val;
+                  });
+                },
                 min: 0,
-                max: 100,
-                value: 25.0,
+                max: 50,
+                value: interest,
                 ),
               ),
               Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -132,7 +180,9 @@ class _CalculatorState extends State<Calculator> {
                 
                 child: Text("Calculate EMI",style: TextStyle(fontSize: 15,color: Colors.white),),
                 color: darkBlueColor,
-                onPressed: (){},)
+                onPressed: (){
+                  calculate();
+                },)
               ],)
 
             ],
@@ -177,14 +227,14 @@ class _CalculatorState extends State<Calculator> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "\u20b9 0",
+                    "\u20b9 $emiString",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "\u20b9 0",
+                    "\u20b9 $tpaString",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
@@ -215,14 +265,14 @@ class _CalculatorState extends State<Calculator> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "\u20b9 0",
+                    "\u20b9 $pa",
                     style: TextStyle(color: greenColor, fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "\u20b9 0",
+                    "\u20b9 $tpiString",
                     style: TextStyle(color: yellowColor, fontSize: 20),
                   ),
                 ),
@@ -260,5 +310,25 @@ class _CalculatorState extends State<Calculator> {
         ),
       ),
     );
+  }
+
+  void calculate() {
+      int n=year*12+month;
+
+      double r=interest/(12*100);
+
+      print(pa);
+
+
+    setState(() {
+        pa=double.parse(amountController.text);
+       //emi=pa*r*((pow(1+r,n))/(pow(1+r,n))-1);
+        emi = (pa * r * pow((1+r), n) / ( pow((1+r),n) -1));
+        emiString=emi.toStringAsFixed(2);
+        tpa=((r*pa*n)/(1-(pow(1+r,-n))));
+        tpaString=tpa.toStringAsFixed(2);
+        tpi=tpa-pa;
+        tpiString=tpi.toStringAsFixed(2);
+      });
   }
 }
