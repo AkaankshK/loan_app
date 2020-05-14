@@ -66,7 +66,10 @@ class _IntroScreenState extends State<IntroScreen> {
 
   getPage1() {
     return  Stack(children: [
-      Image.asset("assets/IntroScreen/1.png"),
+      Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset("assets/IntroScreen/1.png",fit: BoxFit.fill,)),
       Align(
         alignment: Alignment(0,0.25),
         child: Text("Loans for everyone",style: TextStyle(fontSize: 25,color: blueColor,fontWeight: FontWeight.bold),),
@@ -80,7 +83,10 @@ class _IntroScreenState extends State<IntroScreen> {
 
   getPage2() {
     return  Stack(children: [
-      Image.asset("assets/IntroScreen/2.png"),
+      Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset("assets/IntroScreen/2.png",fit: BoxFit.fill,)),
       Align(
         alignment: Alignment(0,0.25),
         child: Text("Easy EMI Payment Options",style: TextStyle(fontSize: 25,color: blueColor,fontWeight: FontWeight.bold),),
@@ -94,7 +100,10 @@ class _IntroScreenState extends State<IntroScreen> {
 
   getPage3() {
     return  Stack(children: [
-      Image.asset("assets/IntroScreen/3.png",),
+      Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset("assets/IntroScreen/3.png",fit: BoxFit.fill,)),
       Align(
         alignment: Alignment(0,0.25),
         child: Text("Quick and Convinient Application",style: TextStyle(fontSize: 25,color: blueColor,fontWeight: FontWeight.bold),),

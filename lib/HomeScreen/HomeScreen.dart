@@ -111,55 +111,58 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   getCard() {
-    var tableStyle=TextStyle(fontWeight: FontWeight.bold,fontSize: 15);
+    var tableStyle=TextStyle(fontWeight: FontWeight.bold,fontSize: 12);
     return Padding(
       padding: EdgeInsets.all(10),
       child:SizedBox(
 
-        height: 350,
+        height: 225,
         width: MediaQuery.of(context).size.width,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(60)
           ),
           elevation: 10,
-          child: Table(
-            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            children: [
-              TableRow(
-                children: [
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Personal Loan.png",),),
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/home loan.png"),),
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Loan againt property.png"),),
+          child: Center(
+            child: Table(
 
-                ]
-              ),
-              TableRow(
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+              children: [
+                TableRow(
                   children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Personal Loan",style: tableStyle,),),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15),child:Text("Home Loan",style: tableStyle,),),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Loan against\n Property",style: tableStyle,),),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Personal Loan.png",height: 50,width: 50,),),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/home loan.png",height: 50,width: 50),),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Loan againt property.png",height: 50,width: 50),),
 
                   ]
-              ),
-              TableRow(
-                  children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/business Loan.png"),),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/credit card.png"),),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Crdeit Report.png"),),
+                ),
+                TableRow(
+                    children: [
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Personal Loan",style: tableStyle,),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child:Text("Home Loan",style: tableStyle,),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Loan against\n Property",style: tableStyle,),),
 
-                  ]
-              ),
-              TableRow(
-                  children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Business Loan",style: tableStyle,),),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15),child:Text("Credit Card",style: tableStyle,),),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Credit Report",style: tableStyle,),),
+                    ]
+                ),
+                TableRow(
+                    children: [
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/business Loan.png",height: 50,width: 50),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/credit card.png",height: 50,width: 50),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),child: Image.asset("assets/HomeScreen/Crdeit Report.png",height: 50,width: 50),),
 
-                  ]
-              ),
+                    ]
+                ),
+                TableRow(
+                    children: [
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Business Loan",style: tableStyle,),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child:Text("Credit Card",style: tableStyle,),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Credit Report",style: tableStyle,),),
 
-            ],
+                    ]
+                ),
+
+              ],
+            ),
           ),
         ),
       ) ,
@@ -178,6 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Card(
               elevation: 10,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
                     children: [
@@ -185,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 10),
                         child: Image.asset("assets/a.png",height: 30,width: 30,),
                       ),
-                      Text("Personal Loan",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                      Text("Personal Loan",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                     ],
                   ),
                   Row(
@@ -212,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text("ICICI",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                              Text("ICICI",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                               Text("\u20B920 Lacs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                               Text("Max Amount",style: TextStyle(color: Colors.grey),),
                               Text("Tenure: 12-60 Months"),
@@ -250,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(height: 10,),
-                                Text("CASHe",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("CASHe",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B93 Lacs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 2-12 Months"),
@@ -317,6 +321,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Card(
               elevation: 10,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
                     children: [
@@ -324,7 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 10),
                         child: Image.asset("assets/p.png",height: 30,width: 30,),
                       ),
-                      Text("Business Loan",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                      Text("Business Loan",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                     ],
                   ),
                   Row(
@@ -351,7 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text("Indifi",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("Indifi",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B950 Lacs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 12-36 Months"),
@@ -389,7 +394,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(height: 10,),
-                                Text("Lendingkart",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("Lendingkart",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B950 Lacs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 6-36 Months"),
@@ -456,6 +461,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Card(
               elevation: 10,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
                     children: [
@@ -463,7 +469,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 10),
                         child: Image.asset("assets/e.png",height: 30,width: 30,),
                       ),
-                      Text("Home Loan",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                      Text("Home Loan",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                     ],
                   ),
                   Row(
@@ -490,7 +496,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text("Shubham Housing",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("Shubham Housing",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B95 Crs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 10-20 Years"),
@@ -528,7 +534,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(height: 10,),
-                                Text("HeroHFL",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("HeroHFL",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B95 Crs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 15-20Years"),
@@ -595,6 +601,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Card(
               elevation: 10,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
                     children: [
@@ -602,7 +609,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 5,right: 10),
                         child: Image.asset("assets/v.png",height: 30,width: 30,),
                       ),
-                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Loan Against Property",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
+                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Loan Against Property",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
                     ],
                   ),
                   Row(
@@ -629,7 +636,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text("AU Small Finance Bank",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("AU Small Finance Bank",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B91 Cr",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 1-15 Years"),
@@ -667,7 +674,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(height: 10,),
-                                Text("ASCEND CAPITAL",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("ASCEND CAPITAL",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("\u20B915 Lacs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 15-84 Months"),
@@ -734,6 +741,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Card(
               elevation: 10,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
                     children: [
@@ -741,7 +749,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 10),
                         child: Image.asset("assets/o.png",height: 30,width: 30,),
                       ),
-                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Credit Card",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
+                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Credit Card",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
                     ],
                   ),
                   Row(
@@ -768,7 +776,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text("Titanium Delight Credit Card",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("Titanium Delight Credit Card",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("Bank: RBL Bank"),
                                 Text("Annual Fee: \u20B9 750"),
                                 SizedBox(height: 10,)
@@ -810,7 +818,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(height: 10,),
-                                Text("Platinum Maxima Credit Card",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text("Platinum Maxima Credit Card",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                                 Text("Bank: RBL Bank"),
                                 Text("Annual Fee: \u20B9 2000"),
 

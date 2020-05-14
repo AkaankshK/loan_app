@@ -144,6 +144,9 @@ class _CreditPageState extends State<CreditPage> {
                 minWidth: 300,
               )
             ],
+          ),
+          SizedBox(
+            height: 30,
           )
         ],
       ),

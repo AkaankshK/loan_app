@@ -183,7 +183,8 @@ class _CalculatorState extends State<Calculator> {
                 onPressed: (){
                   calculate();
                 },)
-              ],)
+              ],),
+              SizedBox(height: 40,),
 
             ],
           ),
@@ -194,7 +195,7 @@ class _CalculatorState extends State<Calculator> {
 
   getEmi() {
     return Padding(
-      padding: EdgeInsets.only(left: 28, right: 28, top: 60),
+      padding: EdgeInsets.only(left: 28, right: 28, top: 40),
       child: Container(
         height: 200,
         width: MediaQuery.of(context).size.width,
