@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoan.dart';
+import 'package:loanapp/PersonalLoan/PersonalLoanDetails.dart';
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
@@ -60,7 +61,7 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Ammount"),
+              Text("Amount"),
               Text("Tennure"),
             ],
           ),
@@ -106,11 +107,17 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
                                   ),
                                   color: buttonColor,
                                   child: Text("Apply",style: TextStyle(color: Colors.white),),
-                                  onPressed: (){},
+                                  onPressed: (){
+                                  //  Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanDetails(index: index,)));
+                                  },
                                 ),
                                 SizedBox(height: 30,),
 
-                                Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),)
+                                GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanDetails(index: index,)));
+                                    },
+                                    child: Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),))
                               ],
                             )
                           ]
