@@ -67,7 +67,7 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height/1.5,
+          height: MediaQuery.of(context).size.height/1.4,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
               itemCount:PersonalLoans.length,
@@ -75,57 +75,65 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
                 var item=PersonalLoans[index];
                 return Card(
                   elevation: 10,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
 
-                  child: Table(
+                  ),
 
-                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                    children: [
-                      TableRow(
-                          children:[
-                            Image.asset(item['logo'],fit: BoxFit.scaleDown,),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("\u20B9${item['maxamount']}",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("Max Amount",style: TextStyle(color: Colors.grey),),
-                                Text("Tenure:${item['tenure']} Months"),
-                                Text("Interest:${item['interest']}/year",),
-                                Text("Proc.Fee: ${item['processing fee']}"),
-                                SizedBox(height: 10,)
 
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Table(
 
-                              children: [
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  color: buttonColor,
-                                  child: Text("Apply",style: TextStyle(color: Colors.white),),
-                                  onPressed: (){
-                                  //  Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanDetails(index: index,)));
-                                  },
-                                ),
-                                SizedBox(height: 30,),
+                      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                      children: [
+                        TableRow(
+                            children:[
+                              Image.asset(item['logo'],fit: BoxFit.scaleDown,),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text("\u20B9${item['maxamount']}",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text("Max Amount",style: TextStyle(color: Colors.grey),),
+                                  Text("Tenure:${item['tenure']} Months"),
+                                  Text("Interest:${item['interest']}/year",),
+                                  Text("Proc.Fee: ${item['processing fee']}"),
+                                  SizedBox(height: 10,)
 
-                                GestureDetector(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanDetails(index: index,)));
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                                children: [
+                                  RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    color: buttonColor,
+                                    child: Text("Apply",style: TextStyle(color: Colors.white),),
+                                    onPressed: (){
+                                    //  Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanDetails(index: index,)));
                                     },
-                                    child: Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),))
-                              ],
-                            )
-                          ]
-                      ),
+                                  ),
+                                  SizedBox(height: 30,),
+
+                                  GestureDetector(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanDetails(index: index,)));
+                                      },
+                                      child: Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),))
+                                ],
+                              )
+                            ]
+                        ),
 
 
 
-                    ],
+                      ],
+                    ),
                   ),
                 );
               }
