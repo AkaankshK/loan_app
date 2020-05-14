@@ -501,7 +501,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text("Max Amount",style: TextStyle(color: Colors.grey),),
                                 Text("Tenure: 10-20 Years"),
                                 Text("Interest: 13.5%/year",),
-                                Text("Proc.Fee: 3% of disbursed amount"),
+                                Text("Proc.Fee: 3%"),
                                 SizedBox(height: 10,)
 
                               ],

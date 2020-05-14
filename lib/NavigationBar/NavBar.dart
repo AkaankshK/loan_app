@@ -46,7 +46,7 @@ class _NavBarState extends State<NavBar> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               MaterialButton(
-                minWidth: 40,
+                minWidth: 30,
                 onPressed: (){
                   setState(() {
                     currentIndex=0;
@@ -61,7 +61,7 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               MaterialButton(
-                minWidth: 40,
+                minWidth: 30,
                 onPressed: (){
                   setState(() {
                     currentIndex=1;
@@ -81,7 +81,7 @@ class _NavBarState extends State<NavBar> {
               ),
 
               MaterialButton(
-                minWidth: 40,
+                minWidth: 30,
                 onPressed: (){
                   setState(() {
                     currentIndex=3;
@@ -96,7 +96,7 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               MaterialButton(
-                minWidth: 40,
+                minWidth: 30,
                 onPressed: (){
                   setState(() {
                     currentIndex=4;
