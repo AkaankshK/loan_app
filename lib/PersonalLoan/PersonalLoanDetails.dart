@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'PersonalLoan.dart';
 
@@ -30,7 +31,7 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
-
+  bool terms=false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,35 +43,46 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
         elevation: 0,
       ),
       body: getBody(),
+      bottomNavigationBar: getBottom(),
     );
   }
 
-  Stack getBody() {
-    return Stack(
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Image.asset("assets/background.png",fit: BoxFit.fill,),
-        ),
-        getContents(),
-      ],
+  SingleChildScrollView getBody() {
+    return SingleChildScrollView(
+      child: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset("assets/background.png",fit: BoxFit.fill,),
+          ),
+          getContents(),
+        ],
+      ),
     );
   }
 
-  Column getContents() {
+ Column getContents() {
     var item=PersonalLoans[widget.index];
+
     return Column(
 
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.asset(item['logo'],height: 125,width: 125,),
+            Image.asset(item['logo2'],height: 125,width: 125,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(item['name'],style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
-                Text(item['desc'],style: TextStyle(color: Colors.white),)
+                Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                Wrap(
+                  direction: Axis.vertical,
+                  children: [
+                    Text(item['desc'],style: TextStyle(color: Colors.white,fontSize: 10),),
+                  ],
+                )
               ],
             )
           ],
@@ -79,11 +91,12 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
         getTable(),
         SizedBox(height: 10,),
         getDetails(),
+        getIcons(),
       ],
     );
   }
 
- Padding getTable() {
+  Padding getTable() {
     var item=PersonalLoans[widget.index];
     return Padding(
       padding: EdgeInsets.all(10),
@@ -179,7 +192,8 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
     );
   }
 
-  Padding getDetails() {
+Padding getDetails() {
+    var item=PersonalLoans[widget.index];
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(
@@ -193,14 +207,211 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Loan Terms",style: TextStyle(color: lightBlueColor,fontWeight: FontWeight.bold),),
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text("Loan Terms",style: TextStyle(color: lightBlueColor,fontWeight: FontWeight.bold,fontSize: 15),),
                 ),
               ],
             ),
+            Divider(),
             SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Table(
+                children: [
+                  (item['eligibility']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Eligibility Criteria",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['eligibility']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['loandisbursal']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Loan Disbursal",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['loandisbursal']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['documents']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Documents Required",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['documents']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['repayment']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Repayment",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['repayment']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['earlyrepayment']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Early Repayment",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['earlyrepayment']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+                  (item['overdue']!=null)?
+                  TableRow(
+                      children: [
+                        Text("Over Due Rule",style: TextStyle(color: Colors.grey)),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 15),
+                          child: Text(item['overdue']),
+                        )
+                      ]
+                  ):TableRow(
+                      children: [
+                        Text(""),
+                        Text(""),
+                      ]
+                  ),
+
+
+                ],
+              ),
+            ),
 
           ],
+        ),
+      ),
+    );
+  }
+
+  Column getIcons() {
+    return Column(
+
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 15,left: 30,bottom: 10),
+          child: Row(
+            children: [
+              Text("How to apply",style: TextStyle(color: lightBlueColor,fontWeight: FontWeight.bold,fontSize: 20),)
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset("assets/app Install.png",height: 50,width: 50,),
+                Text("Apply Now",style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
+            ),
+            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset("assets/Apply loan.png",height: 50,width: 50,),
+                Text("Install Lenders App",style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
+            ),
+            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset("assets/money tranfer bank.png",height: 50,width: 50,),
+                Text("Get your money",style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
+            ),
+          ],
+        ),
+
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width*0.8,
+              child: StatefulBuilder(
+                builder: (context,setState){
+                  return CheckboxListTile(
+                    onChanged: (val){
+                      setState(() {
+                        terms=val;
+                      });
+                    },
+                    value: terms,
+                    title: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("I agree to "),
+                        Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
+                      ],
+                    ),
+                  );
+                },
+              )
+          ),
+        ),
+        SizedBox(
+          height: 30,
+        )
+      ],
+    );
+  }
+
+  BottomAppBar getBottom() {
+    return BottomAppBar(
+      child: Container(
+        height: 60,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: MaterialButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30)
+            ),
+            color: buttonColor,
+
+            child: Text("Apply Now",style: TextStyle(color: Colors.white),),
+            onPressed: (){},
+          ),
         ),
       ),
     );
