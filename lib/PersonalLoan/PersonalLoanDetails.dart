@@ -339,25 +339,25 @@ Padding getDetails() {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset("assets/app Install.png",height: 50,width: 50,),
+                Image.asset("assets/app Install.png",height: 40,width: 40,),
                 Text("Apply Now",style: TextStyle(fontWeight: FontWeight.bold),)
               ],
             ),
-            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
+            Image.asset("assets/LOAN22.png",height: 20,width: 20,),
             Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset("assets/Apply loan.png",height: 50,width: 50,),
+                Image.asset("assets/Apply loan.png",height: 40,width: 40,),
                 Text("Install Lenders App",style: TextStyle(fontWeight: FontWeight.bold),)
               ],
             ),
-            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
+            Image.asset("assets/LOAN22.png",height: 20,width: 20,),
             Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset("assets/money tranfer bank.png",height: 50,width: 50,),
+                Image.asset("assets/money tranfer bank.png",height: 40,width: 40,),
                 Text("Get your money",style: TextStyle(fontWeight: FontWeight.bold),)
               ],
             ),
