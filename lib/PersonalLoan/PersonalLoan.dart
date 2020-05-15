@@ -33,24 +33,24 @@ var tata_capital={
   "loandisbursal":"AS PER THE POLICY",
 
 };
-var Money_view={
-  "name":"Money View",
-  "logo":"assets/personalLoan/14.png",
-   "logo2":"assets/personalLoan/14.png",
-  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan. Apply Online Now and Get Instant",
-  "amount":"1 Lac-25Lacs",
-  "maxamount":"25Lacs",
-  "tenure":"1-6",
-  "interest":"10.99%",
-  "processing fee":"0",
-  "eligibility":"Salary of 15000,1 year of job continuty.",
-  "documents":"Application Form, KYC, Salary Slip and Bank Statement",
-  "repayment":"From the customer's salary account",
-  "earlyrepayment":"Zero charges on Part Pre-Payment",
-  "overdue":"Overdue Rule As per company policy",
-  "loandisbursal":"AS PER THE POLICY",
-
-};
+//var Money_view={
+//  "name":"Money View",
+//  "logo":"assets/personalLoan/14.png",
+//   "logo2":"assets/personalLoan/14.png",
+//  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan. Apply Online Now and Get Instant",
+//  "amount":"1 Lac-25Lacs",
+//  "maxamount":"25Lacs",
+//  "tenure":"1-6",
+//  "interest":"10.99%",
+//  "processing fee":"0",
+//  "eligibility":"Salary of 15000,1 year of job continuty.",
+//  "documents":"Application Form, KYC, Salary Slip and Bank Statement",
+//  "repayment":"From the customer's salary account",
+//  "earlyrepayment":"Zero charges on Part Pre-Payment",
+//  "overdue":"Overdue Rule As per company policy",
+//  "loandisbursal":"AS PER THE POLICY",
+//
+//};
 //var Chintamani_Finlease={
 //  "name":"Chintamani Finlease",
 //  "logo":"assets/personalLoan/17.png",
@@ -378,8 +378,281 @@ var Early_Salary={
   "loandisbursal":null,
 
 };
+var Shubh_Loan={
+  "name":"Shubh Loan",
+  "logo":"assets/personalLoan/13.png",
+  "logo2":"assets/personalLoan/13.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal \n Loan. Apply Online Now and Get In",
+  "amount":" 25,000-5 Lacs",
+  "maxamount":"5Lacs",
+  "tenure":" 6-48",
+  "interest":"26.00% - 40.00%",
+  "processing fee":"₹ 0",
+  "eligibility":"Salaried employees with  a\nMin net salary of <15K  per month",
+  "documents":"PAN, Salary Slip, 3 months,bank statements and Address\nProof, Aadhar E-Sign ",
+  "repayment":"  NEFT, UPI, Debit Card, Net banking",
+  "earlyrepayment":"Monthly Interest Payable,  No Prepayment Fees",
+  "overdue":" Penalty charges",
+  "loandisbursal":null,
+
+};
+var  Money_View={
+  "name":" Money View",
+  "logo":"assets/personalLoan/14.png",
+  "logo2":"assets/personalLoan/14.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":"10,000-5 Lacs",
+  "maxamount":"5Lacs",
+  "tenure":" 3-60",
+  "interest":"10.33% - 25.00% ",
+  "processing fee":"₹ 2.5% - 4%",
+  "eligibility":"Salaried employees& Self \nEmployee  with  a  Min net\nincome of 13.5K  per month,\nIncome should be received in\na bank, Min Cibil score of 650\nor Experian score of 750",
+  "documents":"  PAN or Aadhar Card  Salary\nSlip, 3 months bank\nstatements in pdf and\nAddress  Proof",
+  "repayment":"  NEFT, UPI, Debit Card, Netbanking",
+  "earlyrepayment":"Monthly Interest Payable, No Prepayment Fees",
+  "overdue":"Penalty charges",
+  "loandisbursal":" Salary Bank Account",
+
+};
+var   Kissht={
+  "name":"Kissht",
+  "logo":"assets/personalLoan/15.png",
+  "logo2":"assets/personalLoan/15.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":"3,000-1 Lacs",
+  "maxamount":"1Lacs",
+  "tenure":"3-24",
+  "interest":"14.0% - 31.0%",
+  "processing fee":"₹ 250 to ₹ 500",
+  "eligibility":" Salaried employees with  a Min net salary of 12K  per\nmonth, Minimum age 21 year Complete.",
+  "documents":" PAN, Salary Slip, 3 months\nbank statements and Address\nProof, 1 Signed ECS Form for auto-debit",
+  "repayment":"NEFT, UPI, Debit Card, Net  banking",
+  "earlyrepayment":"Monthly Interest Payable,No Prepayment Fees",
+  "overdue":" Penalty charges on customer defaults or delays",
+  "loandisbursal":"Salary Bank Account",
+
+};
+var SmartCoin={
+  "name":"SmartCoin",
+  "logo":"assets/personalLoan/LOAN9.png",
+  "logo2":"assets/personalLoan/LOAN9.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":"1,000-25,000",
+  "maxamount":"25,000",
+  "tenure":"62-180 (Days)",
+  "interest":" 26.00% -36.00% ",
+  "processing fee":"₹ 2%-4%",
+  "eligibility":" Minimum monthly income of \n Rs 15000/- Per months",
+  "documents":" Application Form, KYC, Salary Slip and Bank Statement,Selfie",
+  "repayment":"From the customer's salary account (NACHe)",
+  "earlyrepayment":"   Zero charges on Part Pre-Payment",
+  "overdue":" AS PER THE POLICY",
+  "loandisbursal":" In the customer’s Any Bank account",
+
+};
+var  Home_credit={
+  "name":" Home credit",
+  "logo":"assets/personalLoan/16.png",
+  "logo2":"assets/personalLoan/16.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":"10,000-2.5Lacs ",
+  "maxamount":"2.5Lacs",
+  "tenure":"12-51 ",
+  "interest":"24.00-50.00%",
+  "processing fee":"3%",
+  "eligibility":" Minimum Income : 15K net per month; minimum age :21 years",
+  "documents":" 3 month salary slip, 6 month bank statement",
+  "repayment":" NACH - monthly repayment",
+  "earlyrepayment":" No prepayment for first 6 months",
+  "overdue":" DPD basis EMI being missed on the due date",
+  "loandisbursal":"E-Sin Agreement, KYC",
+
+};
+var LazyPay={
+  "name":"LazyPay",
+  "logo":"assets/personalLoan/19.png",
+  "logo2":"assets/personalLoan/19.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":"10,000-1Lacs",
+  "maxamount":"1Lacs",
+  "tenure":" 3-24",
+  "interest":"15.00-32.00%",
+  "processing fee":"2%",
+  "eligibility":" Minimum Income : 15K net per month,minimum age :21years",
+  "documents":" 3 month salary slip, 6 month\nbank statement, Photo of\nyour signature, Current\naddress proof, KYC",
+  "repayment":" Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":" DPD basis EMI being missed on the due date",
+  "loandisbursal":" E-Sin Agreement, KYC",
+
+};
+var icredit_Loan={
+  "name":"icredit Loan",
+  "logo":"assets/personalLoan/20.png",
+  "logo2":"assets/personalLoan/20.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":"5,000-50,000",
+  "maxamount":"50,000",
+  "tenure":"91-120(Days)",
+  "interest":"20.00% - 24.00%",
+  "processing fee":"₹0",
+  "eligibility":" Salaried employees with  a\nMin net salary of 14K  per month",
+  "documents":"  PAN, Salary Slip, 3 months\nbank statements and\n Address Proof",
+  "repayment":" NEFT, UPI, Debit Card, Net banking",
+  "earlyrepayment":"Monthly Interest Payable,No Prepayment Fees",
+  "overdue":"Penalty charges",
+  "loandisbursal":"Salary Bank Account",
+
+};
+var IDFC_First_Bank ={
+  "name":"IDFC First Bank",
+  "logo":"assets/personalLoan/24.png",
+  "logo2":"assets/personalLoan/24.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n  Loan. Apply Online Now and Get In",
+  "amount":" 1Lacs - 40Lacs",
+  "maxamount":"40Lacs",
+  "tenure":"12-84",
+  "interest":"10.75-20.00%",
+  "processing fee":"0%",
+  "eligibility":" Minimum Income : 15K net\nper month; minimum age :21 years",
+  "documents":"PAN/Form 60, 3 month salary\nslip, 6 month bank statement, \nPhoto of your signature, \nCurrent address proof, KYC",
+  "repayment":" Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"  DPD basis EMI being missed\non the due date.",
+  "loandisbursal":"Customer Bank Account",
+
+};
+
+var Moneytap={
+  "name":"Moneytap",
+  "logo":"assets/personalLoan/25.png",
+  "logo2":"assets/personalLoan/25.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan Apply Online Now and Get Instant",
+  "amount":"3,000-5Lacs",
+  "maxamount":"5Lacs",
+  "tenure":"2-36",
+  "interest":"13.00-24.30%",
+  "processing fee":" 0% ",
+  "eligibility":" Minimum Income : 20K net \nper month; minimum age :21 years",
+  "documents":"Aadhar number, Identity\nproof, Address proof, passport\nphoto/selfie, Aadhaar card.\nE-sign, Pan Card",
+  "repayment":"  Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"DPD basis EMI being missed\non the due date, ",
+  "loandisbursal":" Customer Bank Account",
+};
+
+
+var Rupee_Redee={
+  "name":"Rupee Redee",
+  "logo":"assets/personalLoan/26.png",
+  "logo2":"assets/personalLoan/26.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan Apply Online Now and Get Instant",
+  "amount":"5,000-25,000",
+  "maxamount":"25,000",
+  "tenure":"3-12",
+  "interest":"36.00%-40.00%",
+  "processing fee":"₹499- ₹999",
+  "eligibility":"Minimum Income: 15K net\nper month; minimum age:21 years",
+  "documents":"3-month salary slip, 6 month\nbank statement, Photo of\nyour signature, Current\naddress proof, Latest\nPhotograph, PAN Card, Access\nto bank account details",
+  "repayment":" Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"Penalty according to days’ past\ndue date.",
+  "loandisbursal":" Customer Bank Account",
+};
+
+var Momo_Loan ={
+  "name":"Momo Loan",
+  "logo":"assets/personalLoan/27.png",
+  "logo2":"assets/personalLoan/27.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan Apply Online Now and Get Instant",
+  "amount":"3000–30,000",
+  "maxamount":"30,000",
+  "tenure":"15 – 60(Days)",
+  "interest":"24.00%- 36.00%",
+  "processing fee":"₹499+GST",
+  "eligibility":"Minimum Income: 15K net\nper month; minimum age:\n21 years",
+  "documents":"3-month salary slip, 6 month\nbank statement, Photo of\nyour signature, Current\naddress proof, Latest\nPhotograph, PAN Card, Access\nto bank account details",
+  "repayment":" Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"Net banking, debit card,\ncredit card or UPI..",
+  "loandisbursal":"Customer Bank Account",
+};
+
+var Sahukar={
+  "name":"Sahukar",
+  "logo":"assets/personalLoan/28.png",
+  "logo2":"assets/personalLoan/28.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan Apply Online Now and Get Instant",
+  "amount":"500 – 5000",
+  "maxamount":"5000",
+  "tenure":"30 – 90(Days)",
+  "interest":"30.00%- 36.00%",
+  "processing fee":"0",
+  "eligibility":"Collage Student, minimum\nage: 21 years",
+  "documents":" Collage Id Proof, Photo of\nyour signature, Current\naddress proof, PAN Card",
+  "repayment":" Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"EMI not missed on the due Date",
+  "loandisbursal":" Bank Account/Paytm Wallet",
+};
+
+
+var Kreditzy={
+  "name":"Kreditzy",
+  "logo":"assets/personalLoan/29.png",
+  "logo2":"assets/personalLoan/29.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan Apply Online Now and Get Instant",
+  "amount":"1,000-1,00,000",
+  "maxamount":"1,00,000",
+  "tenure":"91- 365(Days)",
+  "interest":"17.00%- 29.95",
+  "processing fee":"0",
+  "eligibility":"Minimum Income: 17K net\nper month; minimum age:\n21 years",
+  "documents":"PAN Card, Aadhar Card ,Bank\nAccount Details, Current\naddress proof, Selfie, E-sign\nthe loan agreement.",
+  "repayment":"Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"EMI being missed on the due date",
+  "loandisbursal":"Customer Bank Account",
+};
+
+var Mi_Credit={
+  "name":"Mi Credit",
+  "logo":"assets/personalLoan/30.png",
+  "logo2":"assets/personalLoan/30.png",
+  "desc":"Minimum Income: 18K net\nper month; minimum age:\n21 years",
+  "amount":"1,000- 2,00,000",
+  "maxamount":"2,00,000",
+  "tenure":"3- 24",
+  "interest":"11.35%- 35.00%",
+  "processing fee":"1.99%+ GST",
+  "eligibility":"salary 30000,2 years job experience",
+  "documents":"PAN Card, Aadhar Card ,Bank\nAccount Details, Current address proof, Selfie, E-sign\nthe loan agreement.",
+  "repayment":" Net banking, debit card,credit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":"EMI being missed on the due date",
+  "loandisbursal":"Customer Bank Account",
+};
+var FundPI={
+  "name":"FundPI",
+  "logo":"assets/personalLoan/31.png",
+  "logo2":"assets/personalLoan/31.png",
+  "desc":"Get Attractive Rates on ICICI Bank Personal\n Loan Apply Online Now and Get Instant",
+  "amount":"3, 000- 25,000",
+  "maxamount":"25,000",
+  "tenure":"3- 12",
+  "interest":"17.88%- 28.88%",
+  "processing fee":"₹499+ GST",
+  "eligibility":"Minimum Income: 16K net\nper month; minimum age:\n21 years",
+  "documents":"3-month salary slip, 6 month\nbank statement, Current\naddress proof, LatestSelfie, PAN Card, Access",
+  "repayment":"Net banking, debit card,\ncredit card or UPI.",
+  "earlyrepayment":null,
+  "overdue":" EMI being missed on the due date.",
+  "loandisbursal":" Customer Bank Account",
+};
+
 
 var PersonalLoans=[
   icici,tata_capital, Early_Salary,Payme_India, Avail_Finance,Faircent,Paysense,PhoneParLoan,Indialends_Personal_Loan,
-  NIRA,OYE_Loans,Muthoot,CASHe,Upwards, Lendbox,Retra, Qbera,Money_view
+  NIRA,OYE_Loans,Muthoot,CASHe,Upwards, Lendbox,Retra, Qbera,Shubh_Loan,Kissht,Money_View,SmartCoin,Home_credit,
+  LazyPay,icredit_Loan,FundPI,Mi_Credit,Kreditzy,Sahukar,Momo_Loan,Rupee_Redee,Moneytap,IDFC_First_Bank,icredit_Loan
 ];
