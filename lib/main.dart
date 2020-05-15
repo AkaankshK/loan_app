@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loanapp/IntroScreen/IntroScreen.dart';
-
+import 'dummy.dart';
 void main() {
   runApp(MyApp());
 }

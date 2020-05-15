@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/PersonalLoan/WebView.dart';
 import 'PersonalLoan.dart';
 
 
@@ -410,7 +411,9 @@ Padding getDetails() {
             color: buttonColor,
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>WebViewPage(url:"hey")));
+            },
           ),
         ),
       ),

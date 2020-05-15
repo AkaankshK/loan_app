@@ -65,7 +65,7 @@ class _LoanAgainstDetailsState extends State<LoanAgainstDetails> {
   }
 
   getContents() {
-    var item=loans[widget.index];
+    var item=loansagainst[widget.index];
 
     return Column(
 
@@ -99,7 +99,7 @@ class _LoanAgainstDetailsState extends State<LoanAgainstDetails> {
   }
 
   getTable() {
-    var item=loans[widget.index];
+    var item=loansagainst[widget.index];
     return Padding(
       padding: EdgeInsets.all(10),
       child:  Card(
@@ -195,7 +195,7 @@ class _LoanAgainstDetailsState extends State<LoanAgainstDetails> {
   }
 
   getDetails() {
-    var item=loans[widget.index];
+    var item=loansagainst[widget.index];
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(

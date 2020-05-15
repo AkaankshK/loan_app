@@ -6,7 +6,7 @@ import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
 import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
-import 'package:loanapp/LoansAgainstProperty/LoanAgainstDetails.dart';
+import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
 
@@ -23,6 +23,9 @@ Map<int, Color> colors =
   800:Color.fromRGBO(136,14,79, .9),
   900:Color.fromRGBO(136,14,79, 1),
 };
+
+String cityname="";
+bool isCitySet=false;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -100,7 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text("Get it Now",style: TextStyle(color: Colors.white,fontSize: 20),),
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditPage()));
+                },
               ),
             )
           ],
@@ -302,7 +307,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanList()));
+                            if(!isCitySet){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 0,)));
+                            }
+                            else{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanList()));
+                            }
                           },
                         ),
                       ),
@@ -442,7 +452,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>BusinessLoanList()));
+                            if(!isCitySet){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 1,)));
+                            }
+                            else{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>BusinessLoanList()));
+                            }
                           },
                         ),
                       ),
@@ -582,7 +597,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
+                            if(!isCitySet){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 2,)));
+                            }
+                            else{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
+                            }
                           },
                         ),
                       ),
@@ -722,7 +742,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
+                            if(!isCitySet){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 3,)));
+                            }
+                            else{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
+                            }
                           },
                         ),
                       ),
@@ -864,7 +889,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditCardList()));
+                            if(!isCitySet){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 4,)));
+                            }
+                            else{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditCardList()));
+                            }
                           },
                         ),
                       ),

@@ -17,7 +17,7 @@ class _NavBarState extends State<NavBar> {
   var currentIndex=0;
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    DummyPage(),
+    HomeScreen(),
    CreditPage(),
     Calculator(),
     MoreOptionsPage()
@@ -43,6 +43,7 @@ class _NavBarState extends State<NavBar> {
         child: Container(
           height: 60,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               MaterialButton(

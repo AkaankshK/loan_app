@@ -1,5 +1,11 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
+import 'package:loanapp/CreditCards/CreditCardList.dart';
+import 'package:loanapp/HomeLoans/HomeLoanList.dart';
+import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
+import 'HomeScreen/HomeScreen.dart';
+import 'PersonalLoan/PersonalLoanList.dart';
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -22,14 +28,18 @@ class SelectCity extends StatefulWidget {
 }
 
 class _SelectCityState extends State<SelectCity> {
-  var cityname="";
+  bool selected=false;
+
   GlobalKey<AutoCompleteTextFieldState<String>> key = new GlobalKey();
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: getBottom(),
       appBar: AppBar(
         elevation: 0,
         title: Text("City"),
@@ -59,6 +69,7 @@ class _SelectCityState extends State<SelectCity> {
   }
 
   getContents() {
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -74,8 +85,10 @@ class _SelectCityState extends State<SelectCity> {
                 height: 50,
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: SimpleAutoCompleteTextField(
+
                   key: key,
                   suggestions: cities,
+                  submitOnSuggestionTap: true,
 
                   decoration: InputDecoration(
                       hintStyle: TextStyle(color: Colors.black),
@@ -98,6 +111,7 @@ class _SelectCityState extends State<SelectCity> {
                       crossAxisCount: 2, childAspectRatio: 4),
                   itemBuilder: (_, int index) {
                     return Card(
+                        color: selected ? Colors.lightBlue : Colors.white,
                         elevation: 2,
                         shadowColor: lightBlueColor,
                         shape: RoundedRectangleBorder(
@@ -109,7 +123,54 @@ class _SelectCityState extends State<SelectCity> {
       ),
     );
   }
+
+  Widget navigate(int index) {
+    List<Widget> loantype=<Widget>[
+      PersonalLoanList(),
+    ];
+    return loantype.elementAt(index);
+
+  }
+
+  getBottom() {
+    return BottomAppBar(
+      child: Container(
+        height: 50,
+        child: MaterialButton(
+          color: lightBlueColor,
+            onPressed: (){
+           goToNext();
+            
+            },
+            child: Text("NEXT",style: TextStyle(color: Colors.white),)),
+      ),
+    );
+  }
+
+  void goToNext() {
+    setState(() {
+      isCitySet=true;
+    });
+    print(isCitySet);
+    if(widget.index==0){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanList()));
+    }
+    if(widget.index==1){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>BusinessLoanList()));
+    }
+    if(widget.index==2){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
+    }
+    if(widget.index==3){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
+    }
+    if(widget.index==4){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditCardList()));
+    }
+  }
+
 }
+
 
 final cities = [
   "Mumbai",

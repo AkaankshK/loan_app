@@ -56,6 +56,6 @@ var au={
 
 
 
-var loans=[
+var loansagainst=[
   ascend,csl,au
 ];
