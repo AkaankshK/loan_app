@@ -200,100 +200,122 @@ class _CalculatorState extends State<Calculator> {
         height: 200,
         width: MediaQuery.of(context).size.width,
         color: darkBlueColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Monthly EMI",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Monthly EMI",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Total Payable\nAmount",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Total Payable\nAmount",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "\u20b9 $emiString",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    flex:50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "\u20b9 $emiString",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "\u20b9 $tpaString",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  Expanded(
+                    flex:50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "\u20b9 $tpaString",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Principle Amount",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Principle Amount",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Total Payable\nInterest",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Total Payable\nInterest",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "\u20b9 $pa",
-                    style: TextStyle(color: greenColor, fontSize: 20),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    flex:50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "\u20b9 $pa",
+                          style: TextStyle(color: greenColor, fontSize: 20),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "\u20b9 $tpiString",
-                    style: TextStyle(color: yellowColor, fontSize: 20),
+                  Expanded(
+                    flex:50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "\u20b9 $tpiString",
+                          style: TextStyle(color: yellowColor, fontSize: 20),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                  height: 10,
-                  width: MediaQuery.of(context).size.width / 1.3,
-                  color: greenColor,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 10.8,
-                  height: 10,
-                  color: yellowColor,
-                )
-              ],
-            ),
-          ],
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    height: 15,
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    color: greenColor,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 10.8,
+                    height: 15,
+                    color: yellowColor,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
