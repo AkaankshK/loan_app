@@ -181,8 +181,8 @@ var Upwards={
 //
 var CASHe={
   "name":"CASHe",
-  "logo":"assets/personalLoan/cashe.png",
-  "logo2":"assets/personalLoan/cashe.png",
+  "logo":"assets/personalLoan/2.png",
+  "logo2":"assets/personalLoan/2.png",
   "desc":"Get Attractive Rates on ICICI Bank Personal \n Loan. Apply Online Now and Get In",
   "amount":"9,000-3Lacs",
   "maxamount":"3Lacs",
