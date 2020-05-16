@@ -412,7 +412,7 @@ Padding getDetails() {
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>WebViewPage(url:"hey")));
+              //Navigator.push(context, MaterialPageRoute(builder: (context)=>WebViewPage(url:"hey")));
             },
           ),
         ),
