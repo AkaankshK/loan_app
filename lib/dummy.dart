@@ -14,7 +14,7 @@ class GZXDropDownMenuTestPage extends StatefulWidget {
 }
 
 class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
-  List<String> _dropDownHeaderItemStrings = ['Amount','Tenure'];
+  List<String> _dropDownHeaderItemStrings = ['全城', '品牌', '距离近', '筛选'];
   List<SortCondition> _brandSortConditions = [];
   List<SortCondition> _distanceSortConditions = [];
   SortCondition _selectBrandSortCondition;
@@ -70,6 +70,17 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
           ),
           preferredSize: Size.fromHeight(0)),
       backgroundColor: Colors.white,
+      endDrawer: Container(
+        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 4, top: 0),
+        color: Colors.white,
+//        child: Container(color: Colors.red,child: Padding(
+//          padding: const EdgeInsets.all(8.0),
+//          child: TextField(),
+//        ),),
+        child: ListView(
+          children: <Widget>[TextField()],
+        ),
+      ),
       body: Stack(
         key: _stackKey,
         children: <Widget>[
@@ -95,6 +106,8 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
                 items: [
                   GZXDropDownHeaderItem(_dropDownHeaderItemStrings[0]),
                   GZXDropDownHeaderItem(_dropDownHeaderItemStrings[1]),
+                  GZXDropDownHeaderItem(_dropDownHeaderItemStrings[2]),
+                  GZXDropDownHeaderItem(_dropDownHeaderItemStrings[3], iconData: Icons.filter_frames, iconSize: 18),
                 ],
                 // GZXDropDownHeader对应第一父级Stack的key
                 stackKey: _stackKey,
@@ -107,7 +120,31 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
                     _scaffoldKey.currentState.openEndDrawer();
                   }
                 },
-//
+//                // 头部的高度
+//                height: 40,
+//                // 头部背景颜色
+//                color: Colors.red,
+//                // 头部边框宽度
+//                borderWidth: 1,
+//                // 头部边框颜色
+//                borderColor: Color(0xFFeeede6),
+//                // 分割线高度
+//                dividerHeight: 20,
+//                // 分割线颜色
+//                dividerColor: Color(0xFFeeede6),
+//                // 文字样式
+//                style: TextStyle(color: Color(0xFF666666), fontSize: 13),
+//                // 下拉时文字样式
+//                dropDownStyle: TextStyle(
+//                  fontSize: 13,
+//                  color: Theme.of(context).primaryColor,
+//                ),
+//                // 图标大小
+//                iconSize: 20,
+//                // 图标颜色
+//                iconColor: Color(0xFFafada7),
+//                // 下拉时图标颜色
+//                iconDropDownColor: Theme.of(context).primaryColor,
               ),
               Expanded(
                 child: ListView.separated(
@@ -126,7 +163,6 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
           ),
           // 下拉菜单
           GZXDropDownMenu(
-
             // controller用于控制menu的显示或隐藏
             controller: _dropdownMenuController,
             // 下拉菜单显示或隐藏动画时长
@@ -138,10 +174,17 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
             menus: [
               GZXDropdownMenuBuilder(
                   dropDownHeight: 40 * 8.0,
+                  dropDownWidget: _buildAddressWidget((selectValue) {
+                    _dropDownHeaderItemStrings[0] = selectValue;
+                    _dropdownMenuController.hide();
+                    setState(() {});
+                  })),
+              GZXDropdownMenuBuilder(
+                  dropDownHeight: 40 * 8.0,
                   dropDownWidget: _buildConditionListWidget(_brandSortConditions, (value) {
                     _selectBrandSortCondition = value;
-                    _dropDownHeaderItemStrings[0] =
-                    _selectBrandSortCondition.name = _selectBrandSortCondition.name;
+                    _dropDownHeaderItemStrings[1] =
+                    _selectBrandSortCondition.name == '全部' ? '品牌' : _selectBrandSortCondition.name;
                     _dropdownMenuController.hide();
                     setState(() {});
                   })),
@@ -149,7 +192,7 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
                   dropDownHeight: 40.0 * _distanceSortConditions.length,
                   dropDownWidget: _buildConditionListWidget(_distanceSortConditions, (value) {
                     _selectDistanceSortCondition = value;
-                    _dropDownHeaderItemStrings[1] = _selectDistanceSortCondition.name;
+                    _dropDownHeaderItemStrings[2] = _selectDistanceSortCondition.name;
                     _dropdownMenuController.hide();
                     setState(() {});
                   })),
@@ -160,6 +203,101 @@ class _GZXDropDownMenuTestPageState extends State<GZXDropDownMenuTestPage> {
     );
   }
 
+  int _selectTempFirstLevelIndex = 0;
+  int _selectFirstLevelIndex = 0;
+  int _selectSecondLevelIndex = -1;
+
+  _buildAddressWidget(void itemOnTap(String selectValue)) {
+//    List firstLevels = new List<int>.filled(15, 0);
+    List firstLevels = new List<String>.generate(15, (int index) {
+      if (index == 0) {
+        return '全部';
+      }
+      return '$index区';
+    });
+
+    List secondLevels = new List<String>.generate(15, (int index) {
+      if (index == 0) {
+        return '全部';
+      }
+      return '$_selectTempFirstLevelIndex$index街道办';
+    });
+
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 100,
+          child: ListView(
+            children: firstLevels.map((item) {
+              int index = firstLevels.indexOf(item);
+              return GestureDetector(
+                onTap: () {
+                  _selectTempFirstLevelIndex = index;
+
+                  if (_selectTempFirstLevelIndex == 0) {
+                    itemOnTap('全城');
+                    return;
+                  }
+                  setState(() {});
+                },
+                child: Container(
+                    height: 40,
+                    color: _selectTempFirstLevelIndex == index ? Colors.grey[200] : Colors.white,
+                    alignment: Alignment.center,
+                    child: _selectTempFirstLevelIndex == index
+                        ? Text(
+                      '$item',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    )
+                        : Text('$item')),
+              );
+            }).toList(),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.grey[200],
+            child: _selectTempFirstLevelIndex == 0
+                ? Container()
+                : ListView(
+              children: secondLevels.map((item) {
+                int index = secondLevels.indexOf(item);
+                return GestureDetector(
+                    onTap: () {
+                      _selectSecondLevelIndex = index;
+                      _selectFirstLevelIndex = _selectTempFirstLevelIndex;
+                      if (_selectSecondLevelIndex == 0) {
+                        itemOnTap(firstLevels[_selectFirstLevelIndex]);
+                      } else {
+                        itemOnTap(item);
+                      }
+                    },
+                    child: Container(
+                      height: 40,
+                      alignment: Alignment.centerLeft,
+                      child: Row(children: <Widget>[
+                        SizedBox(
+                          width: 20,
+                        ),
+                        _selectFirstLevelIndex == _selectTempFirstLevelIndex && _selectSecondLevelIndex == index
+                            ? Text(
+                          '$item',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        )
+                            : Text('$item'),
+                      ]),
+                    ));
+              }).toList(),
+            ),
+          ),
+        )
+      ],
+    );
+  }
 
   _buildConditionListWidget(items, void itemOnTap(SortCondition sortCondition)) {
     return ListView.separated(

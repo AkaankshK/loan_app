@@ -138,8 +138,8 @@ var Lendbox={
   "documents":"PAN, Aadhar, Bank Statement (6 months), Salary slips (3)",
   "repayment":"NACH (auto-debit)",
   "earlyrepayment":"No prepayment charges after 3 EMIs Upwards",
-  "overdue":"",
-  "loandisbursal":"",
+  "overdue":null,
+  "loandisbursal":null,
 
 };
 var Upwards={
@@ -209,9 +209,9 @@ var Muthoot={
   "processing fee":"0",
   "eligibility":"Subject to credit verification, eligibility calculation(Qualifying criteria shared in PDF)",
   "documents":"Photo, Signature Proof, Address Proof, Employment Proof, Company Identity,3 M Payslips,6M Salary Credit Banking",
-  "repayment":"",
-  "earlyrepayment":"",
-  "overdue":"",
+  "repayment":null,
+  "earlyrepayment":null,
+  "overdue":null,
   "loandisbursal":"Into Salary Account",
 
 };
@@ -231,7 +231,7 @@ var OYE_Loans={
   "repayment":"12 EMIs",
   "earlyrepayment":"Zero charges",
   "overdue":"Default / late payment fee of 1% + GST of the outstanding principal balance or INR 500",
-  "loandisbursal":"",
+  "loandisbursal":null,
 
 };
 var NIRA={
@@ -265,9 +265,9 @@ var Indialends_Personal_Loan={
   "eligibility":"Bureau Score >=750, No Derogs, Not Currently Overdue, Salary>25k, City Pin codes:\n (110,121,122,141,160,201,226,302,342,360,380,394,395,400,401,410,411,421,440,441\n,492,500,520,521,530,560,600,700)",
   "documents":"For Self-Employed Individuals\n1. Identity & Age Proof \n2. Completely filled personal loan application with photograph\n3. PAN Card \n4. Residence proof - Passport driving licence, Voter ID, post-paid/landline bill, utility bills (electricity/water/gas)\n5. Bank statements for the last 3 months(preferably your salary account) \n6. Salary Slips of last 3 months\n7. Last 3 years Income Tax Returns with computation of Income\n8. Last 3 years CA Certified / Audited Balance Sheet and Profit & Loss Account\nFor Salaried Individuals \n1. Identity & Age Proof \n2. Completely filled personal loan application with photograph \n3. PAN Card\n4. Residence proof - Passport driving licence, Voter ID, postpaid/landline bill, utility bills (electricity/water/gas)\n5. Bank statements for the last 3 months(preferably your salary account) \n6. Salary Slips of last 3 months\n7. Form 16 or Income Tax Returns of last 3 years\n",
   "repayment":"On lender basis",
-  "earlyrepayment":"",
+  "earlyrepayment":null,
   "overdue":"On lender basis",
-  "loandisbursal":"",
+  "loandisbursal":null,
 
 };
 var PhoneParLoan={
@@ -282,10 +282,10 @@ var PhoneParLoan={
   "processing fee":"2.5%-4%",
   "eligibility":"age>21, salary>8K",
   "documents":"Address Proof, Identity Proof, Income, Bank Statement, Signature (PAN card, Offline addhar verification, salary slip/ITR, selfie,\n signature)",
-  "repayment":"",
-  "earlyrepayment":"",
-  "overdue":"",
-  "loandisbursal":"",
+  "repayment":null,
+  "earlyrepayment":null,
+  "overdue":null,
+  "loandisbursal":null,
 
 };
 var Paysense={
@@ -301,7 +301,7 @@ var Paysense={
   "eligibility":"Resident of India\nAge: 21 years to 60 years\nEmployment Type: Salaried and Self-employed \nMinimum Monthly Income: ₹ 12,000 for salaried and ₹ 15,000 for self-employed \nLocation: We are active in 40+ cities.",
   "documents":"Selfie, Permanent & current address proof, PAN, Aadhaar, bank statement 3 months + current month, bank details",
   "repayment":"3rd of every month - static date",
-  "earlyrepayment":"",
+  "earlyrepayment":null,
   "overdue":"Penalty according to days past due",
   "loandisbursal":"Valid bank account in your name",
 
@@ -321,7 +321,7 @@ var Faircent={
   "repayment":"NACH, Payment gateway (UPI, net banking, debit card, paytm)",
   "earlyrepayment":"No prepayment charges after first three EMIs",
   "overdue":"penal interest 18%",
-  "loandisbursal":"",
+  "loandisbursal":null,
 
 };
 var Avail_Finance={
@@ -339,7 +339,7 @@ var Avail_Finance={
   "repayment":"Monthly",
   "earlyrepayment":"No prepayment penalty",
   "overdue":"Zero overdue in last 3 months",
-  "loandisbursal":"",
+  "loandisbursal":null,
 
 };
 var Payme_India={
