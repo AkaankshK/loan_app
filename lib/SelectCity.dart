@@ -19,6 +19,12 @@ Map<int, Color> colors = {
   800: Color.fromRGBO(136, 14, 79, .9),
   900: Color.fromRGBO(136, 14, 79, 1),
 };
+class CityCondition {
+  String name;
+  bool isSelected;
+
+  CityCondition({this.name, this.isSelected});
+}
 
 class SelectCity extends StatefulWidget {
   final int index;
@@ -34,7 +40,15 @@ class _SelectCityState extends State<SelectCity> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
-
+  List<CityCondition> citynames=[];
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    for(String i in cities){
+      citynames.add(CityCondition(name: i,isSelected: false));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,22 +95,25 @@ class _SelectCityState extends State<SelectCity> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 50,
+              Container(
+                height: 40,
                 width: MediaQuery.of(context).size.width / 1.5,
-                child: SimpleAutoCompleteTextField(
-
-                  key: key,
-                  suggestions: cities,
-                  submitOnSuggestionTap: true,
-
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(color: Colors.black),
-                      hintText: "Search City",
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      )),
+                child: Center(
+                  child: SimpleAutoCompleteTextField(
+                    key: key,
+                    suggestions: cities,
+                    submitOnSuggestionTap: true,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                        hintStyle: TextStyle(color: Colors.black),
+                        hintText: "Search City",
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        )),
+                  ),
                 ),
               ),
             ],
@@ -105,20 +122,39 @@ class _SelectCityState extends State<SelectCity> {
           SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
               width: MediaQuery.of(context).size.width,
-              child: GridView.builder(
-                  itemCount: cities.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, childAspectRatio: 4),
-                  itemBuilder: (_, int index) {
-                    return Card(
-                        color: selected ? Colors.lightBlue : Colors.white,
-                        elevation: 2,
-                        shadowColor: lightBlueColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(child: Text(cities[index])));
-                  })),
+              child: StatefulBuilder(
+                builder: (BuildContext bc,StateSetter setState){
+                  return GridView.builder(
+                      itemCount: citynames.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2, childAspectRatio: 4),
+                      itemBuilder: (_, int index) {
+                        CityCondition item=citynames[index];
+                        return GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              for(var i in citynames){
+                                i.isSelected=false;
+                              }
+                              item.isSelected=true;
+                            });
+                          },
+                          child: Container(
+                            child: Card(
+                                color: item.isSelected ? lightBlueColor : Colors.white,
+                                elevation: 2,
+                                shadowColor: lightBlueColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(child: Text(item.name,style: TextStyle(color: item.isSelected?Colors.white:Colors.black),))),
+                          ),
+                        );
+                      });
+                },
+              )
+
+          ),
         ],
       ),
     );

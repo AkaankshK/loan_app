@@ -198,3 +198,8 @@ var fino={
 var businessLoans=[
   indifi,lendingkart,aditya,eloan,fintree,ziploan,loansimple,shriram,b2c,arthan,fino
 ];
+
+var b1=[indifi,lendingkart,aditya,eloan,fintree,];
+var b2=[indifi,lendingkart,aditya,eloan,fintree,ziploan,loansimple,];
+
+var bloans=[businessLoans,b1,b2];

@@ -15,6 +15,7 @@ Map<int, Color> colors = {
   800: Color.fromRGBO(136, 14, 79, .9),
   900: Color.fromRGBO(136, 14, 79, 1),
 };
+
 class SortCondition {
   String name;
   bool isSelected;
@@ -31,12 +32,13 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
-  List<String> _dropDownHeaderItemStrings = ['Amount','Tenure'];
+  List<String> _dropDownHeaderItemStrings = ['Amount', 'Tenure'];
   List<SortCondition> _amountConditions = [];
   List<SortCondition> _tenureConditions = [];
   SortCondition _selectAmountSortCondition;
   SortCondition _selectTenureSortCondition;
-  GZXDropdownMenuController _dropdownMenuController = GZXDropdownMenuController();
+  GZXDropdownMenuController _dropdownMenuController =
+      GZXDropdownMenuController();
   var AmountDropdown = [
     "Total",
     "Less than \u20b95000",
@@ -52,22 +54,31 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
     // TODO: implement initState
     super.initState();
     _amountConditions.add(SortCondition(name: 'Total', isSelected: true));
-    _amountConditions.add(SortCondition(name: "Less than \u20b95000", isSelected: false));
-    _amountConditions.add(SortCondition(name: "\u20b95,000 to \u20b91000", isSelected: false));
-    _amountConditions.add(SortCondition(name: "\u20b910,000 to \u20b950,000", isSelected: false));
-    _amountConditions.add(SortCondition(name: "\u20b950,000 to \u20b91,00,000", isSelected: false));
-    _amountConditions.add(SortCondition(name: "Greater than 1 Lac", isSelected: false));
+    _amountConditions
+        .add(SortCondition(name: "Less than \u20b95000", isSelected: false));
+    _amountConditions.add(
+        SortCondition(name: "\u20b95,000 to \u20b91000", isSelected: false));
+    _amountConditions.add(
+        SortCondition(name: "\u20b910,000 to \u20b950,000", isSelected: false));
+    _amountConditions.add(SortCondition(
+        name: "\u20b950,000 to \u20b91,00,000", isSelected: false));
+    _amountConditions
+        .add(SortCondition(name: "Greater than 1 Lac", isSelected: false));
 
     _selectAmountSortCondition = _amountConditions[0];
 
     _tenureConditions.add(SortCondition(name: 'Total', isSelected: true));
-    _tenureConditions.add(SortCondition(name: 'Less than 3 Months', isSelected: false));
+    _tenureConditions
+        .add(SortCondition(name: 'Less than 3 Months', isSelected: false));
     _tenureConditions.add(SortCondition(name: '3-6 Months', isSelected: false));
-    _tenureConditions.add(SortCondition(name: '6-12 Months', isSelected: false));
-    _tenureConditions.add(SortCondition(name: 'Greater than 12 Months', isSelected: false));
+    _tenureConditions
+        .add(SortCondition(name: '6-12 Months', isSelected: false));
+    _tenureConditions
+        .add(SortCondition(name: 'Greater than 12 Months', isSelected: false));
 
     _selectTenureSortCondition = _tenureConditions[0];
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,36 +107,31 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
         ),
         getContents(),
         GZXDropDownMenu(
-
-          // controller用于控制menu的显示或隐藏
           controller: _dropdownMenuController,
-          // 下拉菜单显示或隐藏动画时长
           animationMilliseconds: 300,
-          // 下拉后遮罩颜色
-//          maskColor: Theme.of(context).primaryColor.withOpacity(0.5),
-//          maskColor: Colors.red.withOpacity(0.5),
-          // 下拉菜单，高度自定义，你想显示什么就显示什么，完全由你决定，你只需要在选择后调用_dropdownMenuController.hide();即可
           menus: [
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _amountConditions.length,
-                dropDownWidget: _buildConditionListWidget(_amountConditions, (value) {
+                dropDownWidget:
+                    _buildConditionListWidget(_amountConditions, (value) {
                   _selectAmountSortCondition = value;
-                  _dropDownHeaderItemStrings[0] =
-                      _selectAmountSortCondition.name = _selectAmountSortCondition.name;
+                  _dropDownHeaderItemStrings[0] = _selectAmountSortCondition
+                      .name = _selectAmountSortCondition.name;
                   _dropdownMenuController.hide();
                   setState(() {});
                 })),
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _tenureConditions.length,
-                dropDownWidget: _buildConditionListWidget(_tenureConditions, (value) {
+                dropDownWidget:
+                    _buildConditionListWidget(_tenureConditions, (value) {
                   _selectTenureSortCondition = value;
-                  _dropDownHeaderItemStrings[1] = _selectTenureSortCondition.name;
+                  _dropDownHeaderItemStrings[1] =
+                      _selectTenureSortCondition.name;
                   _dropdownMenuController.hide();
                   setState(() {});
                 })),
           ],
         ),
-
       ],
     );
   }
@@ -153,109 +159,113 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
           },
 //
         ),
-
         SizedBox(
-          height: MediaQuery.of(context).size.height / 1.4,
-          width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-              itemCount: businessLoans.length,
-              itemBuilder: (_, int index) {
-                var item = businessLoans[index];
-                return Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Table(
-                      defaultVerticalAlignment:
-                          TableCellVerticalAlignment.middle,
-                      children: [
-                        TableRow(children: [
-                          Image.asset(
-                            item['logo'],
-                            fit: BoxFit.scaleDown,
-                            height: 125,
-                            width: 125,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                item['name'],
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w700),
-                              ),
-                              Text(
-                                "\u20B9${item['maxamount']}",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "Max Amount",
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              Text("Tenure:${item['tenure']} Months"),
-                              Text(
-                                "Interest:${item['interest']}/year",
-                              ),
-                              Text("Proc.Fee: ${item['processing fee']}"),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                color: buttonColor,
-                                child: Text(
-                                  "Apply",
-                                  style: TextStyle(color: Colors.white),
+            height: MediaQuery.of(context).size.height / 1.4,
+            width: MediaQuery.of(context).size.width,
+            child: ListView.builder(
+                itemCount: businessLoans.length,
+                itemBuilder: (_, int index) {
+                  var item = businessLoans[index];
+
+                  return Card(
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Table(
+                        defaultVerticalAlignment:
+                            TableCellVerticalAlignment.middle,
+                        children: [
+                          TableRow(children: [
+                            Image.asset(
+                              item['logo'],
+                              fit: BoxFit.scaleDown,
+                              height: 125,
+                              width: 125,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  item['name'],
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
                                 ),
-                                onPressed: () {},
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                BusinessLoanDetails(
-                                                  index: index,
-                                                )));
-                                  },
+                                Text(
+                                  "\u20B9${item['maxamount']}",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "Max Amount",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                Text("Tenure:${item['tenure']} Months"),
+                                Text(
+                                  "Interest:${item['interest']}/year",
+                                ),
+                                Text("Proc.Fee: ${item['processing fee']}"),
+                                SizedBox(
+                                  height: 10,
+                                )
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  color: buttonColor,
                                   child: Text(
-                                    "Details   >",
-                                    style: TextStyle(
-                                        color: lightBlueColor, fontSize: 15),
-                                  ))
-                            ],
-                          )
-                        ]),
-                      ],
+                                    "Apply",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BusinessLoanDetails(
+                                                    index: index,
+                                                  )));
+                                    },
+                                    child: Text(
+                                      "Details   >",
+                                      style: TextStyle(
+                                          color: lightBlueColor, fontSize: 15),
+                                    ))
+                              ],
+                            )
+                          ]),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }),
-        )
+                  );
+                }))
       ],
     );
   }
-  _buildConditionListWidget(items, void itemOnTap(SortCondition sortCondition)) {
+
+  _buildConditionListWidget(
+      items, void itemOnTap(SortCondition sortCondition)) {
     return ListView.separated(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       itemCount: items.length,
       // item 的个数
-      separatorBuilder: (BuildContext context, int index) => Divider(height: 1.0),
+      separatorBuilder: (BuildContext context, int index) =>
+          Divider(height: 1.0),
       // 添加分割线
       itemBuilder: (BuildContext context, int index) {
         SortCondition goodsSortCondition = items[index];
@@ -269,7 +279,6 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
             itemOnTap(goodsSortCondition);
           },
           child: Container(
-//            color: Colors.blue,
             height: 40,
             child: Row(
               children: <Widget>[
@@ -280,16 +289,18 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                   child: Text(
                     goodsSortCondition.name,
                     style: TextStyle(
-                      color: goodsSortCondition.isSelected ? Theme.of(context).primaryColor : Colors.black,
+                      color: goodsSortCondition.isSelected
+                          ? Theme.of(context).primaryColor
+                          : Colors.black,
                     ),
                   ),
                 ),
                 goodsSortCondition.isSelected
                     ? Icon(
-                  Icons.check,
-                  color: Theme.of(context).primaryColor,
-                  size: 16,
-                )
+                        Icons.check,
+                        color: Theme.of(context).primaryColor,
+                        size: 16,
+                      )
                     : SizedBox(),
                 SizedBox(
                   width: 16,
@@ -300,5 +311,15 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
         );
       },
     );
+  }
+
+  List getList(var Personal, int min, int max) {
+    List<String> nam = [];
+    List list3 = Personal.where((map) =>
+    double.parse(map["maxamount"].replaceAll('Lacs', '00000')) <= max &&
+        double.parse(map["maxamount"].replaceAll('Lacs', '00000')) > min)
+        .toList();
+
+    return list3;
   }
 }

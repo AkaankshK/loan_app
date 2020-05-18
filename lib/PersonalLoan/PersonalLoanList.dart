@@ -37,6 +37,8 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
   SortCondition _selectAmountSortCondition;
   SortCondition _selectTenureSortCondition;
   GZXDropdownMenuController _dropdownMenuController = GZXDropdownMenuController();
+  int min=0;
+  int max=0;
   var AmountDropdown = [
     "Total",
     "Less than \u20b95000",
@@ -53,7 +55,7 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
     super.initState();
     _amountConditions.add(SortCondition(name: 'Total', isSelected: true));
     _amountConditions.add(SortCondition(name: "Less than \u20b95000", isSelected: false));
-    _amountConditions.add(SortCondition(name: "\u20b95,000 to \u20b91000", isSelected: false));
+    _amountConditions.add(SortCondition(name: "\u20b95,000 to \u20b910,000", isSelected: false));
     _amountConditions.add(SortCondition(name: "\u20b910,000 to \u20b950,000", isSelected: false));
     _amountConditions.add(SortCondition(name: "\u20b950,000 to \u20b91,00,000", isSelected: false));
     _amountConditions.add(SortCondition(name: "Greater than 1 Lac", isSelected: false));
@@ -97,23 +99,46 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
         getContents(),
         GZXDropDownMenu(
 
-          // controller用于控制menu的显示或隐藏
+
           controller: _dropdownMenuController,
-          // 下拉菜单显示或隐藏动画时长
+
           animationMilliseconds: 300,
-          // 下拉后遮罩颜色
-//          maskColor: Theme.of(context).primaryColor.withOpacity(0.5),
-//          maskColor: Colors.red.withOpacity(0.5),
-          // 下拉菜单，高度自定义，你想显示什么就显示什么，完全由你决定，你只需要在选择后调用_dropdownMenuController.hide();即可
+
+
+
           menus: [
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _amountConditions.length,
                 dropDownWidget: _buildConditionListWidget(_amountConditions, (value) {
                   _selectAmountSortCondition = value;
-                  _dropDownHeaderItemStrings[0] =
-                      _selectAmountSortCondition.name = _selectAmountSortCondition.name;
+                  _dropDownHeaderItemStrings[0] = _selectAmountSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    if(value.name=="Less than \u20b95000"){
+                      min=0;
+                      max=5000;
+                    }
+                    if(value.name=="Total"){
+                      min=0;
+                      max=0;
+                    }
+                    if(value.name=="\u20b95,000 to \u20b910,000"){
+                      min=5000;
+                      max=10000;
+                    }
+                    if(value.name=="\u20b910,000 to \u20b950,000"){
+                      min=10000;
+                      max=50000;
+                    }
+                    if(value.name=="\u20b950,000 to \u20b91,00,000"){
+                      min=50000;
+                      max=100000;
+                    }
+                    if(value.name=="Greater than 1 Lac"){
+                      min=100000;
+                      max=100000000;
+                    }
+                  });
                 })),
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _tenureConditions.length,
@@ -158,9 +183,9 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
           height: MediaQuery.of(context).size.height / 1.4,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
-              itemCount: PersonalLoans.length,
+              itemCount: getLoans(PersonalLoans,min: min,max: max).length,
               itemBuilder: (_, int index) {
-                var item = PersonalLoans[index];
+                var item = getLoans(PersonalLoans,min: min,max: max)[index];
                 return Card(
                   elevation: 10,
                   shape: RoundedRectangleBorder(
@@ -300,5 +325,18 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
         );
       },
     );
+  }
+
+  List getLoans(var Personal, {int min=0, int max=0}) {
+    if(min==0 && max==0){
+      return Personal;
+    }
+    else{
+      List list3 = Personal.where((map) =>
+      double.parse(map["maxamount"].replaceAll('Lacs', '00000')) <= max &&
+          double.parse(map["maxamount"].replaceAll('Lacs', '00000')) > min)
+          .toList();
+      return list3;
+    }
   }
 }
