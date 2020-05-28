@@ -137,6 +137,7 @@ class _SelectCityState extends State<SelectCity> {
                                 i.isSelected=false;
                               }
                               item.isSelected=true;
+
                             });
                           },
                           child: Container(

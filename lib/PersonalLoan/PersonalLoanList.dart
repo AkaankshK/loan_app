@@ -39,6 +39,8 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
   GZXDropdownMenuController _dropdownMenuController = GZXDropdownMenuController();
   int min=0;
   int max=0;
+  int mmin=0;
+  int mmax=120;
   var AmountDropdown = [
     "Total",
     "Less than \u20b95000",
@@ -104,8 +106,6 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
 
           animationMilliseconds: 300,
 
-
-
           menus: [
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _amountConditions.length,
@@ -146,7 +146,28 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
                   _selectTenureSortCondition = value;
                   _dropDownHeaderItemStrings[1] = _selectTenureSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    if(value.name=='Total'){
+                      mmin=0;
+                      mmax=120;
+                    }
+                    if(value.name=="Less than 3 Months"){
+                      mmin=0;
+                      mmax=3;
+                    }
+                    if(value.name=="3-6 Months"){
+                      mmin=3;
+                      mmax=6;
+                    }
+                    if(value.name=="6-12 Months"){
+                      mmin=6;
+                      mmax=12;
+                    }
+                    if(value.name=="Greater than 12 Months"){
+                      mmin=12;
+                      mmax=120;
+                    }
+                  });
                 })),
           ],
         ),
@@ -182,10 +203,14 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
         SizedBox(
           height: MediaQuery.of(context).size.height / 1.4,
           width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-              itemCount: getLoans(PersonalLoans,min: min,max: max).length,
+          child:
+          (getLoans(PersonalLoans, min: min, max: max,mmin: mmin,mmax: mmax).isEmpty)
+              ? Center(child: Text("Nothing to show")) :
+
+          ListView.builder(
+              itemCount: getLoans(PersonalLoans,min: min,max: max,mmin: mmin,mmax: mmax).length,
               itemBuilder: (_, int index) {
-                var item = getLoans(PersonalLoans,min: min,max: max)[index];
+                var item = getLoans(PersonalLoans,min: min,max: max,mmin: mmin,mmax: mmax)[index];
                 return Card(
                   elevation: 10,
                   shape: RoundedRectangleBorder(
@@ -327,15 +352,28 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
     );
   }
 
-  List getLoans(var Personal, {int min=0, int max=0}) {
-    if(min==0 && max==0){
+//  List getLoans1(var Personal, {int min=0, int max=0}) {
+//    if(min==0 && max==0){
+//      return Personal;
+//    }
+//    else{
+//      List list3 = Personal.where((map) =>
+//      double.parse(map["maxamount"].replaceAll('Lacs', '00000')) <= max &&
+//          double.parse(map["maxamount"].replaceAll('Lacs', '00000')) > min )
+//          .toList();
+//      return list3;
+//    }
+//  }
+  List getLoans(var Personal, {int min=0, int max=0, int mmin=0 , int mmax=0}) {
+    if(min==0 && max==0 && mmin==0 && mmax==120){
       return Personal;
     }
     else{
       List list3 = Personal.where((map) =>
       double.parse(map["maxamount"].replaceAll('Lacs', '00000')) <= max &&
-          double.parse(map["maxamount"].replaceAll('Lacs', '00000')) > min)
+          double.parse(map["maxamount"].replaceAll('Lacs', '00000')) > min && double.parse(map["tenure"].substring(map['tenure'].length-2)) > mmin && double.parse(map["tenure"].substring(map['tenure'].length-2)) <= mmax)
           .toList();
+
       return list3;
     }
   }

@@ -85,54 +85,59 @@ class _CreditPageState extends State<CreditPage> {
               )
             ],
           ),
-          SizedBox(
-              //TODO: Add text names
-              height: 200,
-              width: 700,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                            flex: 50,
+          Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                          flex: 50,
+                          child: AspectRatio(
+                            aspectRatio: 4,
                             child: Image.asset(
                               "assets/u.png",
-                              height: 80,
-                              width: 175,
-                            )),
-                        Expanded(
-                            flex: 50,
+                            ),
+                          )),
+                      Expanded(
+                          flex: 50,
+                          child: AspectRatio(
+                            aspectRatio: 4,
                             child: Image.asset(
                               "assets/uu.png",
-                              height: 80,
-                              width: 175,
-                            )),
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                            flex: 50,
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                          flex: 50,
+                          child: AspectRatio(
+                            aspectRatio: 4,
                             child: Image.asset(
                               "assets/uuu.png",
-                              height: 80,
-                              width: 175,
-                            )),
-                        Expanded(
-                            flex: 50,
+                            ),
+                          )),
+                      Expanded(
+                          flex: 50,
+                          child: AspectRatio(
+                            aspectRatio: 4,
                             child: Image.asset(
                               "assets/uuuu.png",
-                              height: 80,
-                              width: 175,
-                            )),
-                      ],
-                    ),
-                  ])),
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+              ]),
           Container(
             height: 150,
             width: MediaQuery.of(context).size.width,

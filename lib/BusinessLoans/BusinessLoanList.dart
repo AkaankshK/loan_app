@@ -29,6 +29,10 @@ class BusinessLoanList extends StatefulWidget {
 }
 
 class _BusinessLoanListState extends State<BusinessLoanList> {
+  int min = 0;
+  int max = 100000000;
+  int mmin=0;
+  int mmax=120;
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
@@ -115,10 +119,35 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                 dropDownWidget:
                     _buildConditionListWidget(_amountConditions, (value) {
                   _selectAmountSortCondition = value;
-                  _dropDownHeaderItemStrings[0] = _selectAmountSortCondition
-                      .name = _selectAmountSortCondition.name;
+                  _dropDownHeaderItemStrings[0] =
+                      _selectAmountSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    if (value.name == "Less than \u20b95000") {
+                      min = 0;
+                      max = 5000;
+                    }
+                    if (value.name == "Total") {
+                      min = 0;
+                      max = 100000000;
+                    }
+                    if (value.name == "\u20b95,000 to \u20b910,000") {
+                      min = 5000;
+                      max = 10000;
+                    }
+                    if (value.name == "\u20b910,000 to \u20b950,000") {
+                      min = 10000;
+                      max = 50000;
+                    }
+                    if (value.name == "\u20b950,000 to \u20b91,00,000") {
+                      min = 50000;
+                      max = 100000;
+                    }
+                    if (value.name == "Greater than 1 Lac") {
+                      min = 100000;
+                      max = 100000000;
+                    }
+                  });
                 })),
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _tenureConditions.length,
@@ -128,7 +157,28 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                   _dropDownHeaderItemStrings[1] =
                       _selectTenureSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    if(value.name=='Total'){
+                      mmin=0;
+                      mmax=120;
+                    }
+                    if(value.name=="Less than 3 Months"){
+                      mmin=0;
+                      mmax=3;
+                    }
+                    if(value.name=="3-6 Months"){
+                      mmin=3;
+                      mmax=6;
+                    }
+                    if(value.name=="6-12 Months"){
+                      mmin=6;
+                      mmax=12;
+                    }
+                    if(value.name=="Greater than 12 Months"){
+                      mmin=12;
+                      mmax=120;
+                    }
+                  });
                 })),
           ],
         ),
@@ -162,97 +212,104 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
         SizedBox(
             height: MediaQuery.of(context).size.height / 1.4,
             width: MediaQuery.of(context).size.width,
-            child: ListView.builder(
-                itemCount: businessLoans.length,
-                itemBuilder: (_, int index) {
-                  var item = businessLoans[index];
-
-                  return Card(
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Table(
-                        defaultVerticalAlignment:
-                            TableCellVerticalAlignment.middle,
-                        children: [
-                          TableRow(children: [
-                            Image.asset(
-                              item['logo'],
-                              fit: BoxFit.scaleDown,
-                              height: 125,
-                              width: 125,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  item['name'],
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700),
+            child: (getLoans(businessLoans, min: min, max: max,mmin: mmin,mmax: mmax).isEmpty)
+                ? Center(child: Text("Nothing to show"))
+                : ListView.builder(
+                    itemCount:
+                    getLoans(businessLoans, min: min, max: max,mmin: mmin,mmax: mmax).length,
+                    itemBuilder: (_, int index) {
+                      var item =
+                      getLoans(businessLoans, min: min, max: max,mmin: mmin,mmax: mmax)[index];
+                      return Card(
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Table(
+                            defaultVerticalAlignment:
+                                TableCellVerticalAlignment.middle,
+                            children: [
+                              TableRow(children: [
+                                Image.asset(
+                                  item['logo'],
+                                  fit: BoxFit.scaleDown,
+                                  height: 125,
+                                  width: 125,
                                 ),
-                                Text(
-                                  "\u20B9${item['maxamount']}",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "Max Amount",
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                                Text("Tenure:${item['tenure']} Months"),
-                                Text(
-                                  "Interest:${item['interest']}/year",
-                                ),
-                                Text("Proc.Fee: ${item['processing fee']}"),
-                                SizedBox(
-                                  height: 10,
-                                )
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  color: buttonColor,
-                                  child: Text(
-                                    "Apply",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                SizedBox(
-                                  height: 30,
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BusinessLoanDetails(
-                                                    index: index,
-                                                  )));
-                                    },
-                                    child: Text(
-                                      "Details   >",
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      item['name'],
                                       style: TextStyle(
-                                          color: lightBlueColor, fontSize: 15),
-                                    ))
-                              ],
-                            )
-                          ]),
-                        ],
-                      ),
-                    ),
-                  );
-                }))
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    Text(
+                                      "\u20B9${item['maxamount']}",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "Max Amount",
+                                      style: TextStyle(color: Colors.grey),
+                                    ),
+                                    Text("Tenure:${item['tenure']} Months"),
+                                    Text(
+                                      "Interest:${item['interest']}/year",
+                                    ),
+                                    Text("Proc.Fee: ${item['processing fee']}"),
+                                    SizedBox(
+                                      height: 10,
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      color: buttonColor,
+                                      child: Text(
+                                        "Apply",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      BusinessLoanDetails(
+                                                        index: index,
+                                                      )));
+                                        },
+                                        child: Text(
+                                          "Details   >",
+                                          style: TextStyle(
+                                              color: lightBlueColor,
+                                              fontSize: 15),
+                                        ))
+                                  ],
+                                )
+                              ]),
+                            ],
+                          ),
+                        ),
+                      );
+                    }))
       ],
     );
   }
@@ -313,13 +370,17 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
     );
   }
 
-  List getList(var Personal, int min, int max) {
-    List<String> nam = [];
-    List list3 = Personal.where((map) =>
-    double.parse(map["maxamount"].replaceAll('Lacs', '00000')) <= max &&
-        double.parse(map["maxamount"].replaceAll('Lacs', '00000')) > min)
-        .toList();
+  List getLoans(var Personal, {int min=0, int max=100000000, int mmin=0 , int mmax=120}) {
+    if(min==0 && max==100000000 && mmin==0 && mmax==120){
+      return Personal;
+    }
+    else{
+      List list3 = Personal.where((map) =>
+      double.parse(map["maxamount1"].replaceAll('Lacs', '00000')) <= max &&
+          double.parse(map["maxamount1"].replaceAll('Lacs', '00000')) > min && double.parse(map["tenure"].substring(map['tenure'].length-2)) > mmin && double.parse(map["tenure"].substring(map['tenure'].length-2)) <= mmax)
+          .toList();
 
-    return list3;
+      return list3;
+    }
   }
 }

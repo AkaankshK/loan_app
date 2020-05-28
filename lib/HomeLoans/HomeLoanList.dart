@@ -28,6 +28,10 @@ class HomeLoanList extends StatefulWidget {
 }
 
 class _HomeLoanListState extends State<HomeLoanList> {
+  int min = 0;
+  int max = 100000000;
+  int mmin=0;
+  int mmax=120;
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
@@ -74,7 +78,7 @@ class _HomeLoanListState extends State<HomeLoanList> {
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
-        title: Text("Business Loan"),
+        title: Text("Home Loan"),
         centerTitle: true,
         backgroundColor: lightBlueColor,
       ),
@@ -113,7 +117,32 @@ class _HomeLoanListState extends State<HomeLoanList> {
                   _dropDownHeaderItemStrings[0] =
                       _selectAmountSortCondition.name = _selectAmountSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    if (value.name == "Less than \u20b95000") {
+                      min = 0;
+                      max = 5000;
+                    }
+                    if (value.name == "Total") {
+                      min = 0;
+                      max = 100000000;
+                    }
+                    if (value.name == "\u20b95,000 to \u20b910,000") {
+                      min = 5000;
+                      max = 10000;
+                    }
+                    if (value.name == "\u20b910,000 to \u20b950,000") {
+                      min = 10000;
+                      max = 50000;
+                    }
+                    if (value.name == "\u20b950,000 to \u20b91,00,000") {
+                      min = 50000;
+                      max = 100000;
+                    }
+                    if (value.name == "Greater than 1 Lac") {
+                      min = 100000;
+                      max = 100000000;
+                    }
+                  });
                 })),
             GZXDropdownMenuBuilder(
                 dropDownHeight: 40.0 * _tenureConditions.length,
@@ -121,7 +150,28 @@ class _HomeLoanListState extends State<HomeLoanList> {
                   _selectTenureSortCondition = value;
                   _dropDownHeaderItemStrings[1] = _selectTenureSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    if(value.name=='Total'){
+                      mmin=0;
+                      mmax=120;
+                    }
+                    if(value.name=="Less than 3 Months"){
+                      mmin=0;
+                      mmax=3;
+                    }
+                    if(value.name=="3-6 Months"){
+                      mmin=3;
+                      mmax=6;
+                    }
+                    if(value.name=="6-12 Months"){
+                      mmin=6;
+                      mmax=12;
+                    }
+                    if(value.name=="Greater than 12 Months"){
+                      mmin=12;
+                      mmax=120;
+                    }
+                  });
                 })),
           ],
         ),
@@ -157,10 +207,13 @@ class _HomeLoanListState extends State<HomeLoanList> {
         SizedBox(
           height: MediaQuery.of(context).size.height / 1.4,
           width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-              itemCount: homeloans.length,
+          child:
+          (getLoans(homeloans, min: min, max: max,mmin: mmin,mmax: mmax).isEmpty)
+              ? Center(child: Text("Nothing to show")) :
+          ListView.builder(
+              itemCount: getLoans(homeloans, min: min, max: max,mmin: mmin,mmax: mmax).length,
               itemBuilder: (_, int index) {
-                var item = homeloans[index];
+                var item = getLoans(homeloans, min: min, max: max,mmin: mmin,mmax: mmax)[index];
                 return Card(
                   elevation: 10,
                   shape: RoundedRectangleBorder(
@@ -300,5 +353,18 @@ class _HomeLoanListState extends State<HomeLoanList> {
         );
       },
     );
+  }
+  List getLoans(var Personal, {int min=0, int max=100000000, int mmin=0 , int mmax=120}) {
+    if(min==0 && max==100000000 && mmin==0 && mmax==120){
+      return Personal;
+    }
+    else{
+      List list3 = Personal.where((map) =>
+      double.parse(map["maxamount1"].replaceAll('Lacs', '00000')) <= max &&
+          double.parse(map["maxamount1"].replaceAll('Lacs', '00000')) > min && double.parse(map["tenure"].substring(map['tenure'].length-2)) > mmin && double.parse(map["tenure"].substring(map['tenure'].length-2)) <= mmax)
+          .toList();
+
+      return list3;
+    }
   }
 }

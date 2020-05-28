@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,8 @@ class _CalculatorState extends State<Calculator> {
   MaterialColor yellowColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   MaterialColor darkBlueColor = MaterialColor(0xff0f3f81, colors);
+  var autosizegroup=AutoSizeGroup();
+  final _formKey = GlobalKey<FormState>();
   double interest=0.0;
   final amountController=TextEditingController();
   var emi=0.0;
@@ -36,9 +39,9 @@ class _CalculatorState extends State<Calculator> {
   var months=[0,1,2,3,4,5,6,7,8,9,10,11,12];
   var year;
   var month;
-  String emiString="";
-  String tpaString="";
-  String tpiString="";
+  String emiString="0";
+  String tpaString="0";
+  String tpiString="0";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,131 +68,140 @@ class _CalculatorState extends State<Calculator> {
   }
 
   getContents() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 40, left: 20),
-          child: Text(
-            "Loan Calculator",
-            style: TextStyle(color: Colors.white, fontSize: 20),
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 40, left: 20),
+            child: Text(
+              "Loan Calculator",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
           ),
-        ),
-        getEmi(),
-        SizedBox(
-          height: 10,
-        ),
-        getAd(),
-        SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 28, right: 28),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Text("Loan Amount",style: TextStyle(fontSize: 15),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width/1.3,
-                                child: TextField(
-                                  controller: amountController,
-                    decoration: InputDecoration(hintText: "Enter Amount from Rs.50,000-10 Crore"),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15,top: 10),
-                child: Text("Tenure",style: TextStyle(fontSize: 15),),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  DropdownButton(
-                    value: year,
-                    hint: Text("Years",style: TextStyle(color: Colors.black),),
-                    onChanged: (val){
-                      setState(() {
-                        year=val;
-                      });
-                    },
-                    items: years.map((val){
-                      return DropdownMenuItem(
-                        child: Text("$val"),
-                        value: val,
-                      );
-                    }).toList(),
-
-                  ),
-                  DropdownButton(
-                    value: month,
-                    hint: Text("Months",style: TextStyle(color: Colors.black),),
-                    onChanged: (val){
-                      setState(() {
-                        month=val;
-                      });
-                    },
-                    items: months.map((val){
-                      return DropdownMenuItem(
-                        child: Text("$val"),
-                        value: val,
-                      );
-                    }).toList(),
-
-                  ),
-
-
-
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15,top: 10),
-                    child: Text("Interest",style: TextStyle(fontSize: 15),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15,top: 10),
-                    child: Text("$interest",style: TextStyle(fontSize: 15,color: lightBlueColor,fontWeight: FontWeight.bold),),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15,top: 10),
-                child: Slider(
-                  divisions: 100,
-                  onChanged: (val){
-                  setState(() {
-                    interest=val;
-                  });
-                },
-                min: 0,
-                max: 50,
-                value: interest,
-                ),
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.center,
+          getEmi(),
+          SizedBox(
+            height: 10,
+          ),
+          getAd(),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 28, right: 28),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MaterialButton(height: 40, minWidth: 200,
-                
-                child: Text("Calculate EMI",style: TextStyle(fontSize: 15,color: Colors.white),),
-                color: darkBlueColor,
-                onPressed: (){
-                  calculate();
-                },)
-              ],),
-              SizedBox(height: 40,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Text("Loan Amount",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width/1.3,
+                                  child: TextFormField(
+                                    validator: (value)=> value.isEmpty ? 'Enter Loan Amount' : RegExp(r'^[0-9]+$').hasMatch(value) ? null : 'Enter Valid Loan Amount',
 
-            ],
-          ),
-        )
-      ],
+
+                                    controller: amountController,
+                      decoration: InputDecoration(hintText: "Enter Amount from Rs.50,000-10 Crore"),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15,top: 10),
+                  child: Text("Tenure",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,),),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DropdownButton(
+                      value: year,
+                      hint: Text("Years",style: TextStyle(color: Colors.black,),),
+                      onChanged: (val){
+                        setState(() {
+                          year=val;
+                        });
+                      },
+                      items: years.map((val){
+                        return DropdownMenuItem(
+                          child: Text("$val"),
+                          value: val,
+                        );
+                      }).toList(),
+
+                    ),
+                    DropdownButton(
+                      value: month,
+                      hint: Text("Months",style: TextStyle(color: Colors.black),),
+                      onChanged: (val){
+                        setState(() {
+                          month=val;
+                        });
+                      },
+                      items: months.map((val){
+                        return DropdownMenuItem(
+                          child: Text("$val"),
+                          value: val,
+                        );
+                      }).toList(),
+
+                    ),
+
+
+
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15,top: 10),
+                      child: Text("Interest",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15,top: 10),
+                      child: Text("$interest",style: TextStyle(fontSize: 15,color: lightBlueColor,fontWeight: FontWeight.bold),),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15,top: 10),
+                  child: Slider(
+                    divisions: 100,
+                    onChanged: (val){
+                    setState(() {
+                      interest=val;
+                    });
+                  },
+                  min: 0,
+                  max: 50,
+                  value: interest,
+                  ),
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MaterialButton(height: 40, minWidth: 200,
+
+                  child: Text("Calculate EMI",style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold,),),
+                  color: darkBlueColor,
+                  onPressed: (){
+                    if(_formKey.currentState.validate()){
+                      calculate();
+                    }
+
+                  },)
+                ],),
+                SizedBox(height: 40,),
+
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -197,125 +209,139 @@ class _CalculatorState extends State<Calculator> {
     return Padding(
       padding: EdgeInsets.only(left: 28, right: 28, top: 40),
       child: Container(
+        decoration: BoxDecoration(
+          color: darkBlueColor,
+          borderRadius: BorderRadius.circular(5),
+        ),
         height: 200,
         width: MediaQuery.of(context).size.width,
-        color: darkBlueColor,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Monthly EMI",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
+
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Monthly EMI",
+                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Total Payable\nAmount",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Total Payable\nAmount",
+                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex:50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text(
-                          "\u20b9 $emiString",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex:50,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: AutoSizeText(
+                        "\u20b9 $emiString",
+                        group: autosizegroup,
+                        maxLines: 1,
+                        minFontSize: 5,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex:50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text(
-                          "\u20b9 $tpaString",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
+                ),
+                Expanded(
+                  flex:50,
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Principle Amount",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    child: Center(
+                      child: AutoSizeText(
+                        "\u20b9 $tpaString",
+                        group: autosizegroup,
+                        maxLines: 1,
+                        minFontSize: 5,
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
                     ),
                   ),
-                  Padding(
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Principle Amount",
+                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Total Payable\nInterest",
+                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex:50,
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Total Payable\nInterest",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex:50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text(
-                          "\u20b9 $pa",
-                          style: TextStyle(color: greenColor, fontSize: 20),
-                        ),
+                    child: Center(
+                      child: AutoSizeText(
+                        "\u20b9 $pa",
+                        group: autosizegroup,
+                        maxLines: 1,
+                        minFontSize: 5,
+                        style: TextStyle(color: greenColor, fontSize: 20),
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex:50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text(
-                          "\u20b9 $tpiString",
-                          style: TextStyle(color: yellowColor, fontSize: 20),
-                        ),
+                ),
+                Expanded(
+                  flex:50,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: AutoSizeText(
+                        "\u20b9 $tpiString",
+                        group: autosizegroup,
+                        maxLines: 1,
+                        minFontSize: 5,
+                        style: TextStyle(color: yellowColor, fontSize: 20),
                       ),
                     ),
                   ),
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                    height: 15,
-                    width: MediaQuery.of(context).size.width / 1.3,
-                    color: greenColor,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 10.8,
-                    height: 15,
-                    color: yellowColor,
-                  )
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  height: 15,
+                  width: MediaQuery.of(context).size.width / 1.3,
+                  color: greenColor,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 10.8,
+                  height: 15,
+                  color: yellowColor,
+                )
+              ],
+            ),
+          ],
         ),
       ),
     );

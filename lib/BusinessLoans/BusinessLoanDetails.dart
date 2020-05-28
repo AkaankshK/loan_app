@@ -371,20 +371,21 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
               width: MediaQuery.of(context).size.width*0.8,
               child: StatefulBuilder(
                 builder: (context,setState){
-                  return CheckboxListTile(
-                    onChanged: (val){
-                      setState(() {
-                        terms=val;
-                      });
-                    },
-                    value: terms,
-                    title: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text("I agree to "),
-                        Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
-                      ],
-                    ),
+                  return Wrap(
+                    direction: Axis.horizontal,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Checkbox(
+                        onChanged: (val){
+                          setState(() {
+                            terms=val;
+                          });
+                        },
+                        value: terms,
+                      ),
+                      Text("I agree to "),
+                      Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
+                    ],
                   );
                 },
               )

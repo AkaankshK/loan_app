@@ -1,5 +1,6 @@
 
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/Calculator/Calculator.dart';
@@ -26,6 +27,9 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  var autosizegroup=AutoSizeGroup(
+
+  );
   MaterialColor freeColor = MaterialColor(0xff01b527,colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812,colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff,colors);
@@ -33,7 +37,7 @@ class _NavBarState extends State<NavBar> {
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     HomeScreen(),
-   CreditPage(),
+    CreditPage(),
     Calculator(),
     MoreOptionsPage()
   ];
@@ -73,7 +77,7 @@ class _NavBarState extends State<NavBar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/money bag icon.png",height: 30,width: 30,color: currentIndex==0?lightBlueColor: Colors.black,),
-                      Text("LoanKwik",style: TextStyle(color:currentIndex==0?lightBlueColor: Colors.black,fontSize: 10),)
+                      AutoSizeText("LoanKwik",maxLines: 1,style: TextStyle(color:currentIndex==0?lightBlueColor: Colors.black,fontSize: 10),group: autosizegroup,minFontSize: 5,)
                     ],
                   ),
                 ),
@@ -90,7 +94,7 @@ class _NavBarState extends State<NavBar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/ol.png",height: 30,width: 30,color: currentIndex==1?lightBlueColor: Colors.black),
-                      Text("Offer",style: TextStyle(color:currentIndex==1?lightBlueColor: Colors.black,fontSize: 10))
+                      AutoSizeText("Offer",maxLines: 1,group: autosizegroup,style: TextStyle(color:currentIndex==1?lightBlueColor: Colors.black,fontSize: 10))
                     ],
                   ),
                 ),
@@ -99,7 +103,7 @@ class _NavBarState extends State<NavBar> {
                 flex: 20,
                 child: Padding(
                   padding: const EdgeInsets.only(top:20),
-                  child: Text("Credit Score"),
+                  child: AutoSizeText("Credit Score",maxLines: 1,group:autosizegroup,),
                 ),
               ),
 
@@ -116,7 +120,7 @@ class _NavBarState extends State<NavBar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/calcicon.png",height: 30,width: 30,color:currentIndex==3?lightBlueColor: Colors.black),
-                      Text("Calculator",style: TextStyle(color:currentIndex==3?lightBlueColor: Colors.black,fontSize: 10))
+                      AutoSizeText("Calculator",maxLines: 1,group: autosizegroup,style: TextStyle(color:currentIndex==3?lightBlueColor: Colors.black,fontSize: 10))
                     ],
                   ),
                 ),
@@ -134,7 +138,7 @@ class _NavBarState extends State<NavBar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/ii.png",height: 30,width: 30,color:currentIndex==4?lightBlueColor: Colors.black),
-                      Text("More",style: TextStyle(color:currentIndex==4?lightBlueColor: Colors.black,fontSize: 10))
+                      AutoSizeText("More",maxLines: 1,group: autosizegroup,style: TextStyle(color:currentIndex==4?lightBlueColor: Colors.black,fontSize: 10))
                     ],
                   ),
                 ),
