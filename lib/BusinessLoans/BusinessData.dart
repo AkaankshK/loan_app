@@ -15,6 +15,7 @@ var indifi={
   "earlyrepayment":null,
   "overdue":null,
   "loandisbursal":null,
+  "url":"https://play.google.com/store/apps/details?id=in.newtel.indifi&showAllReviews=true",
 };
 
 var lendingkart={
@@ -34,7 +35,7 @@ var lendingkart={
   "earlyrepayment":"No Prepayment charges after 1st\nEMI. Only full prepayment possible.",
   "overdue":null,
   "loandisbursal":null,
-
+  "url":"https://play.google.com/store/apps/details?id=com.LendingKart",
 
 };
 var aditya={
@@ -54,43 +55,46 @@ var aditya={
   "earlyrepayment":"AS PER POLICY",
   "overdue":"AS PER POLICY",
   "loandisbursal":"In Bank Account",
+  "url":"https://www.abfldirect.com/business-loan/",
 };
-var eloan={
-  "name":"Eloan Business Loan",
-  "logo":"assets/BusinessLoan/4.png",
-  "logo2":"assets/BusinessLoan/4a.png",
-  "desc":"One Stop shop for comparing loan offers from\nvarious banks/instituitions, door step service\nfrom one of the oldest distribution firm\nin India",
-  "amount":"10Lac-1Cr",
-  "maxamount":"1Cr",
-  "maxamount1":"100Lacs",
-  "tenure":"1-03",
-  "interest":"15.50%",
-  "processing fee":"2%",
-  "eligibility":"Calculated as per tax returns\nProfit&Loss acccounts,\nTentatively loan amount is 2.5\n times of the annual income incase of\n SENP profiles.\nThere are other products like\nbanking surrogate for SEND\ncustomers where income is not a criteria",
-  "documents":"As per link on out Website",
-  "repayment":"Through ECS7 Direct Debit",
-  "earlyrepayment":"NILL Penalty on variable loans,\nin case of FIXED loans penalty is\n there in business entity on loan",
-  "overdue":null,
-  "loandisbursal":null,
-};
-var fintree={
-  "name":"Fintree",
-  "logo":"assets/BusinessLoan/5.png",
-  "logo2":"assets/BusinessLoan/5a.png",
-  "desc":"Loan against Digital payments,which is a\n short-term facility extended to merchants who\nhave a Point -Of-Sale (POS)machine installed at their premises.\nAlternatively for merchants without POS machines we enable the\ncredit facility based on their business banking. ",
-  "amount":"1Lac-10Lacs",
-  "maxamount":"10Lac",
-  "maxamount1":"10Lacs",
-  "tenure":"1-02",
-  "interest":"18.00%",
-  "processing fee":"2%",
-  "eligibility":"POS Should be there,\nBusiness Vintage- Minimum 1 Year,\nPOS Vintage- Minimum 6 Months,\nAverage Swipe- 1lakh Per Month",
-  "documents":"KYC (Individual + Business),\nbusiness banking, Applicabale \nstatutary Licenses.",
-  "repayment":"Though POS machine / NACH payments\nthrough business bank account",
-  "earlyrepayment":"Equated Daily Installments (EDI)",
-  "overdue":"Overdue interest / NACH bounce\ncharges as applicable.",
-  "loandisbursal":null,
-};
+//var eloan={
+//  "name":"Eloan Business Loan",
+//  "logo":"assets/BusinessLoan/4.png",
+//  "logo2":"assets/BusinessLoan/4a.png",
+//  "desc":"One Stop shop for comparing loan offers from\nvarious banks/instituitions, door step service\nfrom one of the oldest distribution firm\nin India",
+//  "amount":"10Lac-1Cr",
+//  "maxamount":"1Cr",
+//  "maxamount1":"100Lacs",
+//  "tenure":"1-03",
+//  "interest":"15.50%",
+//  "processing fee":"2%",
+//  "eligibility":"Calculated as per tax returns\nProfit&Loss acccounts,\nTentatively loan amount is 2.5\n times of the annual income incase of\n SENP profiles.\nThere are other products like\nbanking surrogate for SEND\ncustomers where income is not a criteria",
+//  "documents":"As per link on out Website",
+//  "repayment":"Through ECS7 Direct Debit",
+//  "earlyrepayment":"NILL Penalty on variable loans,\nin case of FIXED loans penalty is\n there in business entity on loan",
+//  "overdue":null,
+//  "loandisbursal":null,
+//  "url":"",
+//};
+//var fintree={
+//  "name":"Fintree",
+//  "logo":"assets/BusinessLoan/5.png",
+//  "logo2":"assets/BusinessLoan/5a.png",
+//  "desc":"Loan against Digital payments,which is a\n short-term facility extended to merchants who\nhave a Point -Of-Sale (POS)machine installed at their premises.\nAlternatively for merchants without POS machines we enable the\ncredit facility based on their business banking. ",
+//  "amount":"1Lac-10Lacs",
+//  "maxamount":"10Lac",
+//  "maxamount1":"10Lacs",
+//  "tenure":"1-02",
+//  "interest":"18.00%",
+//  "processing fee":"2%",
+//  "eligibility":"POS Should be there,\nBusiness Vintage- Minimum 1 Year,\nPOS Vintage- Minimum 6 Months,\nAverage Swipe- 1lakh Per Month",
+//  "documents":"KYC (Individual + Business),\nbusiness banking, Applicabale \nstatutary Licenses.",
+//  "repayment":"Though POS machine / NACH payments\nthrough business bank account",
+//  "earlyrepayment":"Equated Daily Installments (EDI)",
+//  "overdue":"Overdue interest / NACH bounce\ncharges as applicable.",
+//  "loandisbursal":null,
+//  "url":"",
+//};
 var ziploan={
   "name":"ZIPLOAN",
   "logo":"assets/BusinessLoan/6.png",
@@ -108,6 +112,7 @@ var ziploan={
   "earlyrepayment":null,
   "overdue":null,
   "loandisbursal":"Bank Account",
+  "url":"https://ziploan.in/",
 };
 var loansimple={
   "name":"Loan Simple for Business",
@@ -126,6 +131,7 @@ var loansimple={
   "earlyrepayment":null,
   "overdue":null,
   "loandisbursal":null,
+  "url":"https://www.loansimple.in/",
 };
 var shriram={
   "name":"Shriram",
@@ -144,6 +150,7 @@ var shriram={
   "earlyrepayment":null,
   "overdue":null,
   "loandisbursal":null,
+  "url":"https://www.stfc.in/",
 };
 
 var b2c={
@@ -163,6 +170,7 @@ var b2c={
   "earlyrepayment":"No prepayment changes",
   "overdue":"500 penalty and\npenal interest",
   "loandisbursal":"Suppliers account",
+  "url":"https://play.google.com/store/apps/details?id=com.bridge2capital&hl=en_IN",
 };
 
 var arthan={
@@ -182,6 +190,7 @@ var arthan={
   "earlyrepayment":null,
   "overdue":"36% PA",
   "loandisbursal":"NEFT/RTGS to customers account",
+  "url":"https://www.arthan.finance/apply-now.html",
 };
 
 var fino={
@@ -201,11 +210,16 @@ var fino={
   "earlyrepayment":null,
   "overdue":null,
   "loandisbursal":"Bank account",
+  "url":"http://www.finofinance.in/",
 };
 
 
 
 
+//var businessLoans=[
+//  indifi,lendingkart,aditya,eloan,fintree,ziploan,loansimple,shriram,b2c,arthan,fino
+//];
+
 var businessLoans=[
-  indifi,lendingkart,aditya,eloan,fintree,ziploan,loansimple,shriram,b2c,arthan,fino
+  indifi,lendingkart,aditya,ziploan,loansimple,shriram,b2c,arthan,fino
 ];

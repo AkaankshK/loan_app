@@ -10,6 +10,7 @@ var citicb={
                 "Avail up to 15% off on dining across 2000 partnered restaurant",
                "Cash back of INR 500 is automatically credited to the statement",
             ],
+
 };
 
 var rblpm={

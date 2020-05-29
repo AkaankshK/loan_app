@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
-import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
+//import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
+
+import '../SelectCity.dart';
 
 Map<int, Color> colors =
 {
@@ -308,10 +310,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           onPressed: (){
                             if(!isCitySet){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 0,)));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => SelectCity(index: 0,)));
                             }
                             else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanList()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalLoanList()));
                             }
                           },
                         ),

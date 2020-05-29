@@ -639,7 +639,6 @@ var FundPI = {
     Rupee_Redee,
     Moneytap,
     IDFC_First_Bank,
-    icredit_Loan
   ];
 
 
