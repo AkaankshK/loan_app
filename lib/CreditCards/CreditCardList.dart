@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:gzx_dropdown_menu/gzx_dropdown_menu.dart';
 import 'package:loanapp/CreditCards/CreditCardData.dart';
@@ -49,6 +46,7 @@ class _CreditCardListState extends State<CreditCardList> {
     _amountConditions.add(SortCondition(name: 'Total', isSelected: true));
     _amountConditions.add(SortCondition(name: "Fee from Low to High", isSelected: false));
     _amountConditions.add(SortCondition(name: "Fee from High to Low", isSelected: false));
+
     _selectAmountSortCondition = _amountConditions[0];
 
     _tenureConditions.add(SortCondition(name: 'Total', isSelected: true));

@@ -546,69 +546,75 @@ class _HomeScreenState extends State<HomeScreen> {
                       TableRow(
                           children:[
                             Image.asset("assets/HomeOffer/1a.png",),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(height: 10,),
-                                Text("HeroHFL",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                                Text("\u20B95 Crs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("Max Amount",style: TextStyle(color: Colors.grey),),
-                                Text("Tenure: 15-20Years"),
-                                Text("Interest: 11%/year"),
-                                Text("Proc.Fee: \u20b9 0"),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(height: 10,),
+                                  Text("HeroHFL",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                                  Text("\u20B95 Crs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text("Max Amount",style: TextStyle(color: Colors.grey),),
+                                  Text("Tenure: 15-20Years"),
+                                  Text("Interest: 11%/year"),
+                                  Text("Proc.Fee: \u20b9 0"),
 
-                              ],
+                                ],
+                              ),
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                              children: [
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)
+                                children: [
+                                  RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    color: buttonColor,
+                                    child: Text("Apply",style: TextStyle(color: Colors.white),),
+                                    onPressed: (){},
                                   ),
-                                  color: buttonColor,
-                                  child: Text("Apply",style: TextStyle(color: Colors.white),),
-                                  onPressed: (){},
-                                ),
-                                SizedBox(height: 30,),
+                                  SizedBox(height: 30,),
 
-                                Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),)
-                              ],
+                                  Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),)
+                                ],
+                              ),
                             )
                           ]
                       ),
 
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 1,color: lightBlueColor),
-                              borderRadius: BorderRadius.circular(10)
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(width: 1,color: lightBlueColor),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.remove_red_eye,color: lightBlueColor,),
+                                Text("  View more Home Loan",style: TextStyle(color: lightBlueColor),)
+                              ],
+                            ),
+                            onPressed: (){
+                              if(!isCitySet){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 2,)));
+                              }
+                              else{
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
+                              }
+                            },
                           ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.remove_red_eye,color: lightBlueColor,),
-                              Text("  View more Home Loan",style: TextStyle(color: lightBlueColor),)
-                            ],
-                          ),
-                          onPressed: (){
-                            if(!isCitySet){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 2,)));
-                            }
-                            else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
-                            }
-                          },
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
 
                 ],
