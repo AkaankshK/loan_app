@@ -7,7 +7,7 @@ import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
 //import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
-import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
+import 'package:loanapp/LoansAgentProperty/LoanAgentList.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
 
 import '../SelectCity.dart';
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Text("for Rs.1500",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20,color: Colors.white,),textAlign: TextAlign.start,),
             ),
-            Text("FREE",style: TextStyle(fontSize: 20,color:freeColor,fontWeight: FontWeight.w500 ),)
+            Text("FREE",style: TextStyle(fontSize: 20,color:Colors.yellowAccent,fontWeight: FontWeight.w500 ),)
           ],
         ),
         Row(
@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Personal Loan",style: tableStyle,),),
                       Padding(padding: EdgeInsets.symmetric(horizontal: 15),child:Text("Home Loan",style: tableStyle,),),
-                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Loan against\n Property",style: tableStyle,),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Loan Agent\n Property",style: tableStyle,),),
 
                     ]
                 ),
@@ -637,7 +637,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 5,right: 10),
                         child: Image.asset("assets/v.png",height: 30,width: 30,),
                       ),
-                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Loan Against Property",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Loan Agent Property",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
                     ],
                   ),
                   Row(
@@ -746,7 +746,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: [
                               Icon(Icons.remove_red_eye,color: lightBlueColor,),
-                              Text("  View more Loan Against Property",style: TextStyle(color: lightBlueColor),)
+                              Text("  View more Loan Agent Property",style: TextStyle(color: lightBlueColor),)
                             ],
                           ),
                           onPressed: (){
@@ -754,7 +754,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 3,)));
                             }
                             else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgentList()));
                             }
                           },
                         ),

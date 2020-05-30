@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
-import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
+import 'package:loanapp/LoansAgentProperty/LoanAgentList.dart';
+
 import 'HomeScreen/HomeScreen.dart';
 import 'PersonalLoan/PersonalLoanList.dart';
 
@@ -199,7 +200,7 @@ class _SelectCityState extends State<SelectCity> {
       Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
     }
     if(widget.index==3){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgentList()));
     }
     if(widget.index==4){
       Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardList()));
