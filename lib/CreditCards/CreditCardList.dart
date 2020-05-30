@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:gzx_dropdown_menu/gzx_dropdown_menu.dart';
 import 'package:loanapp/CreditCards/CreditCardData.dart';
@@ -37,13 +39,16 @@ class _CreditCardListState extends State<CreditCardList> {
   List<SortCondition> _filterConditions = [];
   SortCondition _selectAmountSortCondition;
   SortCondition _selectFilterSortCondition;
-  GZXDropdownMenuController _dropdownMenuController =
-      GZXDropdownMenuController();
+  GZXDropdownMenuController _dropdownMenuController = GZXDropdownMenuController();
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   GlobalKey _stackKey = GlobalKey();
 
   bool isAsc = false;
   bool isDsc = false;
+
+  List _selectedBanksList = [];
+  final List temp = creditcards;
+
   @override
   void initState() {
     _amountConditions.add(SortCondition(name: 'Total', isSelected: true));
@@ -53,8 +58,13 @@ class _CreditCardListState extends State<CreditCardList> {
     _selectAmountSortCondition = _amountConditions[0];
 
     _filterConditions.add(SortCondition(name: 'Total', isSelected: true));
-    _filterConditions.add(SortCondition(name: 'Bank', isSelected: false));
-    _filterConditions.add(SortCondition(name: 'Card Type', isSelected: false));
+    _filterConditions.add(SortCondition(name: 'RBL Bank', isSelected: false));
+    _filterConditions.add(SortCondition(name: 'SBI Bank', isSelected: false));
+    _filterConditions.add(SortCondition(name: 'Citi Bank', isSelected: false));
+    _filterConditions.add(SortCondition(name: 'AMEX Bank', isSelected: false));
+    _filterConditions.add(SortCondition(name: 'HDFC Bank', isSelected: false));
+    _filterConditions.add(SortCondition(name: 'AXIS Bank', isSelected: false));
+//    _filterConditions.add(SortCondition(name: 'Card Type', isSelected: false));
 
     _selectFilterSortCondition = _filterConditions[0];
     super.initState();
@@ -88,9 +98,9 @@ class _CreditCardListState extends State<CreditCardList> {
         ),
         getContents(),
         GZXDropDownMenu(
-          // controller用于控制menu的显示或隐藏
+
           controller: _dropdownMenuController,
-          // 下拉菜单显示或隐藏动画时长
+
           animationMilliseconds: 300,
 
           menus: [
@@ -99,26 +109,34 @@ class _CreditCardListState extends State<CreditCardList> {
                 dropDownWidget:
                     _buildConditionListWidget(_amountConditions, (value) {
                   _selectAmountSortCondition = value;
-                  _dropDownHeaderItemStrings[0] = _selectAmountSortCondition
-                      .name = _selectAmountSortCondition.name;
+                  _dropDownHeaderItemStrings[0] = _selectAmountSortCondition.name = _selectAmountSortCondition.name;
                   _dropdownMenuController.hide();
                   setState(() {
-                    if(value.name == 'Fee from Low to High'){
-//                      creditcards.sort();
-                      isAsc = true;
-                    }
-                    if(value.name == 'Fee from High to Low'){
-                      isDsc = true;
-                    }
 
+                    if(value.name == 'Fee from Low to High'){
+                      isAsc = true;
+                      isDsc = false;
+                    }
+                    else if(value.name == 'Fee from High to Low'){
+                      isDsc = true;
+                      isAsc = false;
+                    }else{
+                      isDsc = false;
+                      isAsc = false;
+                    }
                   });
                 })),
             GZXDropdownMenuBuilder(
                 dropDownHeight: 450.0,
-                dropDownWidget: _buildAddressWidget((selectValue) {
-                  //_dropDownHeaderItemStrings[0] = selectValue;
+                dropDownWidget: _buildAddressWidget(_filterConditions, (value) {
+//                  _selectFilterSortCondition = selectValue;
+                  _selectFilterSortCondition = value;
+                _dropDownHeaderItemStrings[1] = _selectFilterSortCondition.name = _selectFilterSortCondition.name;
                   _dropdownMenuController.hide();
-                  setState(() {});
+                  setState(() {
+                    print('${value.name}');
+                    print('flag');
+                  });
                 })),
           ],
         ),
@@ -131,19 +149,16 @@ class _CreditCardListState extends State<CreditCardList> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GZXDropDownHeader(
-          // 下拉的头部项，目前每一项，只能自定义显示的文字、图标、图标大小修改
+
           items: [
             GZXDropDownHeaderItem(_dropDownHeaderItemStrings[0]),
-            GZXDropDownHeaderItem(
-              _dropDownHeaderItemStrings[1],
-              iconData: Icons.filter_list,
-            ),
+            GZXDropDownHeaderItem(_dropDownHeaderItemStrings[1], iconData: Icons.filter_list,),
           ],
-          // GZXDropDownHeader对应第一父级Stack的key
+
           stackKey: _stackKey,
-          // controller用于控制menu的显示或隐藏
+
           controller: _dropdownMenuController,
-          // 当点击头部项的事件，在这里可以进行页面跳转或openEndDrawer
+
           onItemTap: (index) {
             if (index == 3) {
               _dropdownMenuController.hide();
@@ -155,7 +170,7 @@ class _CreditCardListState extends State<CreditCardList> {
         SizedBox(
           height: MediaQuery.of(context).size.height / 1.4,
           width: MediaQuery.of(context).size.width,
-
+//   !SortedCredit(creditcards, isAsc, isDsc)
           child: (!SortedCredit(creditcards, isAsc, isDsc)) ?
           Center(child: new Text('Nothing to show'),) :
           ListView.builder(
@@ -240,8 +255,7 @@ class _CreditCardListState extends State<CreditCardList> {
     );
   }
 
-  _buildConditionListWidget(
-      items, void itemOnTap(SortCondition sortCondition)) {
+  _buildConditionListWidget( items, void itemOnTap(SortCondition sortCondition)) {
     return ListView.separated(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
@@ -297,7 +311,8 @@ class _CreditCardListState extends State<CreditCardList> {
     );
   }
 
-  _buildAddressWidget(void itemOnTap(String selectValue)) {
+  _buildAddressWidget(items, void itemOnTap(SortCondition selectValue)) {
+    List _selectedBanks = [];
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -323,7 +338,10 @@ class _CreditCardListState extends State<CreditCardList> {
                           border: Border.all(width: 1, color: Colors.grey)),
                       child: Center(
                           child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _selectedBanks.add('RBL Bank');
+                              },
+
                               child: Text(
                                 "RBL Bank",
                                 style: TextStyle(color: Colors.black),
@@ -336,7 +354,9 @@ class _CreditCardListState extends State<CreditCardList> {
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _selectedBanks.add('SBI Bank');
+                                  },
                                   child: Text(
                                     "SBI Bank",
                                     style: TextStyle(color: Colors.black),
@@ -349,7 +369,9 @@ class _CreditCardListState extends State<CreditCardList> {
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _selectedBanks.add('Citi Bank');
+                                  },
                                   child: Text(
                                     "Citi Bank",
                                     style: TextStyle(color: Colors.black),
@@ -371,7 +393,9 @@ class _CreditCardListState extends State<CreditCardList> {
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _selectedBanks.add('AMEX Bank');
+                                  },
                                   child: Text(
                                     "AMEX Bank",
                                     style: TextStyle(color: Colors.black),
@@ -386,7 +410,9 @@ class _CreditCardListState extends State<CreditCardList> {
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _selectedBanks.add('HDFC Bank');
+                                  },
                                   child: Text(
                                     "HDFC Bank",
                                     style: TextStyle(color: Colors.black),
@@ -400,7 +426,9 @@ class _CreditCardListState extends State<CreditCardList> {
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _selectedBanks.add('AXIS Bank');
+                                  },
                                   child: Text(
                                     "AXIS Bank",
                                     style: TextStyle(color: Colors.black),
@@ -525,7 +553,9 @@ class _CreditCardListState extends State<CreditCardList> {
             Expanded(
               flex: 50,
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  _selectedBanks.clear();
+                },
                 child: Text("Reset"),
               ),
             ),
@@ -533,7 +563,11 @@ class _CreditCardListState extends State<CreditCardList> {
               flex: 50,
               child: MaterialButton(
                 color: buttonColor,
-                onPressed: () {},
+                onPressed: () {
+
+                  _selectedBanksList = List.of(HashSet.from(_selectedBanks));
+//                  for(var t in _selectedBanksList) print(t.toString() + " ***\n");
+                },
                 child: Text(
                   "Confirm",
                   style: TextStyle(color: Colors.white),
@@ -547,7 +581,7 @@ class _CreditCardListState extends State<CreditCardList> {
   }
 
   bool SortedCredit(var CreditCard, bool asc, bool dsc) {
-    List ret;
+
     if(asc){
       creditcards.sort((a, b) => double.parse(a['firstyear'].toString().replaceAll(RegExp("[a-zA-Z.+]"), '').trim())
           .compareTo(double.parse(b['firstyear'].toString().replaceAll(RegExp("[a-zA-Z.+]"), '').trim())));
@@ -557,12 +591,22 @@ class _CreditCardListState extends State<CreditCardList> {
           .compareTo(double.parse(a['firstyear'].toString().replaceAll(RegExp("[a-zA-Z.+]"), '').trim())));
       return true;
     }
-    else{
-      ret = CreditCard;
+    else if(!isAsc && !isDsc){
+//      print('flag');
+      creditcards = temp;
     }
-    for(var t in ret) print(t['name'].toString() + "\n");
-//    return ret;
+//    for(var t in ret) print(t['name'].toString() + "\n");
+
   return true;
+  }
+
+  List filteredListByBanks(List CreditCard, List banks) {
+    List selected = [];
+    CreditCard.forEach((u){
+      if(banks.contains(u['name'])) selected.add(u);
+    });
+    for(var t in selected) print(t['name'] + " *** \n\n");
+    return selected;
   }
 
 }
