@@ -202,7 +202,7 @@ class _SelectCityState extends State<SelectCity> {
       Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
     }
     if(widget.index==4){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditCardList()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardList()));
     }
   }
 
