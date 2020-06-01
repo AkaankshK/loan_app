@@ -78,6 +78,9 @@ class _SelectCityState extends State<SelectCity> {
             ),
           ),
           getContents(),
+
+
+
         ],
       ),
     );
@@ -85,80 +88,129 @@ class _SelectCityState extends State<SelectCity> {
 
   getContents() {
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 14,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return Stack(
+      children: <Widget>[
+
+        Padding(
+          // Right drawer padding
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 45.0, 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 1.5,
-                child: Center(
-                  child: SimpleAutoCompleteTextField(
-                    key: key,
-                    suggestions: cities,
-                    submitOnSuggestionTap: true,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 18,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: SimpleAutoCompleteTextField(
+                          key: key,
+                          suggestions: cities,
+                          submitOnSuggestionTap: true,
+
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15)
+                              ),
+                              hintStyle: TextStyle(color: Colors.black,),
+                              hintText: "Search City",
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Colors.black,
+                              )),
                         ),
-                        hintStyle: TextStyle(color: Colors.black),
-                        hintText: "Search City",
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        )),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                child: SizedBox(height: 15,
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: new Text('Hot City', textAlign: TextAlign.start,)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Expanded(
+                  child: SizedBox(
+                      height: MediaQuery.of(context).size.height / 1.5,
+                      width: MediaQuery.of(context).size.width,
+                      child: StatefulBuilder(
+                        builder: (BuildContext bc,StateSetter setState){
+                          return GridView.builder(
+                              itemCount: citynames.length,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2, childAspectRatio: 4),
+                              itemBuilder: (_, int index) {
+                                CityCondition item= citynames[index];
+                                return GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      for(var i in citynames){
+                                        i.isSelected=false;
+                                      }
+                                      item.isSelected=true;
+
+                                    });
+                                  },
+                                  child: Container(
+                                    child: Expanded(
+                                      child: Card(
+                                          color: item.isSelected ? lightBlueColor : Colors.white,
+                                          elevation: 2,
+                                          shadowColor: lightBlueColor,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                          child: Center(child: Text(item.name,style: TextStyle(color: item.isSelected?Colors.white:Colors.black),))),
+                                    ),
+                                  ),
+                                );
+                              });
+                        },
+                      )
+
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 15,),
-          SizedBox(
-              height: MediaQuery.of(context).size.height / 1.5,
-              width: MediaQuery.of(context).size.width,
-              child: StatefulBuilder(
-                builder: (BuildContext bc,StateSetter setState){
-                  return GridView.builder(
-                      itemCount: citynames.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2, childAspectRatio: 4),
-                      itemBuilder: (_, int index) {
-                        CityCondition item=citynames[index];
-                        return GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              for(var i in citynames){
-                                i.isSelected=false;
-                              }
-                              item.isSelected=true;
+        ),
 
-                            });
-                          },
-                          child: Container(
-                            child: Card(
-                                color: item.isSelected ? lightBlueColor : Colors.white,
-                                elevation: 2,
-                                shadowColor: lightBlueColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(child: Text(item.name,style: TextStyle(color: item.isSelected?Colors.white:Colors.black),))),
-                          ),
-                        );
+        Positioned(
+          right: 10.0,
+            top: MediaQuery.of(context).size.height / 7,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      print('tapped');
+                      setState(() {
+                        for(String i in cities){
+                          citynames.add(CityCondition(name: i,isSelected: false));
+                        }
                       });
-                },
-              )
+                    },
+                      child: new Text('Hot', style: TextStyle(color: Colors.grey),)),
+                  Padding(padding: EdgeInsets.only(top: 24.0),),
 
-          ),
-        ],
-      ),
+                  for(var i in _cityListIndex) _index(i),
+
+
+                ],
+              ),
+            )),
+
+      ],
     );
   }
 
@@ -185,6 +237,25 @@ class _SelectCityState extends State<SelectCity> {
     );
   }
 
+
+
+
+
+  Widget _indexListOfCities(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+
+      itemCount: _cityListIndex.length,
+      itemBuilder: (context, index){
+        return ListTile(
+          title: new Text(_cityListIndex[index], style: new TextStyle(fontSize: 13.0, fontWeight: FontWeight.bold),),
+        );
+      },
+    );
+  }
+
+
   void goToNext() {
     setState(() {
       isCitySet=true;
@@ -207,10 +278,38 @@ class _SelectCityState extends State<SelectCity> {
     }
   }
 
+  Widget _index(var ch) {
+
+  return Padding(
+    padding: EdgeInsets.only(top: 8.0),
+    child: GestureDetector(
+        onTap: (){
+          print(ch);
+          List temp = [];
+          for(var i in cities) {
+            if(i[0] == ch) temp.add(i);
+          }
+//          temp.add(cities.where((element) => ch == element[0]));
+
+          setState(() {
+//            for(String i in temp) print(i + " - ");
+            citynames.removeRange(0, citynames.length);
+
+            for(String i in temp){
+              citynames.add(CityCondition(name: i,isSelected: false));
+            }
+          });
+
+        },
+        child: new Text('$ch', style: TextStyle(color: Colors.grey),)),
+  );
+  }
+
 }
 
 
-final cities = [
+
+final List cities = [
   "Mumbai",
   "Delhi",
   "Bangalore",
@@ -258,3 +357,6 @@ final cities = [
   "Raipur",
   "Kota",
 ];
+
+List _cityListIndex = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
