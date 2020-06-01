@@ -135,7 +135,13 @@ class _SelectCityState extends State<SelectCity> {
                 child: SizedBox(height: 15,
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: new Text('Hot City', textAlign: TextAlign.start,)),
+                      child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              for(String i in cities) citynames.add(CityCondition(name: i,isSelected: false));
+                            });
+                          },
+                          child: new Text('Hot City', textAlign: TextAlign.start,))),
                 ),
               ),
               Padding(
@@ -193,24 +199,46 @@ class _SelectCityState extends State<SelectCity> {
               child: Column(
                 children: <Widget>[
                   GestureDetector(
-//                    onTap: () {
-//                      print('tapped');
-//                      setState(() {
-//                        for(String i in cities){
-//                          citynames.add(CityCondition(name: i,isSelected: false));
-//                        }
-//                      });
-//                    },
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            for(String i in cities) citynames.add(CityCondition(name: i,isSelected: false));
-                          });
-                        },
-                          child: new Text('Hot', style: TextStyle(color: Colors.grey),))),
+                    onTap: () {
+                      setState(() {
+                        for(String i in cities) citynames.add(CityCondition(name: i,isSelected: false));
+                      });
+                    },
+                      child: new Text('Hot', style: TextStyle(color: Colors.grey),)),
                   Padding(padding: EdgeInsets.only(top: 24.0),),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    width: MediaQuery.of(context).size.width / 10,
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: _cityListIndex.length,
+                      itemBuilder: (context, index){
+                        return SizedBox(
+                          width: 30.0,
+                          height: 30.0,
+                          child: FlatButton(
+                            onPressed: (){
 
-                  for(var i in _cityListIndex) _index(i),
+                              List temp = [];
+                              for(var i in cities) {
+                                if(i[0] == '${_cityListIndex[index]}') temp.add(i);
+                              }
+                              setState(() {
+                                citynames.removeRange(0, citynames.length);
+                                for(String i in temp){
+                                  citynames.add(CityCondition(name: i,isSelected: false));
+                                }
+                              });
+
+                            },
+                            child: new Text('${_cityListIndex[index]}', style: TextStyle(color: Colors.black, fontSize: 12.0),),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+//                  for(var i in _cityListIndex) _index(i),
+
 
 
                 ],
@@ -276,26 +304,7 @@ class _SelectCityState extends State<SelectCity> {
 
     return Padding(
       padding: EdgeInsets.only(top: 8.0),
-      child: GestureDetector(
-        onTap: (){
-          print(ch);
-          List temp = [];
-          for(var i in cities) {
-            if(i[0] == ch) temp.add(i);
-          }
-//          temp.add(cities.where((element) => ch == element[0]));
-
-          setState(() {
-//            for(String i in temp) print(i + " - ");
-            citynames.removeRange(0, citynames.length);
-
-            for(String i in temp){
-              citynames.add(CityCondition(name: i,isSelected: false));
-            }
-          });
-
-        },
-          child: new Text('$ch', style: TextStyle(color: Colors.grey),)),
+      child: new Text('$ch', style: TextStyle(color: Colors.grey),),
     );
   }
 
@@ -352,5 +361,5 @@ final cities = [
   "Kota",
 ];
 
-final _cityListIndex = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+final _cityListIndex = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Z'];
 
