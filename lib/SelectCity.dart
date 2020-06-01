@@ -42,12 +42,13 @@ class _SelectCityState extends State<SelectCity> {
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   List<CityCondition> citynames=[];
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     for(String i in cities){
       citynames.add(CityCondition(name: i,isSelected: false));
+
     }
   }
 
@@ -145,12 +146,12 @@ class _SelectCityState extends State<SelectCity> {
                       width: MediaQuery.of(context).size.width,
                       child: StatefulBuilder(
                         builder: (BuildContext bc,StateSetter setState){
-                          return GridView.builder(
+                          return ((citynames.length == 0)) ? Center(child: new Text('Nothing to show'),) : GridView.builder(
                               itemCount: citynames.length,
                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2, childAspectRatio: 4),
                               itemBuilder: (_, int index) {
-                                CityCondition item= citynames[index];
+                                CityCondition item = citynames[index];
                                 return GestureDetector(
                                   onTap: (){
                                     setState(() {
@@ -186,21 +187,27 @@ class _SelectCityState extends State<SelectCity> {
         ),
 
         Positioned(
-          right: 10.0,
+            right: 10.0,
             top: MediaQuery.of(context).size.height / 7,
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () {
-                      print('tapped');
-                      setState(() {
-                        for(String i in cities){
-                          citynames.add(CityCondition(name: i,isSelected: false));
-                        }
-                      });
-                    },
-                      child: new Text('Hot', style: TextStyle(color: Colors.grey),)),
+//                    onTap: () {
+//                      print('tapped');
+//                      setState(() {
+//                        for(String i in cities){
+//                          citynames.add(CityCondition(name: i,isSelected: false));
+//                        }
+//                      });
+//                    },
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            for(String i in cities) citynames.add(CityCondition(name: i,isSelected: false));
+                          });
+                        },
+                          child: new Text('Hot', style: TextStyle(color: Colors.grey),))),
                   Padding(padding: EdgeInsets.only(top: 24.0),),
 
                   for(var i in _cityListIndex) _index(i),
@@ -227,10 +234,10 @@ class _SelectCityState extends State<SelectCity> {
       child: Container(
         height: 50,
         child: MaterialButton(
-          color: lightBlueColor,
+            color: lightBlueColor,
             onPressed: (){
-           goToNext();
-            
+              goToNext();
+
             },
             child: Text("NEXT",style: TextStyle(color: Colors.white),)),
       ),
@@ -241,19 +248,6 @@ class _SelectCityState extends State<SelectCity> {
 
 
 
-  Widget _indexListOfCities(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-
-      itemCount: _cityListIndex.length,
-      itemBuilder: (context, index){
-        return ListTile(
-          title: new Text(_cityListIndex[index], style: new TextStyle(fontSize: 13.0, fontWeight: FontWeight.bold),),
-        );
-      },
-    );
-  }
 
 
   void goToNext() {
@@ -280,9 +274,9 @@ class _SelectCityState extends State<SelectCity> {
 
   Widget _index(var ch) {
 
-  return Padding(
-    padding: EdgeInsets.only(top: 8.0),
-    child: GestureDetector(
+    return Padding(
+      padding: EdgeInsets.only(top: 8.0),
+      child: GestureDetector(
         onTap: (){
           print(ch);
           List temp = [];
@@ -301,15 +295,15 @@ class _SelectCityState extends State<SelectCity> {
           });
 
         },
-        child: new Text('$ch', style: TextStyle(color: Colors.grey),)),
-  );
+          child: new Text('$ch', style: TextStyle(color: Colors.grey),)),
+    );
   }
 
 }
 
 
 
-final List cities = [
+final cities = [
   "Mumbai",
   "Delhi",
   "Bangalore",
@@ -358,5 +352,5 @@ final List cities = [
   "Kota",
 ];
 
-List _cityListIndex = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+final _cityListIndex = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
