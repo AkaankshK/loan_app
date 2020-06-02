@@ -25,6 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
   MaterialColor yellowColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   MaterialColor darkBlueColor = MaterialColor(0xff0f3f81, colors);
+
+  bool checkBox = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,18 +41,16 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   getBody() {
-    return SingleChildScrollView(
-      child: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Image.asset("assets/b.png",fit: BoxFit.fill,),
-          ),
-          getContents(),
+    return Stack(
+      children: [
+        Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset("assets/b.png",fit: BoxFit.fill,),
+        ),
+        getContents(),
 
-        ],
-      ),
+      ],
     );
   }
 
@@ -59,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height/5,
+          height: MediaQuery.of(context).size.height/14.5,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -113,16 +113,27 @@ class _RegisterPageState extends State<RegisterPage> {
           minWidth: MediaQuery.of(context).size.width/1.5,
           color: yellowColor,
           child: Text("Register to Get Loans",style: TextStyle(color: Colors.white)),
+
         ),
+
         CheckboxListTile(
-          value: false,
+          value: checkBox,
+          onChanged: (newValue) {
+            setState(() {
+              checkBox = newValue;
+            });
+          },
           title: Row(
             children: [
               Text("I Agree to ",style: TextStyle(color: Colors.black)),
-              Text("TERM AND CONDITIONS \nPRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
+              Expanded(child: Text("TERM AND CONDITIONS PRIVACY POLICY",style: TextStyle(color: lightBlueColor, fontSize: 12.0),))
             ],
-          )
+          ),
+          controlAffinity: ListTileControlAffinity.leading,
+          checkColor: Colors.white,
+          activeColor: Colors.blueGrey,
         ),
+
       ],
     );
   }

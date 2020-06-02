@@ -76,8 +76,8 @@ class _NavBarState extends State<NavBar> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/money bag icon.png",height: 30,width: 30,color: currentIndex==0?lightBlueColor: Colors.black,),
-                      AutoSizeText("LoanKwik",maxLines: 1,style: TextStyle(color:currentIndex==0?lightBlueColor: Colors.black,fontSize: 10),group: autosizegroup,minFontSize: 5,)
+                      Image.asset("assets/money bag icon.png",height: 30,width: 30,color: currentIndex==0 ? lightBlueColor: Colors.black,),
+                      AutoSizeText("LoanKwik",maxLines: 1,style: TextStyle(color:currentIndex==0 ? lightBlueColor: Colors.black,fontSize: 10),group: autosizegroup,minFontSize: 5,)
                     ],
                   ),
                 ),
@@ -93,7 +93,7 @@ class _NavBarState extends State<NavBar> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/ol.png",height: 30,width: 30,color: currentIndex==1?lightBlueColor: Colors.black),
+                      Image.asset("assets/ol.png",height: 30,width: 30,color: currentIndex==1 ? lightBlueColor: Colors.black),
                       AutoSizeText("Offer",maxLines: 1,group: autosizegroup,style: TextStyle(color:currentIndex==1?lightBlueColor: Colors.black,fontSize: 10))
                     ],
                   ),

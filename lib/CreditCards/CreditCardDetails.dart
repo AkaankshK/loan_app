@@ -5,9 +5,6 @@ import 'package:loanapp/CreditCards/CreditCardData.dart';
 
 
 
-
-
-
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
@@ -195,40 +192,48 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/CreditCard/ic.png",height: 40,width: 40,),
-                Text("Online Application",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
-              ],
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/CreditCard/ic.png",height: 40,width: 40,),
+                  Text("Online Application",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
+                ],
+              ),
             ),
-            Image.asset("assets/LOAN22.png",height: 20,width: 20,),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/CreditCard/ico.png",height: 40,width: 40,),
-                Text("Call from Phone",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
-              ],
+            Expanded(child: Image.asset("assets/LOAN22.png",height: 20,width: 20,)),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/CreditCard/ico.png",height: 40,width: 40,),
+                  Text("Call from Phone",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
+                ],
+              ),
             ),
-            Image.asset("assets/LOAN22.png",height: 20,width: 20,),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/CreditCard/icc.png",height: 40,width: 40,),
-                Text("Documents Pickup",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
-              ],
+            Expanded(child: Image.asset("assets/LOAN22.png",height: 20,width: 20,)),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/CreditCard/icc.png",height: 40,width: 40,),
+                  Text("Documents Pickup",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
+                ],
+              ),
             ),
-            Image.asset("assets/LOAN22.png",height: 20,width: 20,),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/CreditCard/i1.png",height: 40,width: 40,),
-                Text("Card Dispatch",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
-              ],
+            Expanded(child: Image.asset("assets/LOAN22.png",height: 20,width: 20,)),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/CreditCard/i1.png",height: 40,width: 40,),
+                  Text("Card Dispatch",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),)
+                ],
+              ),
             ),
           ],
         ),

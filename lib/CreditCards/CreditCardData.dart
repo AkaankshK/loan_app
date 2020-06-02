@@ -10,6 +10,7 @@ var citicb={
                 "Avail up to 15% off on dining across 2000 partnered restaurant",
                "Cash back of INR 500 is automatically credited to the statement",
             ],
+
 };
 
 var rblpm={
@@ -215,7 +216,7 @@ var Citi_Rewards_Card={
   ],
 };
 
-var creditcards=[citicb,Platinum_Delight_Credit_Card,ShopRite_Credit_Card,AMEX_Membership_Rewards_Credit_Card,
+var creditcards = [citicb,Platinum_Delight_Credit_Card,ShopRite_Credit_Card,AMEX_Membership_Rewards_Credit_Card,
   SimplySAVE_SBI_Card,SimplyCLICK_SBI_Card,Times_Titanium_Credit,HDFC_Bank_MoneyBack_Credit_Card,AMEX_SmartEarn_Credit_Card,
   Citi_Rewards_Card
 ];

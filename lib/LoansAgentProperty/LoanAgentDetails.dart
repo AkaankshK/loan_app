@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'LoanAgainstData.dart';
+import 'LoanAgentData.dart';
 
 
 
@@ -22,14 +22,14 @@ Map<int, Color> colors = {
 
 
 
-class LoanAgainstDetails extends StatefulWidget {
+class LoanAgentDetails extends StatefulWidget {
   final int index;
-  LoanAgainstDetails({Key key,this.index}) : super(key:key);
+  LoanAgentDetails({Key key,this.index}) : super(key:key);
   @override
-  _LoanAgainstDetailsState createState() => _LoanAgainstDetailsState();
+  _LoanAgentDetailsState createState() => _LoanAgentDetailsState();
 }
 
-class _LoanAgainstDetailsState extends State<LoanAgainstDetails> {
+class _LoanAgentDetailsState extends State<LoanAgentDetails> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);

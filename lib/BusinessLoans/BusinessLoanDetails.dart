@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/web_view_container.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'BusinessData.dart';
 
 
@@ -63,7 +65,7 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   }
 
   getContents() {
-    var item=businessLoans[widget.index];
+    var item = businessLoans[widget.index];
 
     return Column(
 
@@ -193,7 +195,7 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   }
 
   getDetails() {
-    var item=businessLoans[widget.index];
+    var item = businessLoans[widget.index];
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(
@@ -335,31 +337,37 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/app Install.png",height: 50,width: 50,),
-                Text("Apply Now",style: TextStyle(fontWeight: FontWeight.bold),)
-              ],
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/app Install.png",height: 50,width: 50,),
+                  Text("Apply Now",style: TextStyle(fontWeight: FontWeight.bold),)
+                ],
+              ),
             ),
-            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/Apply loan.png",height: 50,width: 50,),
-                Text("Install Lenders App",style: TextStyle(fontWeight: FontWeight.bold),)
-              ],
+            Expanded(child: Image.asset("assets/LOAN22.png",height: 40,width: 40,)),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/Apply loan.png",height: 50,width: 50,),
+                  Text("Install Lenders App",style: TextStyle(fontWeight: FontWeight.bold),)
+                ],
+              ),
             ),
-            Image.asset("assets/LOAN22.png",height: 40,width: 40,),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset("assets/money tranfer bank.png",height: 50,width: 50,),
-                Text("Get your money",style: TextStyle(fontWeight: FontWeight.bold),)
-              ],
+            Expanded(child: Image.asset("assets/LOAN22.png",height: 40,width: 40,)),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/money tranfer bank.png",height: 50,width: 50,),
+                  Text("Get your money",style: TextStyle(fontWeight: FontWeight.bold),)
+                ],
+              ),
             ),
           ],
         ),
@@ -399,6 +407,8 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   }
 
   getBottom() {
+
+
     return BottomAppBar(
       child: Container(
         height: 60,
@@ -411,10 +421,15 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
             color: buttonColor,
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
-            onPressed: (){},
+            onPressed: () => _handleUrlButton(context, businessLoans[widget.index]['url']),
           ),
         ),
       ),
     );
+
+  }
+
+  void _handleUrlButton(BuildContext context, String url) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(url)));
   }
 }

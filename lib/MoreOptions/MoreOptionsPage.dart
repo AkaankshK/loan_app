@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:loanapp/MoreOptions/RegisterPage.dart';
+import 'package:loanapp/MoreOptions/contact_us.dart';
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
@@ -103,10 +104,15 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
               title: Text("Notifications"),
               trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
             ),
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/7.png",height: 40,width: 40,),
-              title: Text("Contact Us"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: () {
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => ContactUs()));
+              },
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/7.png",height: 40,width: 40,),
+                title: Text("Contact Us"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
           ],
         ),

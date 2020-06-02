@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
-import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
+//import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
-import 'package:loanapp/LoansAgainstProperty/LoanAgainstList.dart';
+import 'package:loanapp/LoansAgentProperty/LoanAgentList.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
+
+import '../SelectCity.dart';
 
 Map<int, Color> colors =
 {
@@ -90,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Text("for Rs.1500",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20,color: Colors.white,),textAlign: TextAlign.start,),
             ),
-            Text("FREE",style: TextStyle(fontSize: 20,color:freeColor,fontWeight: FontWeight.w500 ),)
+            Text("FREE",style: TextStyle(fontSize: 20,color:Colors.yellowAccent,fontWeight: FontWeight.w500 ),)
           ],
         ),
         Row(
@@ -145,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Personal Loan",style: tableStyle,),),
                       Padding(padding: EdgeInsets.symmetric(horizontal: 15),child:Text("Home Loan",style: tableStyle,),),
-                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Loan against\n Property",style: tableStyle,),),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 15),child: Text("Loan Agent\n Property",style: tableStyle,),),
 
                     ]
                 ),
@@ -308,10 +310,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           onPressed: (){
                             if(!isCitySet){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 0,)));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => SelectCity(index: 0,)));
                             }
                             else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalLoanList()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalLoanList()));
                             }
                           },
                         ),
@@ -544,69 +546,75 @@ class _HomeScreenState extends State<HomeScreen> {
                       TableRow(
                           children:[
                             Image.asset("assets/HomeOffer/1a.png",),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(height: 10,),
-                                Text("HeroHFL",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                                Text("\u20B95 Crs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("Max Amount",style: TextStyle(color: Colors.grey),),
-                                Text("Tenure: 15-20Years"),
-                                Text("Interest: 11%/year"),
-                                Text("Proc.Fee: \u20b9 0"),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(height: 10,),
+                                  Text("HeroHFL",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                                  Text("\u20B95 Crs",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text("Max Amount",style: TextStyle(color: Colors.grey),),
+                                  Text("Tenure: 15-20Years"),
+                                  Text("Interest: 11%/year"),
+                                  Text("Proc.Fee: \u20b9 0"),
 
-                              ],
+                                ],
+                              ),
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                              children: [
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)
+                                children: [
+                                  RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    color: buttonColor,
+                                    child: Text("Apply",style: TextStyle(color: Colors.white),),
+                                    onPressed: (){},
                                   ),
-                                  color: buttonColor,
-                                  child: Text("Apply",style: TextStyle(color: Colors.white),),
-                                  onPressed: (){},
-                                ),
-                                SizedBox(height: 30,),
+                                  SizedBox(height: 30,),
 
-                                Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),)
-                              ],
+                                  Text("Details   >",style: TextStyle(color: lightBlueColor,fontSize: 15),)
+                                ],
+                              ),
                             )
                           ]
                       ),
 
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 1,color: lightBlueColor),
-                              borderRadius: BorderRadius.circular(10)
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(width: 1,color: lightBlueColor),
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.remove_red_eye,color: lightBlueColor,),
+                                Text("  View more Home Loan",style: TextStyle(color: lightBlueColor),)
+                              ],
+                            ),
+                            onPressed: (){
+                              if(!isCitySet){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 2,)));
+                              }
+                              else{
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
+                              }
+                            },
                           ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.remove_red_eye,color: lightBlueColor,),
-                              Text("  View more Home Loan",style: TextStyle(color: lightBlueColor),)
-                            ],
-                          ),
-                          onPressed: (){
-                            if(!isCitySet){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 2,)));
-                            }
-                            else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeLoanList()));
-                            }
-                          },
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
 
                 ],
@@ -629,7 +637,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.only(left: 10,top: 5,right: 10),
                         child: Image.asset("assets/v.png",height: 30,width: 30,),
                       ),
-                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Loan Against Property",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                      Padding(padding: EdgeInsets.only(top: 10),child: Text("Loan Agent Property",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
                     ],
                   ),
                   Row(
@@ -738,7 +746,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: [
                               Icon(Icons.remove_red_eye,color: lightBlueColor,),
-                              Text("  View more Loan Against Property",style: TextStyle(color: lightBlueColor),)
+                              Text("  View more Loan Agent Property",style: TextStyle(color: lightBlueColor),)
                             ],
                           ),
                           onPressed: (){
@@ -746,7 +754,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 3,)));
                             }
                             else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgainstList()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgentList()));
                             }
                           },
                         ),

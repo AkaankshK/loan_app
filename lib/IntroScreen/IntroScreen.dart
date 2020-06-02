@@ -106,7 +106,7 @@ class _IntroScreenState extends State<IntroScreen> {
           child: Image.asset("assets/IntroScreen/3.png",fit: BoxFit.fill,)),
       Align(
         alignment: Alignment(0,0.25),
-        child: Text("Quick and Convinient Application",style: TextStyle(fontSize: 25,color: blueColor,fontWeight: FontWeight.bold),),
+        child: Text("Quick and Convenient Application",style: TextStyle(fontSize: 25,color: blueColor,fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
       ),
       Align(
         alignment: Alignment(0,.35),

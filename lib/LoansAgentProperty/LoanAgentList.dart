@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gzx_dropdown_menu/gzx_dropdown_menu.dart';
-import 'package:loanapp/LoansAgainstProperty/LoanAgainstData.dart';
-import 'LoanAgainstDetails.dart';
+import 'package:loanapp/LoansAgentProperty/LoanAgentData.dart';
+import 'package:loanapp/LoansAgentProperty/LoanAgentDetails.dart';
+
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -22,12 +23,12 @@ class SortCondition {
   SortCondition({this.name, this.isSelected});
 }
 
-class LoanAgainstList extends StatefulWidget {
+class LoanAgentList extends StatefulWidget {
   @override
-  _LoanAgainstListState createState() => _LoanAgainstListState();
+  _LoanAgentListState createState() => _LoanAgentListState();
 }
 
-class _LoanAgainstListState extends State<LoanAgainstList> {
+class _LoanAgentListState extends State<LoanAgentList> {
   int min = 0;
   int max = 100000000;
   int mmin=0;
@@ -78,7 +79,7 @@ class _LoanAgainstListState extends State<LoanAgainstList> {
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
-        title: Text("Loan Against Property"),
+        title: Text("Loan Agent Property"),
         centerTitle: true,
         backgroundColor: lightBlueColor,
       ),
@@ -281,7 +282,7 @@ class _LoanAgainstListState extends State<LoanAgainstList> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                LoanAgainstDetails(
+                                                LoanAgentDetails(
                                                   index: index,
                                                 )));
                                   },

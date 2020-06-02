@@ -194,16 +194,27 @@ class _CreditPageState extends State<CreditPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                onPressed: () {},
-                child: Text(
-                  "Get it Now!",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                color: Colors.green,
-                minWidth: 300,
+              Stack(
+                children: <Widget>[
+
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    onPressed: () {},
+                    child: Text(
+                      "Get it Now!",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    color: Colors.green,
+                    minWidth: 300,
+                  ),
+
+                  Positioned(
+                    right: 10.0,
+
+                      child: new Icon(Icons.mode_comment, size: 30.0, color: Colors.redAccent, semanticLabel: 'Free',))
+                ],
+
               )
             ],
           ),
