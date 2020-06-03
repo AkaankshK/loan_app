@@ -193,6 +193,7 @@ class _CreditPageState extends State<CreditPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+
             children: [
               Stack(
                 children: <Widget>[
@@ -210,25 +211,23 @@ class _CreditPageState extends State<CreditPage> {
                   ),
 
                   Positioned(
-                    right: 10.0,
-
-//                      child: new Icon(Icons.mode_comment, size: 30.0, color: Colors.redAccent, semanticLabel: 'Free',)
-                    child: ClipPath(
-                      clipper: MyCustomClipPath(),
-
-                      child: new Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          color: Colors.red,
-                        ),
-//                        color: Colors.red,
-                          width: 70.0,
-                          height: 50.0,
-                        child: Center(child: new Text('Free', style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),),
+                    top: -5.0,
+                    right: 15.0,
+                    child: new SizedBox(
+                      height: 30.0,
+                      width: 50.0,
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            height: 30.0,
+                              width: 50.0,
+                              child: new Image.asset('assets/free_tag.png', color: Colors.redAccent, fit: BoxFit.fill,)
                           ),
-
-                    ),
+                          new Center(child: new Text('Free', style: new TextStyle(color: Colors.white, fontSize: 12.0, fontFamily: 'Ubuntu')),)
+                        ],
                       )
+                    ),
+                  )
 
                 ],
 
@@ -246,25 +245,27 @@ class _CreditPageState extends State<CreditPage> {
 
 class MyCustomClipPath extends CustomClipper<Path> {
 
-  var radius = 10.0;
+//  var radius = 10.0;
   @override
   Path getClip(Size size) {
-    final double startMargin = size.width / 6;
+//    size = size / 2;
+    final double startMargin = size.width / 5;
     final double x = size.width;
     final double y = size.height;
     final Path path = Path()
-//    ..lineTo(startMargin, 0)
-//      ..lineTo(startMargin, y / 2)
-//      ..lineTo(0, y)
-//      ..lineTo(x, y)
-//      ..lineTo(x, 0)
-//    ..close();
+
     ..lineTo(startMargin, 0)
-    ..arcToPoint(Offset(startMargin, y / 2), radius: Radius.circular(15.0))
-    ..arcToPoint(Offset(0, y - 10), radius: Radius.circular(15.0))
-    ..arcToPoint(Offset(startMargin, y), radius: Radius.circular(15.0))
-    ..lineTo(x, y)
-    ..arcToPoint(Offset(x, 0), radius: Radius.circular(15.0))
+
+    ..quadraticBezierTo(0, (y-60)/2, startMargin, y/2 + 30)
+//    ..arcToPoint(Offset(0, y-8), radius: Radius.elliptical(100, 70))
+    ..arcToPoint(Offset(0, y), radius: Radius.elliptical(100, 70))
+    ..arcToPoint(Offset(startMargin, y), radius: Radius.zero)
+
+    ..lineTo(x - startMargin, y)
+//      ..quadraticBezierTo(x-startMargin, y, x, y/2)
+      ..quadraticBezierTo(x, y/2, x - startMargin, 0)
+//      ..lineTo(x - startMargin, 0)
+
     ..close();
 
     //    print('S1:$s1 SH:${size.height / 2} S2:$s2');
