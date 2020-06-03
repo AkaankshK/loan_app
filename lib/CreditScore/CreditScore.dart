@@ -212,7 +212,24 @@ class _CreditPageState extends State<CreditPage> {
                   Positioned(
                     right: 10.0,
 
-                      child: new Icon(Icons.mode_comment, size: 30.0, color: Colors.redAccent, semanticLabel: 'Free',))
+//                      child: new Icon(Icons.mode_comment, size: 30.0, color: Colors.redAccent, semanticLabel: 'Free',)
+                    child: ClipPath(
+                      clipper: MyCustomClipPath(),
+
+                      child: new Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                          color: Colors.red,
+                        ),
+//                        color: Colors.red,
+                          width: 70.0,
+                          height: 50.0,
+                        child: Center(child: new Text('Free', style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),),
+                          ),
+
+                    ),
+                      )
+
                 ],
 
               )
@@ -225,4 +242,37 @@ class _CreditPageState extends State<CreditPage> {
       ),
     );
   }
+}
+
+class MyCustomClipPath extends CustomClipper<Path> {
+
+  var radius = 10.0;
+  @override
+  Path getClip(Size size) {
+    final double startMargin = size.width / 6;
+    final double x = size.width;
+    final double y = size.height;
+    final Path path = Path()
+//    ..lineTo(startMargin, 0)
+//      ..lineTo(startMargin, y / 2)
+//      ..lineTo(0, y)
+//      ..lineTo(x, y)
+//      ..lineTo(x, 0)
+//    ..close();
+    ..lineTo(startMargin, 0)
+    ..arcToPoint(Offset(startMargin, y / 2), radius: Radius.circular(15.0))
+    ..arcToPoint(Offset(0, y - 10), radius: Radius.circular(15.0))
+    ..arcToPoint(Offset(startMargin, y), radius: Radius.circular(15.0))
+    ..lineTo(x, y)
+    ..arcToPoint(Offset(x, 0), radius: Radius.circular(15.0))
+    ..close();
+
+    //    print('S1:$s1 SH:${size.height / 2} S2:$s2');
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+
+
 }

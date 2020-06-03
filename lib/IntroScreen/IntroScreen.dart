@@ -3,6 +3,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/HomeScreen/HomeScreen.dart';
 import 'package:loanapp/NavigationBar/NavBar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -77,6 +78,23 @@ class _IntroScreenState extends State<IntroScreen> {
       Align(
         alignment: Alignment(0,.35),
         child: Text("Multiple loan options to meet your \n everyday financial needs",textAlign: TextAlign.center,),
+      ),
+      Center(
+        child: ClipPath(
+          clipper: MyCustomClipPath(),
+
+          child: new Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              color: Colors.red,
+            ),
+//                        color: Colors.red,
+            width: 200.0,
+            height: 150.0,
+            child: Center(child: new Text('Free', style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),),
+          ),
+
+        ),
       )
     ], );
   }
