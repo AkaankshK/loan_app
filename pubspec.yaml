@@ -21,6 +21,7 @@ dependencies:
   auto_size_text: ^2.1.0
   firebase_auth: ^0.16.1
   cloud_firestore: ^0.13.6
+  filter_list: ^0.0.4
 
 dev_dependencies:
   flutter_test:

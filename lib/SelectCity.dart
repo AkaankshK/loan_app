@@ -1,6 +1,7 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
+import 'package:loanapp/CreditCards/CreditCardData.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
 import 'package:loanapp/LoansAgentProperty/LoanAgentList.dart';
@@ -296,7 +297,7 @@ class _SelectCityState extends State<SelectCity> {
       Navigator.push(context, MaterialPageRoute(builder: (context)=>LoanAgentList()));
     }
     if(widget.index==4){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardList()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardList(creditcards)));
     }
   }
 

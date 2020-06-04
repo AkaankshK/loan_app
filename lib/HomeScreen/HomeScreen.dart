@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
+import 'package:loanapp/CreditCards/CreditCardData.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
 //import 'file:///D:/flutterProjects/loan_app/lib/SelectCity.dart';
@@ -918,10 +919,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           onPressed: (){
                             if(!isCitySet){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SelectCity(index: 4,)));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => SelectCity(index: 4,)));
                             }
                             else{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>CreditCardList()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardList(creditcards)));
                             }
                           },
                         ),
@@ -938,6 +939,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
+  var creditcards = [citicb,Platinum_Delight_Credit_Card,ShopRite_Credit_Card,AMEX_Membership_Rewards_Credit_Card,
+    SimplySAVE_SBI_Card,SimplyCLICK_SBI_Card,Times_Titanium_Credit,HDFC_Bank_MoneyBack_Credit_Card,AMEX_SmartEarn_Credit_Card,
+    Citi_Rewards_Card
+  ];
 
 }

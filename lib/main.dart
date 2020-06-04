@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loanapp/IntroScreen/IntroScreen.dart';
+import 'package:loanapp/test.dart';
 import 'dummy.dart';
 void main() {
   runApp(MyApp());
@@ -26,10 +27,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Loan Kwik',
       theme: ThemeData(
         primarySwatch: color,
       ),
+//        home: MyHomePage(),
       home: IntroScreen(),
     );
   }

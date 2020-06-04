@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:gzx_dropdown_menu/gzx_dropdown_menu.dart';
 import 'package:loanapp/CreditCards/CreditCardData.dart';
+
 import 'package:loanapp/CreditCards/CreditCardDetails.dart';
 
 class SortCondition {
@@ -26,11 +27,22 @@ Map<int, Color> colors = {
 };
 
 class CreditCardList extends StatefulWidget {
+  var list;
+  CreditCardList(var list){
+    this.list = list;
+  }
   @override
-  _CreditCardListState createState() => _CreditCardListState();
+  _CreditCardListState createState() => _CreditCardListState(list);
 }
 
 class _CreditCardListState extends State<CreditCardList> {
+
+
+
+  var creditcards;
+  _CreditCardListState(var list){
+    this.creditcards = list;
+  }
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
@@ -47,7 +59,7 @@ class _CreditCardListState extends State<CreditCardList> {
   bool isDsc = false;
 
   List _selectedBanksList = [];
-  final List temp = creditcards;
+
 
   @override
   void initState() {
@@ -67,6 +79,7 @@ class _CreditCardListState extends State<CreditCardList> {
 //    _filterConditions.add(SortCondition(name: 'Card Type', isSelected: false));
 
     _selectFilterSortCondition = _filterConditions[0];
+
     super.initState();
   }
 
@@ -171,7 +184,7 @@ class _CreditCardListState extends State<CreditCardList> {
           height: MediaQuery.of(context).size.height / 1.4,
           width: MediaQuery.of(context).size.width,
 //   !SortedCredit(creditcards, isAsc, isDsc)
-          child: (!SortedCredit(creditcards, isAsc, isDsc)) ?
+          child: (SortedCredit(creditcards, isAsc, isDsc) && (creditcards.length == 0)) ?
           Center(child: new Text('Nothing to show'),) :
           ListView.builder(
 
@@ -355,7 +368,7 @@ class _CreditCardListState extends State<CreditCardList> {
                           child: Expanded(
                               child: FlatButton(
                                   onPressed: () {
-                                    _selectedBanks.add('SBI Bank');
+                                    _selectedBanks.add('SBI');
                                   },
                                   child: Text(
                                     "SBI Bank",
@@ -371,6 +384,7 @@ class _CreditCardListState extends State<CreditCardList> {
                               child: FlatButton(
                                   onPressed: () {
                                     _selectedBanks.add('Citi Bank');
+                                    _selectedBanks.add('Citi');
                                   },
                                   child: Text(
                                     "Citi Bank",
@@ -389,13 +403,19 @@ class _CreditCardListState extends State<CreditCardList> {
                       height: 50,
                       width: 100,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.grey)),
+                          border: Border.all(width: 1, color: Colors.grey),
+
+                      ),
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
                                   onPressed: () {
-                                    _selectedBanks.add('AMEX Bank');
+                                    _selectedBanks.add('AMEX');
+
                                   },
+
+
+
                                   child: Text(
                                     "AMEX Bank",
                                     style: TextStyle(color: Colors.black),
@@ -411,7 +431,7 @@ class _CreditCardListState extends State<CreditCardList> {
                           child: Expanded(
                               child: FlatButton(
                                   onPressed: () {
-                                    _selectedBanks.add('HDFC Bank');
+                                    _selectedBanks.add('HDFC');
                                   },
                                   child: Text(
                                     "HDFC Bank",
@@ -427,7 +447,7 @@ class _CreditCardListState extends State<CreditCardList> {
                           child: Expanded(
                               child: FlatButton(
                                   onPressed: () {
-                                    _selectedBanks.add('AXIS Bank');
+                                    _selectedBanks.add('AXIS');
                                   },
                                   child: Text(
                                     "AXIS Bank",
@@ -554,7 +574,7 @@ class _CreditCardListState extends State<CreditCardList> {
               flex: 50,
               child: MaterialButton(
                 onPressed: () {
-                  _selectedBanks.clear();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CreditCardList(creditcardsOrignal)));
                 },
                 child: Text("Reset"),
               ),
@@ -567,6 +587,15 @@ class _CreditCardListState extends State<CreditCardList> {
 
                   _selectedBanksList = List.of(HashSet.from(_selectedBanks));
 //                  for(var t in _selectedBanksList) print(t.toString() + " ***\n");
+//                  Navigator.pushReplacement(context, newRoute)
+                  var newList = [];
+                  for(var item in creditcardsOrignal) {
+                    if(_selectedBanks.contains(item['name'])) {
+                      newList.add(item);
+                      print(item['name'].toString());
+                    }
+                  }
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CreditCardList(newList)));
                 },
                 child: Text(
                   "Confirm",
@@ -592,21 +621,15 @@ class _CreditCardListState extends State<CreditCardList> {
       return true;
     }
     else if(!isAsc && !isDsc){
-//      print('flag');
-      creditcards = temp;
+      return true;
     }
-//    for(var t in ret) print(t['name'].toString() + "\n");
-
   return true;
   }
 
-  List filteredListByBanks(List CreditCard, List banks) {
-    List selected = [];
-    CreditCard.forEach((u){
-      if(banks.contains(u['name'])) selected.add(u);
-    });
-    for(var t in selected) print(t['name'] + " *** \n\n");
-    return selected;
-  }
+  final creditcardsOrignal = [citicb,Platinum_Delight_Credit_Card,ShopRite_Credit_Card,AMEX_Membership_Rewards_Credit_Card,
+    SimplySAVE_SBI_Card,SimplyCLICK_SBI_Card,Times_Titanium_Credit,HDFC_Bank_MoneyBack_Credit_Card,AMEX_SmartEarn_Credit_Card,
+    Citi_Rewards_Card
+  ];
+
 
 }
