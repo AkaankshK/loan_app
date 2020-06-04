@@ -7,6 +7,8 @@ import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/HomeScreen/HomeScreen.dart';
 import 'package:loanapp/NavigationBar/NavBar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../custom_clipper.dart';
 Map<int, Color> colors =
 {
   50:Color.fromRGBO(136,14,79, .1),

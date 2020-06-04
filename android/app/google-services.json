@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "387691070367",
+    "firebase_url": "https://loan-kwik.firebaseio.com",
+    "project_id": "loan-kwik",
+    "storage_bucket": "loan-kwik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387691070367:android:d4ec7d492726a532fb33aa",
+        "android_client_info": {
+          "package_name": "com.example.loanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387691070367-r0vreufbjn14hcfre3q44n3h20pnqu36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loanapp",
+            "certificate_hash": "50bd05c2f4e6aafc72448c6a034a9cd346177064"
+          }
+        },
+        {
+          "client_id": "387691070367-t1ube3n444tpgf6mfoea9mr2t90qi8c8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1p-Quzl_Na1ltm8y0Z4sVOgml9CifJoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387691070367-t1ube3n444tpgf6mfoea9mr2t90qi8c8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

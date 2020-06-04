@@ -1,7 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:loanapp/MoreOptions/RegisterPage.dart';
+import 'package:loanapp/Authentication/RegisterPage.dart';
+import 'package:loanapp/Authentication/page_select.dart';
 import 'package:loanapp/MoreOptions/contact_us.dart';
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -51,7 +52,7 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
             color: yellowColor,
             child: Text("Login",style: TextStyle(color: Colors.white),),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PageSelector()));
             },
 
           ),
@@ -74,35 +75,55 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
         height: MediaQuery.of(context).size.height/1.5,
         child: ListView(
           children: [
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/1.png",height: 40,width: 40,),
-              title: Text("My Credit Report"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: (){},
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/1.png",height: 40,width: 40,),
+                title: Text("My Credit Report"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/2.png",height: 40,width: 40,),
-              title: Text("Settings"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: (){
+                print('settings');
+              },
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/2.png",height: 40,width: 40,),
+                title: Text("Settings"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/3.png",height: 40,width: 40,),
-              title: Text("Rate Us"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: (){},
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/3.png",height: 40,width: 40,),
+                title: Text("Rate Us"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/4.png",height: 40,width: 40,),
-              title: Text("Share to your friends"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: (){},
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/4.png",height: 40,width: 40,),
+                title: Text("Share to your friends"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/5.png",height: 40,width: 40,),
-              title: Text("Privacy Policy"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: (){},
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/5.png",height: 40,width: 40,),
+                title: Text("Privacy Policy"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
-            ListTile(
-              leading: Image.asset("assets/MoreOptions/6.png",height: 40,width: 40,),
-              title: Text("Notifications"),
-              trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+            FlatButton(
+              onPressed: (){},
+              child: ListTile(
+                leading: Image.asset("assets/MoreOptions/6.png",height: 40,width: 40,),
+                title: Text("Notifications"),
+                trailing: Image.asset("assets/MoreOptions/back.png",height: 40,width: 40,),
+              ),
             ),
             FlatButton(
               onPressed: () {
