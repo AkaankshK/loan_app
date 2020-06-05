@@ -81,23 +81,7 @@ class _IntroScreenState extends State<IntroScreen> {
         alignment: Alignment(0,.35),
         child: Text("Multiple loan options to meet your \n everyday financial needs",textAlign: TextAlign.center,),
       ),
-      Center(
-        child: ClipPath(
-          clipper: MyCustomClipPath(),
 
-          child: new Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              color: Colors.red,
-            ),
-//                        color: Colors.red,
-            width: 200.0,
-            height: 150.0,
-            child: Center(child: new Text('Free', style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),),
-          ),
-
-        ),
-      )
     ], );
   }
 

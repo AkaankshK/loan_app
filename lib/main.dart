@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loanapp/Authentication/authentication.dart';
 import 'package:loanapp/IntroScreen/IntroScreen.dart';
-import 'package:loanapp/test.dart';
-import 'dummy.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: color,
       ),
 //        home: MyHomePage(),
-      home: IntroScreen(),
+      home: AuthService().handleAuth(),
     );
   }
 }

@@ -103,7 +103,7 @@ class _NavBarState extends State<NavBar> {
                 flex: 20,
                 child: Padding(
                   padding: const EdgeInsets.only(top:20),
-                  child: AutoSizeText("Credit Score",maxLines: 1,group:autosizegroup,),
+                  child: Center(child: AutoSizeText("Credit Score",maxLines: 1,group:autosizegroup, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),)),
                 ),
               ),
 

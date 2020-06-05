@@ -122,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: "Enter Your Mobile Number",
                 prefixIcon: Image.asset("assets/ph.png",height: 40,width: 40,)
             ),
+            keyboardType: TextInputType.number,
           ),
         ),
         SizedBox(height: 20,),
@@ -147,6 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                    Text("Get OTP Code",style: TextStyle(color: lightBlueColor))
                )
             ),
+            keyboardType: TextInputType.number,
           ),
         ),
         SizedBox(height: 20,),
@@ -156,17 +158,23 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           onPressed: () async {
             if(verified) {
-              var user = await FirebaseAuth.instance.currentUser();
-              print('verified 123 !');
-              await Firestore.instance
-                  .collection("users")
-                  .document(user.uid)
-                  .setData({
-                "name": name,
-                "phoneNumber": phoneNumController.text.toString()
-              });
-              print("User Created");
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+
+              if(checkBox) {
+                var user = await FirebaseAuth.instance.currentUser();
+                print('verified 123 !');
+                await Firestore.instance
+                    .collection("users")
+                    .document(user.uid)
+                    .setData({
+                  "name": name,
+                  "phoneNumber": phoneNumController.text.toString()
+                });
+                print("User Created");
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NavBar()), (route) => false);
+              }else{
+                key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to Terms and Conditions')));
+              }
+
             }else{
 //              Scaffold.of(context).showSnackBar();
                 print('Something Went Wrong');

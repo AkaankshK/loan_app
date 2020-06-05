@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         backgroundColor: lightBlueColor,
         elevation: 0,
-        title: Text("Registration"),
+        title: Text("Login"),
         centerTitle: true,
       ),
       body: getBody(),
@@ -104,6 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: "Enter Your Mobile Number",
                 prefixIcon: Image.asset("assets/ph.png",height: 40,width: 40,)
             ),
+            keyboardType: TextInputType.number,
           ),
         ),
         SizedBox(height: 20,),
@@ -129,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text("Get OTP Code",style: TextStyle(color: lightBlueColor))
                 )
             ),
+            keyboardType: TextInputType.number,
           ),
         ),
         SizedBox(height: 20,),

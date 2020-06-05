@@ -37,7 +37,7 @@ class CreditCardList extends StatefulWidget {
 
 class _CreditCardListState extends State<CreditCardList> {
 
-
+  Map<String, bool> colorMaps = new Map<String, bool>();
 
   var creditcards;
   _CreditCardListState(var list){
@@ -79,7 +79,10 @@ class _CreditCardListState extends State<CreditCardList> {
 //    _filterConditions.add(SortCondition(name: 'Card Type', isSelected: false));
 
     _selectFilterSortCondition = _filterConditions[0];
-
+    for(var i in creditcardsOrignal){
+      colorMaps[i['name'].toString()] = false;
+//      print(i['name'].toString());
+    }
     super.initState();
   }
 
@@ -404,13 +407,16 @@ class _CreditCardListState extends State<CreditCardList> {
                       width: 100,
                       decoration: BoxDecoration(
                           border: Border.all(width: 1, color: Colors.grey),
+                        color: (colorMaps['AMEX'] ) ? Colors.lightBlueAccent :  Colors.white,
 
                       ),
                       child: Center(
                           child: Expanded(
                               child: FlatButton(
                                   onPressed: () {
-                                    _selectedBanks.add('AMEX');
+
+                                      _selectedBanks.add("AMEX");
+                                        colorMaps["AMEX"] = true;
 
                                   },
 

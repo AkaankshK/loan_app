@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:loanapp/Authentication/RegisterPage.dart';
+import 'package:loanapp/Authentication/authentication.dart';
 import 'package:loanapp/Authentication/page_select.dart';
 import 'package:loanapp/MoreOptions/contact_us.dart';
 Map<int, Color> colors = {
@@ -52,6 +53,8 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
             color: yellowColor,
             child: Text("Login",style: TextStyle(color: Colors.white),),
             onPressed: (){
+
+
               Navigator.push(context, MaterialPageRoute(builder: (context) => PageSelector()));
             },
 
