@@ -34,10 +34,11 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   bool terms=false;
-
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Business Loan Offers"),
         centerTitle: true,
@@ -421,7 +422,14 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
             color: buttonColor,
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
-            onPressed: () => _handleUrlButton(context, businessLoans[widget.index]['url']),
+            onPressed: () {
+              if(terms) _handleUrlButton(context, businessLoans[widget.index]['url']);
+              else{
+                _scaffoldKey.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY')));
+              }
+
+
+            },
           ),
         ),
       ),
@@ -432,4 +440,5 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
   void _handleUrlButton(BuildContext context, String url) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(url)));
   }
+
 }

@@ -238,7 +238,15 @@ class _CreditCardListState extends State<CreditCardList> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CreditCardDetails(
+                                                index: index,
+                                              )));
+                                },
                               ),
                               SizedBox(
                                 height: 30,

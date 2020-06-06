@@ -32,7 +32,9 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
+
   bool terms=false;
+
 @override
   void dispose() {
 

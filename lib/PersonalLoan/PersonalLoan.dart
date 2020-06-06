@@ -15,7 +15,9 @@ var icici = {
   "earlyrepayment": "5% of outstanding principal amount",
   "overdue": "Overdue Rule As per company policy",
   "loandisbursal": "Customer's salary a/c",
+  "url": "https://www.icicibank.com/Personal-Banking/loans/personal-loan/pre-approved-loan.page",
 };
+
 var tata_capital = {
   "name": "TATA Capital",
   "logo": "assets/personalLoan/17.png",
@@ -33,6 +35,7 @@ var tata_capital = {
   "earlyrepayment": "Zero charges on Part Pre-Payment",
   "overdue": "Overdue Rule As per company policy",
   "loandisbursal": "AS PER THE POLICY",
+  "url": "https://play.google.com/store/apps/details?id=com.snapwork.tcl&hl=en",
 };
 var Qbera = {
   "name": "Qbera",
@@ -52,6 +55,7 @@ var Qbera = {
   "earlyrepayment": "Varies between lenders",
   "overdue": "Varies between lenders",
   "loandisbursal": null,
+  "url": "https://www.qbera.com/",
 };
 
 var Retra = {
@@ -70,6 +74,7 @@ var Retra = {
   "earlyrepayment": "No prepayment for first 6 months",
   "overdue": "DPD basis EMI being missed on the due date",
   "loandisbursal": "Agreement, KYC",
+  "url": "https://play.google.com/store/apps/details?id=com.retra.customerapp&hl=en",
 };
 var Lendbox = {
   "name": "Lendbox",
@@ -88,6 +93,7 @@ var Lendbox = {
   "earlyrepayment": "No prepayment charges after 3 EMIs Upwards",
   "overdue": null,
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=in.lendbox.app&hl=en",
 };
 var Upwards = {
   "name": "Upwards",
@@ -108,6 +114,7 @@ var Upwards = {
   "Allowed post payment of 1 EMI. Charges are 5% of principal outstanding at the time of foreclosure",
   "overdue": "Rs 550 Bounce charges + 3% Penal Interest",
   "loandisbursal": "Direct to customer bank account",
+  "url": "https://play.google.com/store/apps/details?id=com.goupwards&hl=en",
 };
 
 var CASHe = {
@@ -126,6 +133,7 @@ var CASHe = {
   "earlyrepayment": "Monthly Interest Payable, No Prepayment Fees",
   "overdue": "Penalty charges",
   "loandisbursal": "Salary Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=co.tslc.cashe.android&hl=en",
 };
 var Muthoot = {
   "name": "Muthoot",
@@ -146,6 +154,7 @@ var Muthoot = {
   "earlyrepayment": null,
   "overdue": null,
   "loandisbursal": "Into Salary Account",
+  "url": "https://play.google.com/store/apps/details?id=com.muthootfinance.imuthoot&hl=en",
 };
 
 var OYE_Loans = {
@@ -167,6 +176,7 @@ var OYE_Loans = {
   "overdue":
   "Default / late payment fee of 1% + GST of the outstanding principal balance or INR 500",
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=com.globalanalytics.oyeloanindia&hl=en",
 };
 var NIRA = {
   "name": "NIRA",
@@ -187,6 +197,7 @@ var NIRA = {
   "first 3 months chargeable @ 2.5% of loan amount, no charges after",
   "overdue": "as per policy",
   "loandisbursal": "in bank account",
+  "url": "https://play.google.com/store/apps/details?id=com.nirafinance.customer&hl=en",
 };
 var Indialends_Personal_Loan = {
   "name": "Indialends Personal Loan",
@@ -207,6 +218,7 @@ var Indialends_Personal_Loan = {
   "earlyrepayment": null,
   "overdue": "On lender basis",
   "loandisbursal": null,
+  "url": "https://za6hx.app.goo.gl/iLUUw96CYK6zT9zE7",
 };
 var PhoneParLoan = {
   "name": "PhoneParLoan",
@@ -225,6 +237,7 @@ var PhoneParLoan = {
   "earlyrepayment": null,
   "overdue": null,
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=com.phoneparloanin&hl=en",
 };
 var Paysense = {
   "name": "Paysense",
@@ -245,6 +258,7 @@ var Paysense = {
   "earlyrepayment": null,
   "overdue": "Penalty according to days past due",
   "loandisbursal": "Valid bank account in your name",
+  "url": "https://play.google.com/store/apps/details?id=com.gopaysense.android.boost&hl=en",
 };
 var Faircent = {
   "name": "Faircent",
@@ -263,6 +277,7 @@ var Faircent = {
   "earlyrepayment": "No prepayment charges after first three EMIs",
   "overdue": "penal interest 18%",
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=com.app.faircent&hl=en",
 };
 var Avail_Finance = {
   "name": "Avail Finance",
@@ -282,6 +297,7 @@ var Avail_Finance = {
   "earlyrepayment": "No prepayment penalty",
   "overdue": "Zero overdue in last 3 months",
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=com.avail.easyloans.android&hl=en",
 };
 var Payme_India = {
   "name": "Payme India",
@@ -302,6 +318,7 @@ var Payme_India = {
   "overdue":
   "Penal interest rises upto 0.7% per day\n and Late fees of Rs 500/- OR 3% of disburse amount-\n which ever is higher",
   "loandisbursal": "Salary bank account ",
+  "url": "https://play.google.com/store/apps/details?id=io.attabot.app.paymeindia&hl=en",
 };
 var Early_Salary = {
   "name": "Early Salary",
@@ -323,6 +340,7 @@ var Early_Salary = {
   "overdue":
   "1) In case of delay in payment of Amount Due, we will charge a late payment fee not exceeding 3% per month on the\n amount due, subject to minimum of Rs. 500. (2)In case of default by reason of the Repayment Instrument(s) \n being dishonoured, Early Salary will charge Rs. 500/- per month / per default towards its dishonour. (3) Overdue \n interest will be charged at 30% p.a. on total overdue amount on a daily basis. Overdue balance means principal \n outstanding and due interest.",
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=com.earlysalary.android&hl=en",
 };
 var Shubh_Loan = {
   "name": "Shubh Loan",
@@ -342,6 +360,7 @@ var Shubh_Loan = {
   "earlyrepayment": "Monthly Interest Payable,  No Prepayment Fees",
   "overdue": " Penalty charges",
   "loandisbursal": null,
+  "url": "https://play.google.com/store/apps/details?id=com.datasignstech.lam&hl=en",
 };
 var Money_View = {
   "name": " Money View",
@@ -361,6 +380,7 @@ var Money_View = {
   "earlyrepayment": "Monthly Interest Payable, No Prepayment Fees",
   "overdue": "Penalty charges",
   "loandisbursal": " Salary Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.whizdm.moneyview.loans",
 };
 var Kissht = {
   "name": "Kissht",
@@ -380,6 +400,7 @@ var Kissht = {
   "earlyrepayment": "Monthly Interest Payable,No Prepayment Fees",
   "overdue": " Penalty charges on customer defaults or delays",
   "loandisbursal": "Salary Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.fastbanking&hl=en",
 };
 var SmartCoin = {
   "name": "SmartCoin",
@@ -398,6 +419,7 @@ var SmartCoin = {
   "earlyrepayment": "   Zero charges on Part Pre-Payment",
   "overdue": " AS PER THE POLICY",
   "loandisbursal": " In the customer’s Any Bank account",
+  "url": "https://play.google.com/store/apps/details?id=in.rebase.app&hl=en",
 };
 var Home_credit = {
   "name": " Home credit",
@@ -415,6 +437,7 @@ var Home_credit = {
   "earlyrepayment": " No prepayment for first 6 months",
   "overdue": " DPD basis EMI being missed on the due date",
   "loandisbursal": "E-Sin Agreement, KYC",
+  "url": "https://play.google.com/store/apps/details?id=com.portal.hcin&hl=en",
 };
 var LazyPay = {
   "name": "LazyPay",
@@ -433,6 +456,7 @@ var LazyPay = {
   "earlyrepayment": null,
   "overdue": " DPD basis EMI being missed on the due date",
   "loandisbursal": " E-Sin Agreement, KYC",
+  "url": "https://play.google.com/store/apps/details?id=com.citrus.citruspay&hl=en",
 };
 var icredit_Loan = {
   "name": "icredit Loan",
@@ -452,6 +476,7 @@ var icredit_Loan = {
   "earlyrepayment": "Monthly Interest Payable,No Prepayment Fees",
   "overdue": "Penalty charges",
   "loandisbursal": "Salary Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.jc.icredit&hl=en",
 };
 var IDFC_First_Bank = {
   "name": "IDFC First Bank",
@@ -471,6 +496,7 @@ var IDFC_First_Bank = {
   "earlyrepayment": null,
   "overdue": "  DPD basis EMI being missed\non the due date.",
   "loandisbursal": "Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.capitalfirst&hl=en",
 };
 
 var Moneytap = {
@@ -491,6 +517,7 @@ var Moneytap = {
   "earlyrepayment": null,
   "overdue": "DPD basis EMI being missed\non the due date, ",
   "loandisbursal": " Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.mycash.moneytap.app&hl=en",
 };
 
 var Rupee_Redee = {
@@ -510,6 +537,7 @@ var Rupee_Redee = {
   "earlyrepayment": null,
   "overdue": "Penalty according to days’ past\ndue date.",
   "loandisbursal": " Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.rupeeredee.app&hl=en",
 };
 
 var Momo_Loan = {
@@ -529,6 +557,7 @@ var Momo_Loan = {
   "earlyrepayment": null,
   "overdue": "Net banking, debit card,\ncredit card or UPI..",
   "loandisbursal": "Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.moneed.wallet&hl=en",
 };
 
 var Sahukar = {
@@ -548,6 +577,7 @@ var Sahukar = {
   "earlyrepayment": null,
   "overdue": "EMI not missed on the due Date",
   "loandisbursal": " Bank Account/Paytm Wallet",
+  "url": "https://play.google.com/store/apps/details?id=com.sipl.udhaar&hl=en",
 };
 
 var Kreditzy = {
@@ -567,6 +597,7 @@ var Kreditzy = {
   "earlyrepayment": null,
   "overdue": "EMI being missed on the due date",
   "loandisbursal": "Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.kreditzy.android&hl=en",
 };
 
 var Mi_Credit = {
@@ -586,6 +617,7 @@ var Mi_Credit = {
   "earlyrepayment": null,
   "overdue": "EMI being missed on the due date",
   "loandisbursal": "Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.micredit.in.gp&hl=en",
 };
 var FundPI = {
   "name": "FundPI",
@@ -604,6 +636,7 @@ var FundPI = {
   "earlyrepayment": null,
   "overdue": " EMI being missed on the due date.",
   "loandisbursal": " Customer Bank Account",
+  "url": "https://play.google.com/store/apps/details?id=com.funds.fundspi&hl=en",
 };
 
   var PersonalLoans = [

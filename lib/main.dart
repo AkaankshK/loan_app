@@ -20,8 +20,10 @@ Map<int, Color> colors =
 };
 
 class MyApp extends StatelessWidget {
-  MaterialColor color = MaterialColor(0xff0f3f81,colors);
 
+
+
+  MaterialColor color = MaterialColor(0xff0f3f81,colors);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

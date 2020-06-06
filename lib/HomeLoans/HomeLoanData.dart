@@ -1,4 +1,4 @@
-var hero={
+var hero = {
   "name":"Hero HFL",
   "logo":"assets/HomeOffer/1a.png",
   "logo2":"assets/HomeOffer/1.png",
@@ -15,9 +15,10 @@ var hero={
   "earlyrepayment":null,
   "overdue":null,
   "loandisbursal":"Home Loan: Cheque in the name of Seller, Balance Transfer: Cheque in the name of Financer, LAP: transfer to borrower bank account",
+  "url": "https://www.herohousingfinance.com/",
 };
 
-var shubam={
+var shubam = {
   "name":"Shubham Housing",
   "logo":"assets/HomeOffer/2.png",
   "logo2":"assets/HomeOffer/22.png",
@@ -34,6 +35,7 @@ var shubam={
   "earlyrepayment":"No Fee",
   "overdue":"Cash, Cheque, NEFT, IMPS",
   "loandisbursal":"Shubham Housing Development Finance Company Ltd.",
+  "url": "https://shubham.co/",
 };
 
 

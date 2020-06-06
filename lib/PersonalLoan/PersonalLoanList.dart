@@ -267,7 +267,15 @@ class _PersonalLoanListState extends State<PersonalLoanList> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              PersonalLoanDetails(
+                                                index: index,
+                                              )));
+                                },
                               ),
                               SizedBox(
                                 height: 30,

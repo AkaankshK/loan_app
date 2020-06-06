@@ -1,7 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:loanapp/PersonalLoan/WebView.dart';
+
+import 'package:loanapp/web_view_container.dart';
 import 'PersonalLoan.dart';
 
 
@@ -33,10 +34,11 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   bool terms=false;
-
+  final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         title: Text("Personal Loan Offers"),
         centerTitle: true,
@@ -73,18 +75,20 @@ class _PersonalLoanDetailsState extends State<PersonalLoanDetails> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(item['logo2'],height: 125,width: 125,),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                Wrap(
-                  direction: Axis.vertical,
-                  children: [
-                    Text(item['desc'],style: TextStyle(color: Colors.white,fontSize: 10),),
-                  ],
-                )
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                  Wrap(
+                    direction: Axis.vertical,
+                    children: [
+                      Text(item['desc'],style: TextStyle(color: Colors.white,fontSize: 10),),
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -413,7 +417,11 @@ Padding getDetails() {
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
             onPressed: (){
-              //Navigator.push(context, MaterialPageRoute(builder: (context)=>WebViewPage(url:"hey")));
+              if(terms) Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(PersonalLoans[widget.index]['url'])));
+              else
+                _key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY')));
+//              print(PersonalLoans[widget.index]['url'] + "**********************");
+
             },
           ),
         ),

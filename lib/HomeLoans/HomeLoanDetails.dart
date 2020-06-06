@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/HomeLoans/HomeLoanData.dart';
+import 'package:loanapp/web_view_container.dart';
 
 
 
@@ -34,11 +35,13 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
   MaterialColor freeColor = MaterialColor(0xff01b527, colors);
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
-  bool terms=false;
+  bool terms = false;
+  final _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         title: Text("Loan Againt Property Offers"),
         centerTitle: true,
@@ -66,7 +69,7 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
   }
 
   getContents() {
-    var item=homeloans[widget.index];
+    var item = homeloans[widget.index];
 
     return Column(
 
@@ -75,18 +78,20 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(item['logo2'],height: 125,width: 125,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-              Wrap(
-                direction: Axis.vertical,
-                children: [
-                  Text(item['desc'],style: TextStyle(color: Colors.white,fontSize: 10),),
-                ],
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(item['name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                Wrap(
+                  direction: Axis.vertical,
+                  children: [
+                    Text(item['desc'],style: TextStyle(color: Colors.white,fontSize: 10),),
+                  ],
+                )
+              ],
+            ),
           )
         ],
           ),
@@ -424,7 +429,11 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
             color: buttonColor,
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
-            onPressed: (){},
+            onPressed: (){
+              if(terms) Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(homeloans[widget.index]['url'])));
+              else
+                _key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY'), duration: Duration(seconds: 3),));
+            },
           ),
         ),
       ),

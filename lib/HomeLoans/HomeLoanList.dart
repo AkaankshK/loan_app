@@ -270,7 +270,15 @@ class _HomeLoanListState extends State<HomeLoanList> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HomeLoanDetails(
+                                                index: index,
+                                              )));
+                                },
                               ),
                               SizedBox(
                                 height: 30,

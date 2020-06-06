@@ -376,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context) => SelectCity(
                                         index: 1,
                                       )));
-                        } else {
+                           } else {
                           Navigator.push(
                               context,
                               MaterialPageRoute(

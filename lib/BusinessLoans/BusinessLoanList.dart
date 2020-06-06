@@ -281,7 +281,13 @@ class _BusinessLoanListState extends State<BusinessLoanList> {
                                         "Apply",
                                         style: TextStyle(color: Colors.white),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BusinessLoanDetails(
+                                                    index: index,
+                                                  )));},
                                     ),
                                     SizedBox(
                                       height: 30,
