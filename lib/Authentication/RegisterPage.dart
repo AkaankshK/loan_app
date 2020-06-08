@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/Authentication/login_page.dart';
 import 'package:loanapp/NavigationBar/NavBar.dart';
+import 'package:loanapp/web_view_container.dart';
 
 import 'authentication.dart';
 
@@ -197,7 +198,10 @@ class _RegisterPageState extends State<RegisterPage> {
           title: Row(
             children: [
               Text("I Agree to ",style: TextStyle(color: Colors.black)),
-              Expanded(child: Text("TERM AND CONDITIONS PRIVACY POLICY",style: TextStyle(color: lightBlueColor, fontSize: 12.0),))
+              Expanded(child: GestureDetector(child: Text("TERM AND CONDITIONS PRIVACY POLICY",style: TextStyle(color: lightBlueColor, fontSize: 12.0),),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://loankwikprivacypolicy.blogspot.com/')));
+                },))
             ],
           ),
           controlAffinity: ListTileControlAffinity.leading,

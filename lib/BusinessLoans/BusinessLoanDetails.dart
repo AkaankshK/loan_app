@@ -2,7 +2,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/web_view_container.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'BusinessData.dart';
 
 
@@ -393,7 +392,10 @@ class _BusinessLoanDetailsState extends State<BusinessLoanDetails> {
                         value: terms,
                       ),
                       Text("I agree to "),
-                      Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
+                      GestureDetector(child: Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://loankwikprivacypolicy.blogspot.com/')));
+                      },)
                     ],
                   );
                 },

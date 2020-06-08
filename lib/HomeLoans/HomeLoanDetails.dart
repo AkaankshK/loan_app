@@ -402,7 +402,9 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
                         value: terms,
                       ),
                       Text("I agree to "),
-                      Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),)
+                      GestureDetector(child: Text("PRIVACY POLICY",style: TextStyle(color: lightBlueColor),),onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://loankwikprivacypolicy.blogspot.com/')));
+                      },)
                     ],
                   );
                 },

@@ -534,13 +534,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            PersonalLoanDetails(index: 0,)
-                                    )
-                                );
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 0,
+                                          )));
+                                }else{
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PersonalLoanDetails(index: 0)
+
+                                      )
+                                  );
+                                }
                               },
                             ),
                             SizedBox(
@@ -548,12 +557,22 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => PersonalLoanDetails(index: 0)
-                                    )
-                                );
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 0,
+                                          )));
+                                }else{
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PersonalLoanDetails(index: 0)
+
+                                      )
+                                  );
+                                }
                               },
                               child: Text(
                                 "Details   >",
@@ -607,7 +626,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalLoanDetails(index: 12)));
+                                  if (!isCitySet) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SelectCity(
+                                              index: 0,
+                                            )));
+                                  }else{
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => PersonalLoanDetails(index: 12)
+
+                                        )
+                                    );
+                                  }
                                 },
                               ),
                               SizedBox(
@@ -615,13 +649,22 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => PersonalLoanDetails(index: 12)
+                                  if (!isCitySet) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SelectCity(
+                                              index: 0,
+                                            )));
+                                  }else{
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => PersonalLoanDetails(index: 12)
 
-                                      )
-                                  );
+                                        )
+                                    );
+                                  }
                                 },
                                 child: Text(
                                   "Details   >",
@@ -776,7 +819,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 0)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 1,
+                                          )));
+                                } else {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 0)));
+                                }
                               },
                             ),
                             SizedBox(
@@ -784,7 +836,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 0)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 1,
+                                          )));
+                                } else {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 0)));
+                                }
                               },
                               child: Text(
                                 "Details   >",
@@ -837,14 +898,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 1)));},
+                                onPressed: () {
+                                  if (!isCitySet) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SelectCity(
+                                              index: 1,
+                                            )));
+                                  } else {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 1)));
+                                  }
+                                },
                               ),
                               SizedBox(
                                 height: 30,
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 1)));
+                                  if (!isCitySet) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SelectCity(
+                                              index: 1,
+                                            )));
+                                  } else {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 1)));
+                                  }
+
                                 },
                                 child: Text(
                                   "Details   >",
@@ -887,8 +969,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => SelectCity(
-                                              index: 1,
-                                            )));
+                                          index: 1,
+                                        )));
                               } else {
                                 Navigator.push(
                                     context,
@@ -1006,7 +1088,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 1,)));
+                                    if (!isCitySet) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SelectCity(
+                                                index: 2,
+                                              )));
+                                    }else{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 1,)));
+                                    }
+
                                   },
                                 ),
                                 SizedBox(
@@ -1014,7 +1106,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 1,)));
+                                    if (!isCitySet) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SelectCity(
+                                                index: 2,
+                                              )));
+                                    }else{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 1,)));
+                                    }
+
                                   },
                                   child: Text(
                                     "Details   >",
@@ -1073,7 +1175,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 0,)));
+                                    if (!isCitySet) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SelectCity(
+                                                index: 2,
+                                              )));
+                                    }else{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 0,)));
+                                    }
+
                                   },
                                 ),
                                 SizedBox(
@@ -1081,7 +1193,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 0,)));
+                                    if (!isCitySet) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SelectCity(
+                                                index: 2,
+                                              )));
+                                    }else{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 0,)));
+                                    }
                                   },
                                   child: Text(
                                     "Details   >",
@@ -1242,7 +1363,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 2,)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 3,
+                                          )));
+                                }else{
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 2,)));
+                                }
                               },
                             ),
                             SizedBox(
@@ -1250,7 +1380,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 2,)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 3,
+                                          )));
+                                }else{
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 2,)));
+                                }
                               },
                               child: Text(
                                 "Details   >",
@@ -1304,7 +1443,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 0,)));
+                                  if (!isCitySet) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SelectCity(
+                                              index: 3,
+                                            )));
+                                  }else{
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 0,)));
+                                  }
                                 },
                               ),
                               SizedBox(
@@ -1312,7 +1460,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               GestureDetector(
                                 onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 0,)));
+                                  if (!isCitySet) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => SelectCity(
+                                              index: 3,
+                                            )));
+                                  }else{
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 0,)));
+                                  }
                                 },
                                 child: Text(
                                   "Details   >",
@@ -1455,7 +1612,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 1,)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 4,
+                                          )));
+                                }else{
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 1,)));
+                                }
                               },
                             ),
                             SizedBox(
@@ -1463,7 +1629,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 1,)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 4,
+                                          )));
+                                }else{
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 1,)));
+                                }
                               },
                               child: Text(
                                 "Details   >",
@@ -1511,7 +1686,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 6,)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 4,
+                                          )));
+                                }else{
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 6,)));
+                                }
                               },
                             ),
                             SizedBox(
@@ -1519,7 +1703,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 6,)));
+                                if (!isCitySet) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCity(
+                                            index: 4,
+                                          )));
+                                }else{
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 6,)));
+                                }
+
                               },
                               child: Text(
                                 "Details   >",

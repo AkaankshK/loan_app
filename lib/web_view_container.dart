@@ -30,6 +30,9 @@ class _WebViewContainerState extends State<WebViewContainer> {
 
   @override
   Widget build(BuildContext context) {
+
+//    WebViewController _webViewController;
+
     return Scaffold(
       appBar: AppBar(
         title: new Text('Loan Kwik'),
@@ -38,11 +41,12 @@ class _WebViewContainerState extends State<WebViewContainer> {
       body: Stack(
         children: <Widget>[
           new WebView(
+
             key: _key,
             initialUrl: _url,
             javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (webViewCreate) {
-              _controller.complete(webViewCreate);
+            onWebViewCreated: (WebViewController webviewController) {
+              _controller.complete(webviewController);
             },
             onPageFinished: (finish) {
               setState(() {
