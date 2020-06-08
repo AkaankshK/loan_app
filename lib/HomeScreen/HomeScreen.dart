@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/BusinessLoans/BusinessLoanDetails.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanList.dart';
 import 'package:loanapp/CreditCards/CreditCardData.dart';
+import 'package:loanapp/CreditCards/CreditCardDetails.dart';
 import 'package:loanapp/CreditCards/CreditCardList.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
+import 'package:loanapp/HomeLoans/HomeLoanDetails.dart';
 import 'package:loanapp/HomeLoans/HomeLoanList.dart';
+import 'package:loanapp/LoansAgentProperty/LoanAgentDetails.dart';
 import 'package:loanapp/LoansAgentProperty/LoanAgentList.dart';
+import 'package:loanapp/PersonalLoan/PersonalLoanDetails.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
 
 import '../SelectCity.dart';
@@ -528,15 +533,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "Apply",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            PersonalLoanDetails(index: 0,)
+                                    )
+                                );
+                              },
                             ),
                             SizedBox(
                               height: 30,
                             ),
-                            Text(
-                              "Details   >",
-                              style: TextStyle(
-                                  color: lightBlueColor, fontSize: 15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PersonalLoanDetails(index: 0)
+                                    )
+                                );
+                              },
+                              child: Text(
+                                "Details   >",
+                                style: TextStyle(
+                                    color: lightBlueColor, fontSize: 15),
+                              ),
                             )
                           ],
                         )
@@ -583,15 +606,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalLoanDetails(index: 12)));
+                                },
                               ),
                               SizedBox(
                                 height: 30,
                               ),
-                              Text(
-                                "Details   >",
-                                style: TextStyle(
-                                    color: lightBlueColor, fontSize: 15),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PersonalLoanDetails(index: 12)
+
+                                      )
+                                  );
+                                },
+                                child: Text(
+                                  "Details   >",
+                                  style: TextStyle(
+                                      color: lightBlueColor, fontSize: 15),
+                                ),
                               )
                             ],
                           ),
@@ -739,15 +775,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "Apply",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 0)));
+                              },
                             ),
                             SizedBox(
                               height: 30,
                             ),
-                            Text(
-                              "Details   >",
-                              style: TextStyle(
-                                  color: lightBlueColor, fontSize: 15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 0)));
+                              },
+                              child: Text(
+                                "Details   >",
+                                style: TextStyle(
+                                    color: lightBlueColor, fontSize: 15),
+                              ),
                             )
                           ],
                         )
@@ -794,15 +837,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 1)));},
                               ),
                               SizedBox(
                                 height: 30,
                               ),
-                              Text(
-                                "Details   >",
-                                style: TextStyle(
-                                    color: lightBlueColor, fontSize: 15),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessLoanDetails(index: 1)));
+                                },
+                                child: Text(
+                                  "Details   >",
+                                  style: TextStyle(
+                                      color: lightBlueColor, fontSize: 15),
+                                ),
                               )
                             ],
                           ),
@@ -957,15 +1005,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                     "Apply",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 1,)));
+                                  },
                                 ),
                                 SizedBox(
                                   height: 30,
                                 ),
-                                Text(
-                                  "Details   >",
-                                  style: TextStyle(
-                                      color: lightBlueColor, fontSize: 15),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 1,)));
+                                  },
+                                  child: Text(
+                                    "Details   >",
+                                    style: TextStyle(
+                                        color: lightBlueColor, fontSize: 15),
+                                  ),
                                 )
                               ],
                             ),
@@ -1017,15 +1072,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                     "Apply",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 0,)));
+                                  },
                                 ),
                                 SizedBox(
                                   height: 30,
                                 ),
-                                Text(
-                                  "Details   >",
-                                  style: TextStyle(
-                                      color: lightBlueColor, fontSize: 15),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeLoanDetails(index: 0,)));
+                                  },
+                                  child: Text(
+                                    "Details   >",
+                                    style: TextStyle(
+                                        color: lightBlueColor, fontSize: 15),
+                                  ),
                                 )
                               ],
                             ),
@@ -1179,15 +1241,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "Apply",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 2,)));
+                              },
                             ),
                             SizedBox(
                               height: 30,
                             ),
-                            Text(
-                              "Details   >",
-                              style: TextStyle(
-                                  color: lightBlueColor, fontSize: 15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 2,)));
+                              },
+                              child: Text(
+                                "Details   >",
+                                style: TextStyle(
+                                    color: lightBlueColor, fontSize: 15),
+                              ),
                             )
                           ],
                         )
@@ -1234,15 +1303,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 0,)));
+                                },
                               ),
                               SizedBox(
                                 height: 30,
                               ),
-                              Text(
-                                "Details   >",
-                                style: TextStyle(
-                                    color: lightBlueColor, fontSize: 15),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoanAgentDetails(index: 0,)));
+                                },
+                                child: Text(
+                                  "Details   >",
+                                  style: TextStyle(
+                                      color: lightBlueColor, fontSize: 15),
+                                ),
                               )
                             ],
                           ),
@@ -1378,15 +1454,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "Apply",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 1,)));
+                              },
                             ),
                             SizedBox(
                               height: 30,
                             ),
-                            Text(
-                              "Details   >",
-                              style: TextStyle(
-                                  color: lightBlueColor, fontSize: 15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 1,)));
+                              },
+                              child: Text(
+                                "Details   >",
+                                style: TextStyle(
+                                    color: lightBlueColor, fontSize: 15),
+                              ),
                             )
                           ],
                         )
@@ -1427,15 +1510,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 "Apply",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 6,)));
+                              },
                             ),
                             SizedBox(
                               height: 30,
                             ),
-                            Text(
-                              "Details   >",
-                              style: TextStyle(
-                                  color: lightBlueColor, fontSize: 15),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardDetails(index: 6,)));
+                              },
+                              child: Text(
+                                "Details   >",
+                                style: TextStyle(
+                                    color: lightBlueColor, fontSize: 15),
+                              ),
                             )
                           ],
                         )

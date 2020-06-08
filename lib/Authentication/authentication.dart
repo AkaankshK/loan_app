@@ -4,7 +4,7 @@ import 'package:loanapp/Authentication/page_select.dart';
 import 'package:loanapp/IntroScreen/IntroScreen.dart';
 import 'package:loanapp/NavigationBar/NavBar.dart';
 
-class AuthService {
+class  AuthService {
 
   handleAuth() {
 
