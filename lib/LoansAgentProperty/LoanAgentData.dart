@@ -15,6 +15,7 @@ var ascend={
   "earlyrepayment":null,
   "overdue":"1180 /- BOUNCING,COLLECTION VISIT CHARGES 1180 /- AND 3% PENALTY CHAREGE P.M",
   "loandisbursal":"BORROWER ACCOUNTS",
+  "url": "https://ascendcap.in/",
 };
 
 var csl={
@@ -34,6 +35,7 @@ var csl={
   "earlyrepayment":"As per agreement",
   "overdue":"As per agreement",
   "loandisbursal":"transfer to borrower bank account",
+  "url": "https://www.cslfinance.in/",
 
 
 };
@@ -54,6 +56,7 @@ var au={
   "earlyrepayment":"5% within a year, 3% after a year (on principal o/s)",
   "overdue":"5% within a year, 3% after a year (on principal o/s)",
   "loandisbursal":"In Customers Bank Account",
+  "url": "https://www.aubank.in/",
 };
 
 

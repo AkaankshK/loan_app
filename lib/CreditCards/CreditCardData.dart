@@ -10,6 +10,7 @@ var citicb={
                 "Avail up to 15% off on dining across 2000 partnered restaurant",
                "Cash back of INR 500 is automatically credited to the statement",
             ],
+  "url": "https://bit.ly/2zqEdx7",
 
 };
 
@@ -31,6 +32,7 @@ var rblpm={
 
 "Fuel Surcharge waiver up to Rs. 150 each month",
   ],
+  "url": "",
 };
 
 var Platinum_Delight_Credit_Card={
@@ -45,6 +47,7 @@ var Platinum_Delight_Credit_Card={
     'Get 4 Reward Points on every Rs. 100 spent on all purchases on the weekend, except for fuel',
     'Get 2 Reward Points on every Rs. 100 spent on all purchases on the weekend, except for fuel',
     'Fuel Surcharge waiver up to Rs. 150 each month'],
+  "url": "https://bit.ly/2ZwsjML",
 };
 
 var ShopRite_Credit_Card={
@@ -63,6 +66,7 @@ var ShopRite_Credit_Card={
 
     'Get 1 Reward Point for every Rs. 100 spent on all other purchases'
   ],
+  "url": "https://bit.ly/2ZwsjML",
 };
 
 var
@@ -85,6 +89,7 @@ AMEX_Membership_Rewards_Credit_Card ={
 
     'Use your American Express Credit Card for your next big purchase & pay in easy EMI'
   ],
+  "url": "https://amex.co/2WWaEMY",
 };
 
 var SimplySAVE_SBI_Card={
@@ -104,6 +109,7 @@ var SimplySAVE_SBI_Card={
 
     'Annual fee reversal on spending Rs.90,000 in a year'
   ],
+  "url": "https://bit.ly/2WTMPFE",
 };
 
 var SimplyCLICK_SBI_Card={
@@ -126,6 +132,7 @@ var SimplyCLICK_SBI_Card={
     'Annual fees reversal on spendings of Rs.1 lakh in an anniversary year'
 
   ],
+  "url": "https://bit.ly/2WTMPFE",
 };
 
 var Times_Titanium_Credit={
@@ -146,6 +153,7 @@ var Times_Titanium_Credit={
     'Best entertainment Credit Card - up to 25% off on movies and up to 15% off on dining'
 
   ],
+  "url": "https://bit.ly/3gkdR0G",
 };
 
 var HDFC_Bank_MoneyBack_Credit_Card={
@@ -166,6 +174,7 @@ var HDFC_Bank_MoneyBack_Credit_Card={
     'Zero Lost Card liability post reporting of the loss of card.'
 
   ],
+  "url": "https://bit.ly/3gkdR0G",
 };
 
 
@@ -187,8 +196,8 @@ var AMEX_SmartEarn_Credit_Card={
     'Get a renewal fee waiver on eligible spends³ of Rs.40,000 and above in the previous year of Cardmembership',
 
     'Convert purchases into EMI at the point of sale with an interest rate as low as 12% p.a. and zero foreclosure charges'
-
   ],
+  "url": "https://amex.co/2WWaEMY",
 };
 
 
@@ -214,6 +223,7 @@ var Citi_Rewards_Card={
     'Your reward points will never expire'
 
   ],
+  "url": "https://bit.ly/2zqEdx7",
 };
 
 final creditcards = [citicb,Platinum_Delight_Credit_Card,ShopRite_Credit_Card,AMEX_Membership_Rewards_Credit_Card,

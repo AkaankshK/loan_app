@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/web_view_container.dart';
 
 import 'LoanAgentData.dart';
 
@@ -34,10 +35,11 @@ class _LoanAgentDetailsState extends State<LoanAgentDetails> {
   MaterialColor buttonColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   bool terms=false;
-
+  final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         title: Text("Loan Againt Property Offers"),
         centerTitle: true,
@@ -423,7 +425,14 @@ class _LoanAgentDetailsState extends State<LoanAgentDetails> {
             color: buttonColor,
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
-            onPressed: (){},
+            onPressed: (){
+
+              if(terms) Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(loansagainst[widget.index]['url'])));
+              else
+                _key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY'),));
+
+
+            },
           ),
         ),
       ),

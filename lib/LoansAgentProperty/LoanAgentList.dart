@@ -271,7 +271,15 @@ class _LoanAgentListState extends State<LoanAgentList> {
                                   "Apply",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LoanAgentDetails(
+                                                index: index,
+                                              )));
+                                },
                               ),
                               SizedBox(
                                 height: 30,

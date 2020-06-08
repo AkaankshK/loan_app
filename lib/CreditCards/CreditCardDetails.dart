@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/CreditCards/CreditCardData.dart';
+import 'package:loanapp/web_view_container.dart';
 
 
 
@@ -34,7 +35,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
 
   bool terms=false;
-
+  final _key = GlobalKey<ScaffoldState>();
 @override
   void dispose() {
 
@@ -43,6 +44,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         title: Text("Credit Card Offers"),
         centerTitle: true,
@@ -287,7 +289,14 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
             color: buttonColor,
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
-            onPressed: (){},
+            onPressed: (){
+
+              if(terms) Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(creditcards[widget.index]['url'])));
+              else
+                _key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY'),));
+
+
+            },
           ),
         ),
       ),

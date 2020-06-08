@@ -329,15 +329,19 @@ class _CalculatorState extends State<Calculator> {
             ),
             Row(
               children: [
-                Container(
-                  height: 15,
-                  width: MediaQuery.of(context).size.width / 1.3,
-                  color: greenColor,
+                Expanded(
+                  child: Container(
+                    height: 15,
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    color: greenColor,
+                  ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 10.8,
-                  height: 15,
-                  color: yellowColor,
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 10.8,
+                    height: 15,
+                    color: yellowColor,
+                  ),
                 )
               ],
             ),

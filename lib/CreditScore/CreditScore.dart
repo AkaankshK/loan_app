@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/web_view_container.dart';
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -97,8 +98,13 @@ class _CreditPageState extends State<CreditPage> {
                           flex: 50,
                           child: AspectRatio(
                             aspectRatio: 4,
-                            child: Image.asset(
-                              "assets/u.png",
+                            child: GestureDetector(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://www.wishfin.com/cibil-score')));
+                              },
+                              child: Image.asset(
+                                "assets/u.png",
+                              ),
                             ),
                           )),
                       Expanded(
@@ -201,7 +207,9 @@ class _CreditPageState extends State<CreditPage> {
                   MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://www.wishfin.com/cibil-score')));
+                    },
                     child: Text(
                       "Get it Now!",
                       style: TextStyle(color: Colors.white, fontSize: 20),
