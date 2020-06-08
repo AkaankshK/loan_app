@@ -50,14 +50,14 @@ class _WebViewContainerState extends State<WebViewContainer> {
               });
             },
           ),
-          _isLoadingPage
-              ? Container(
-            alignment: FractionalOffset.center,
-            child: CircularProgressIndicator(semanticsLabel: 'Loading....',),
-          )
-              : Container(
-            color: Colors.transparent,
-          ),
+          if(_isLoadingPage)
+               Container(
+                 alignment: FractionalOffset.center,
+                 child: CircularProgressIndicator(semanticsLabel: 'Loading....',),
+              )
+//              : Container(
+//            color: Colors.transparent,
+//          ),
         ],
       ),
     );
