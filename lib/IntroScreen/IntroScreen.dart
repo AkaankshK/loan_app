@@ -3,6 +3,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/Authentication/page_select.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/HomeScreen/HomeScreen.dart';
 import 'package:loanapp/NavigationBar/NavBar.dart';
@@ -112,20 +113,23 @@ class _IntroScreenState extends State<IntroScreen> {
         alignment: Alignment(0,0.25),
         child: Text("Quick and Convenient Application",style: TextStyle(fontSize: 25,color: blueColor,fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
       ),
+
       Align(
-        alignment: Alignment(0,.35),
+        alignment: Alignment(0,.40),
         child: Text("100% paperless",textAlign: TextAlign.center,),
       ),
-      Align(
-        alignment: Alignment(0,.50),
+      Positioned(
+        bottom: 30.0,
+        left: MediaQuery.of(context).size.width / 2 - 150,
         child: Container(
           width: 300,
           child: RaisedButton(
             color: blueColor,
             child: Text("Register",style: TextStyle(color: Colors.white),),
             onPressed: (){
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NavBar()), (route) => false);
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => PageSelector()), (route) => false);
             },
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
           ),
         ),
       )

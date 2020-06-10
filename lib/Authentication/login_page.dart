@@ -141,10 +141,10 @@ class _LoginPageState extends State<LoginPage> {
           onPressed: () async {
             if(verified) {
 
-              print("User Verified");
+//              print("User Verified");
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NavBar()), (route) => false);
             }
-              print('Something Went Wrong');
+//              print('Something Went Wrong');
               key.currentState.showSnackBar(SnackBar(content: new Text('Something Went Wrong, please try again later'), duration: Duration(seconds: 15),));
 
           },

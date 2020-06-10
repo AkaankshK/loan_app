@@ -7,7 +7,6 @@ import 'package:loanapp/Calculator/Calculator.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/HomeScreen/HomeScreen.dart';
 import 'package:loanapp/MoreOptions/MoreOptionsPage.dart';
-import 'package:loanapp/dummy.dart';
 Map<int, Color> colors =
 {
   50:Color.fromRGBO(136,14,79, .1),

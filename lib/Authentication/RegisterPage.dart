@@ -162,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
               if(checkBox) {
                 var user = await FirebaseAuth.instance.currentUser();
-                print('verified 123 !');
+
                 await Firestore.instance
                     .collection("users")
                     .document(user.uid)
@@ -170,7 +170,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   "name": name,
                   "phoneNumber": phoneNumController.text.toString()
                 });
-                print("User Created");
+
                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NavBar()), (route) => false);
               }else{
                 key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to Terms and Conditions')));
@@ -178,7 +178,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
             }else{
 //              Scaffold.of(context).showSnackBar();
-                print('Something Went Wrong');
+//                print('Something Went Wrong');
                 key.currentState.showSnackBar(SnackBar(content: new Text('Something Went Wrong')));
             }
           },

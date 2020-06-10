@@ -55,6 +55,16 @@ class ContactUs extends StatelessWidget {
                   hintText: 'Mobile Number',
 
                 ),
+                keyboardType: TextInputType.number,
+              ),
+              Padding(padding: EdgeInsets.all(10.0),),
+
+              new TextField(
+
+                decoration: InputDecoration(
+                  hintText: 'Email',
+
+                ),
 
               ),
 

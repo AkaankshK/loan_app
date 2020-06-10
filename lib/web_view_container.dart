@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewContainer extends StatefulWidget {
 
@@ -17,8 +16,8 @@ class _WebViewContainerState extends State<WebViewContainer> {
   var _url;
   final _key = UniqueKey();
   bool _isLoadingPage;
-
-  Completer<WebViewController> _controller = Completer<WebViewController>();
+  InAppWebViewController webview;
+//  Completer<WebViewController> _controller = Completer<WebViewController>();
 
   _WebViewContainerState(this._url);
 
@@ -27,6 +26,9 @@ class _WebViewContainerState extends State<WebViewContainer> {
     super.initState();
     _isLoadingPage = true;
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,32 +40,57 @@ class _WebViewContainerState extends State<WebViewContainer> {
         title: new Text('Loan Kwik'),
         centerTitle: true,
       ),
-      body: Stack(
-        children: <Widget>[
-          new WebView(
+      body: Container(
+       child: Column(
+         children: <Widget>[
+           Expanded(
+             child: Container(
+               child: InAppWebView(
+                 initialUrl: _url,
+                 initialHeaders: {},
 
-            key: _key,
-            initialUrl: _url,
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (WebViewController webviewController) {
-              _controller.complete(webviewController);
-            },
-            onPageFinished: (finish) {
-              setState(() {
-                _isLoadingPage = false;
-              });
-            },
-          ),
-          if(_isLoadingPage)
-               Container(
-                 alignment: FractionalOffset.center,
-                 child: CircularProgressIndicator(semanticsLabel: 'Loading....',),
-              )
-//              : Container(
-//            color: Colors.transparent,
+                 onWebViewCreated: (InAppWebViewController inAppWebViewController) {
+                   webview = inAppWebViewController;
+                 },
+                 onLoadStart: (InAppWebViewController controller, String url) {
+
+                 },
+                 onLoadStop: (InAppWebViewController controller, String url) {
+
+                 },
+
+               ),
+             ),
+           )
+         ],
+        )
+        ),
+//      body: Stack(
+//        children: <Widget>[
+//          new WebView(
+//
+//            key: _key,
+//            initialUrl: _url,
+//            javascriptMode: JavascriptMode.unrestricted,
+//            onWebViewCreated: (WebViewController webviewController) {
+//              _controller.complete(webviewController);
+//            },
+//            onPageFinished: (finish) {
+//              setState(() {
+//                _isLoadingPage = false;
+//              });
+//            },
 //          ),
-        ],
-      ),
+//          if(_isLoadingPage)
+//               Container(
+//                 alignment: FractionalOffset.center,
+//                 child: CircularProgressIndicator(semanticsLabel: 'Loading....',),
+//              )
+////              : Container(
+////            color: Colors.transparent,
+////          ),
+//        ],
+//      ),
     );
   }
 }

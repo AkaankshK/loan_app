@@ -108,6 +108,7 @@ class _CalculatorState extends State<Calculator> {
 
                                     controller: amountController,
                       decoration: InputDecoration(hintText: "Enter Amount from Rs.50,000-10 Crore"),
+                                    keyboardType: TextInputType.number,
                     ),
                   ),
                 ),

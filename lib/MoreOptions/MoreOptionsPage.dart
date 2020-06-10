@@ -5,6 +5,11 @@ import 'package:loanapp/Authentication/RegisterPage.dart';
 import 'package:loanapp/Authentication/authentication.dart';
 import 'package:loanapp/Authentication/page_select.dart';
 import 'package:loanapp/MoreOptions/contact_us.dart';
+import 'package:loanapp/MoreOptions/notifications.dart';
+import 'package:loanapp/MoreOptions/rate_us.dart';
+import 'package:loanapp/MoreOptions/settings.dart';
+import 'package:loanapp/MoreOptions/share_to.dart';
+import 'package:loanapp/web_view_container.dart';
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
@@ -79,7 +84,9 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
         child: ListView(
           children: [
             FlatButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://www.wishfin.com/cibil-score')));
+              },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/1.png",height: 40,width: 40,),
                 title: Text("My Credit Report"),
@@ -88,7 +95,7 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
             ),
             FlatButton(
               onPressed: (){
-                print('settings');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
               },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/2.png",height: 40,width: 40,),
@@ -97,7 +104,9 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
               ),
             ),
             FlatButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RateUs()));
+              },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/3.png",height: 40,width: 40,),
                 title: Text("Rate Us"),
@@ -105,7 +114,9 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
               ),
             ),
             FlatButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ShareWith()));
+              },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/4.png",height: 40,width: 40,),
                 title: Text("Share to your friends"),
@@ -113,7 +124,9 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
               ),
             ),
             FlatButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://loankwikprivacypolicy.blogspot.com/')));
+              },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/5.png",height: 40,width: 40,),
                 title: Text("Privacy Policy"),
@@ -121,7 +134,9 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
               ),
             ),
             FlatButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications()));
+              },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/6.png",height: 40,width: 40,),
                 title: Text("Notifications"),
