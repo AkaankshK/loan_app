@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/HomeLoans/HomeLoanData.dart';
 import 'package:loanapp/web_view_container.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
@@ -432,7 +433,7 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
 
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
             onPressed: (){
-              if(terms) Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(homeloans[widget.index]['url'])));
+              if(terms) _handleUrlButton(context, homeloans[widget.index]['url']);
               else
                 _key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY'), duration: Duration(seconds: 3),));
             },
@@ -440,5 +441,20 @@ class _HomeLoanDetailsState extends State<HomeLoanDetails> {
         ),
       ),
     );
+  }
+
+  void _handleUrlButton(BuildContext context, String url) async {
+
+    if(url.contains('https://play.google.com')) {
+      if(await canLaunch(url)) {
+      await launch(url);
+    }else{
+      throw 'Could not launch $url';
+    }
+    }
+    else{
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+    }
+    
   }
 }

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loanapp/Authentication/page_select.dart';
+
 import 'package:loanapp/IntroScreen/IntroScreen.dart';
 import 'package:loanapp/NavigationBar/NavBar.dart';
 

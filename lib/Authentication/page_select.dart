@@ -1,12 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/Authentication/RegisterPage.dart';
 import 'package:loanapp/Authentication/login_page.dart';
-import 'package:loanapp/NavigationBar/NavBar.dart';
 
-import 'authentication.dart';
+
+
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),

@@ -150,8 +150,8 @@ class _CreditCardListState extends State<CreditCardList> {
                 _dropDownHeaderItemStrings[1] = _selectFilterSortCondition.name = _selectFilterSortCondition.name;
                   _dropdownMenuController.hide();
                   setState(() {
-                    print('${value.name}');
-                    print('flag');
+                    // print('${value.name}');
+                    // print('flag');
                   });
                 })),
           ],
@@ -307,14 +307,12 @@ class _CreditCardListState extends State<CreditCardList> {
                 SizedBox(
                   width: 16,
                 ),
-                Expanded(
-                  child: Text(
-                    goodsSortCondition.name,
-                    style: TextStyle(
-                      color: goodsSortCondition.isSelected
-                          ? Theme.of(context).primaryColor
-                          : Colors.black,
-                    ),
+                Text(
+                  goodsSortCondition.name,
+                  style: TextStyle(
+                    color: goodsSortCondition.isSelected
+                        ? Theme.of(context).primaryColor
+                        : Colors.black,
                   ),
                 ),
                 goodsSortCondition.isSelected
@@ -376,31 +374,29 @@ class _CreditCardListState extends State<CreditCardList> {
                       decoration: BoxDecoration(
                           border: Border.all(width: 1, color: Colors.grey)),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {
-                                    _selectedBanks.add('SBI');
-                                  },
-                                  child: Text(
-                                    "SBI Bank",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {
+                                _selectedBanks.add('SBI');
+                              },
+                              child: Text(
+                                "SBI Bank",
+                                style: TextStyle(color: Colors.black),
+                              )))),
                   Container(
                       height: 50,
                       width: 100,
                       decoration: BoxDecoration(
                           border: Border.all(width: 1, color: Colors.grey)),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {
-                                    _selectedBanks.add('Citi Bank');
-                                    _selectedBanks.add('Citi');
-                                  },
-                                  child: Text(
-                                    "Citi Bank",
-                                    style: TextStyle(color: Colors.black),
-                                  )))))
+                          child: FlatButton(
+                              onPressed: () {
+                                _selectedBanks.add('Citi Bank');
+                                _selectedBanks.add('Citi');
+                              },
+                              child: Text(
+                                "Citi Bank",
+                                style: TextStyle(color: Colors.black),
+                              ))))
 //                      child: Center(child: Text("Citi Bank"))),
                 ],
               ),
@@ -419,21 +415,20 @@ class _CreditCardListState extends State<CreditCardList> {
 
                       ),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {
+                          child: FlatButton(
+                              onPressed: () {
 
-                                      _selectedBanks.add("AMEX");
-                                        colorMaps["AMEX"] = true;
+                                  _selectedBanks.add("AMEX");
+                                    colorMaps["AMEX"] = true;
 
-                                  },
-
+                              },
 
 
-                                  child: Text(
-                                    "AMEX Bank",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+
+                              child: Text(
+                                "AMEX Bank",
+                                style: TextStyle(color: Colors.black),
+                              )))),
 //                      child: Center(child: Text("AMEX Bank"))),
                   Container(
                       height: 50,
@@ -442,15 +437,14 @@ class _CreditCardListState extends State<CreditCardList> {
                           border: Border.all(width: 1, color: Colors.grey)),
 //                      child: Center(child: Text("HDFC Bank"))
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {
-                                    _selectedBanks.add('HDFC');
-                                  },
-                                  child: Text(
-                                    "HDFC Bank",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {
+                                _selectedBanks.add('HDFC');
+                              },
+                              child: Text(
+                                "HDFC Bank",
+                                style: TextStyle(color: Colors.black),
+                              )))),
                   Container(
                       height: 50,
                       width: 100,
@@ -458,15 +452,14 @@ class _CreditCardListState extends State<CreditCardList> {
                           border: Border.all(width: 1, color: Colors.grey)),
 //                      child: Center(child: Text("AXIS Bank"))
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {
-                                    _selectedBanks.add('AXIS');
-                                  },
-                                  child: Text(
-                                    "AXIS Bank",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {
+                                _selectedBanks.add('AXIS');
+                              },
+                              child: Text(
+                                "AXIS Bank",
+                                style: TextStyle(color: Colors.black),
+                              )))),
                 ],
               ),
             ),
@@ -490,13 +483,12 @@ class _CreditCardListState extends State<CreditCardList> {
                           border: Border.all(width: 1, color: Colors.grey)),
 //                      child: Center(child: Text("Movies"))),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Movies",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Movies",
+                                style: TextStyle(color: Colors.black),
+                              )))),
                   Container(
                       height: 50,
                       width: 100,
@@ -504,13 +496,12 @@ class _CreditCardListState extends State<CreditCardList> {
                           border: Border.all(width: 1, color: Colors.grey)),
 //                      child: Center(child: Text("Shopping"))),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Shopping",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Shopping",
+                                style: TextStyle(color: Colors.black),
+                              )))),
                   Container(
                       height: 50,
                       width: 100,
@@ -518,13 +509,12 @@ class _CreditCardListState extends State<CreditCardList> {
                           border: Border.all(width: 1, color: Colors.grey)),
 //                      child: Center(child: Text("Travel"))),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Travel",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Travel",
+                                style: TextStyle(color: Colors.black),
+                              )))),
                 ],
               ),
             ),
@@ -539,13 +529,12 @@ class _CreditCardListState extends State<CreditCardList> {
                       decoration: BoxDecoration(
                           border: Border.all(width: 1, color: Colors.grey)),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Fuel",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Fuel",
+                                style: TextStyle(color: Colors.black),
+                              )))),
 //                      child: Center(child: Text("Fuel"))),
                   Container(
                       height: 50,
@@ -553,13 +542,12 @@ class _CreditCardListState extends State<CreditCardList> {
                       decoration: BoxDecoration(
                           border: Border.all(width: 1, color: Colors.grey)),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Air Miles",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Air Miles",
+                                style: TextStyle(color: Colors.black),
+                              )))),
 //                      child: Center(child: Text("Air Miles"))),
                   Container(
                       height: 50,
@@ -567,13 +555,12 @@ class _CreditCardListState extends State<CreditCardList> {
                       decoration: BoxDecoration(
                           border: Border.all(width: 1, color: Colors.grey)),
                       child: Center(
-                          child: Expanded(
-                              child: FlatButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Hotel",
-                                    style: TextStyle(color: Colors.black),
-                                  ))))),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Hotel",
+                                style: TextStyle(color: Colors.black),
+                              )))),
 //                      child: Center(child: Text("Hotel"))),
                 ],
               ),
@@ -584,17 +571,18 @@ class _CreditCardListState extends State<CreditCardList> {
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
-            Expanded(
-              flex: 50,
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
               child: MaterialButton(
-                onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CreditCardList(creditcardsOrignal)));
-                },
-                child: Text("Reset"),
-              ),
+                  onPressed: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CreditCardList(creditcardsOrignal)));
+                  },
+                  child: Text("Reset"),
+                ),
             ),
-            Expanded(
-              flex: 50,
+            
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
               child: MaterialButton(
                 color: buttonColor,
                 onPressed: () {
@@ -606,7 +594,7 @@ class _CreditCardListState extends State<CreditCardList> {
                   for(var item in creditcardsOrignal) {
                     if(_selectedBanks.contains(item['name'])) {
                       newList.add(item);
-                      print(item['name'].toString());
+                      // print(item['name'].toString());
                     }
                   }
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CreditCardList(newList)));

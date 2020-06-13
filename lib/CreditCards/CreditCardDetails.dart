@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/CreditCards/CreditCardData.dart';
 import 'package:loanapp/web_view_container.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
@@ -72,7 +73,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
   }
 
   getContents() {
-    var item=creditcards[widget.index];
+    
 
     return Column(
 
@@ -128,7 +129,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
     var item=creditcards[widget.index];
     var ben=item.values.toList();
     var ben1=ben[6];
-    print(ben1);
+    // print(ben1);
     List<TableRow> row=<TableRow>[];
     for(String i in ben1) {
       row.add(
@@ -295,7 +296,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
             child: Text("Apply Now",style: TextStyle(color: Colors.white),),
             onPressed: (){
 
-              if(terms) Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(creditcards[widget.index]['url'])));
+              if(terms) _handleUrlButton(context, creditcards[widget.index]['url']);
               else
                 _key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to PRIVACY POLICY'),));
 
@@ -389,7 +390,20 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
     );
   }
 
+  void _handleUrlButton(BuildContext context, String url) async {
 
+    if(url.contains('https://play.google.com')) {
+      if(await canLaunch(url)) {
+      await launch(url);
+    }else{
+      throw 'Could not launch $url';
+    }
+    }
+    else{
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+    }
+    
+  }
 
 
 }

@@ -102,10 +102,10 @@ class _SelectCityState extends State<SelectCity> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
+                    Center(
                       child: Container(
                         height: 40,
-                        width: MediaQuery.of(context).size.width,
+                        width: (MediaQuery.of(context).size.width * 8 / 10) - 10,  
                         child: Center(
                           child: SimpleAutoCompleteTextField(
                             key: key,
@@ -144,46 +144,43 @@ class _SelectCityState extends State<SelectCity> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: SizedBox(
-                        height: MediaQuery.of(context).size.height / 1.5,
-                        width: MediaQuery.of(context).size.width,
-                        child: StatefulBuilder(
-                          builder: (BuildContext bc,StateSetter setState){
-                            return ((citynames.length == 0)) ? Center(child: new Text('Nothing to show'),) : GridView.builder(
-                                itemCount: citynames.length,
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2, childAspectRatio: 4),
-                                itemBuilder: (_, int index) {
-                                  CityCondition item = citynames[index];
-                                  return GestureDetector(
-                                    onTap: (){
-                                      setState(() {
-                                        for(var i in citynames){
-                                          i.isSelected=false;
-                                        }
-                                        item.isSelected=true;
+                  child: SizedBox(
+                      height: MediaQuery.of(context).size.height / 1.5,
+                      width: MediaQuery.of(context).size.width,
+                      child: StatefulBuilder(
+                        builder: (BuildContext bc,StateSetter setState){
+                          return ((citynames.length == 0)) ? Center(child: new Text('Nothing to show'),) : GridView.builder(
+                              itemCount: citynames.length,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2, childAspectRatio: 4),
+                              itemBuilder: (_, int index) {
+                                CityCondition item = citynames[index];
+                                return GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      for(var i in citynames){
+                                        i.isSelected=false;
+                                      }
+                                      item.isSelected=true;
 
-                                      });
-                                    },
-                                    child: Container(
-                                      child: Expanded(
-                                        child: Card(
-                                            color: item.isSelected ? lightBlueColor : Colors.white,
-                                            elevation: 2,
-                                            shadowColor: lightBlueColor,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(10),
-                                            ),
-                                            child: Center(child: Text(item.name,style: TextStyle(color: item.isSelected?Colors.white:Colors.black),))),
-                                      ),
-                                    ),
-                                  );
-                                });
-                          },
-                        )
+                                    });
+                                  },
+                                  child: Container(
+                                    width: (MediaQuery.of(context).size.width / 2) - 20,
+                                    child: Card(
+                                        color: item.isSelected ? lightBlueColor : Colors.white,
+                                        elevation: 2,
+                                        shadowColor: lightBlueColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Center(child: Text(item.name,style: TextStyle(color: item.isSelected?Colors.white:Colors.black),))),
+                                  ),
+                                );
+                              });
+                        },
+                      )
 
-                    ),
                   ),
                 ),
               ],

@@ -1,12 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:loanapp/Authentication/RegisterPage.dart';
-import 'package:loanapp/Authentication/authentication.dart';
-import 'package:loanapp/Authentication/page_select.dart';
-import 'package:loanapp/MoreOptions/contact_us.dart';
-import 'package:loanapp/MoreOptions/rate_us.dart';
 import 'package:loanapp/web_view_container.dart';
+
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
