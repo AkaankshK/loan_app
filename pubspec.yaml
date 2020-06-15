@@ -23,9 +23,8 @@ dependencies:
   filter_list: ^0.0.4
   smooth_star_rating: ^1.1.1
   social_share: ^2.0.4
-  webview_flutter: ^0.3.22+1
   url_launcher:
-  # flutter_inappwebview: ^3.3.0+3
+  flutter_inappwebview: ^3.3.0+3
 
 
 dev_dependencies:

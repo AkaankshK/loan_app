@@ -1,5 +1,3 @@
-
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,7 @@ import 'package:loanapp/Calculator/Calculator.dart';
 import 'package:loanapp/CreditScore/CreditScore.dart';
 import 'package:loanapp/HomeScreen/HomeScreen.dart';
 import 'package:loanapp/MoreOptions/MoreOptionsPage.dart';
+import 'package:loanapp/Offers/offers.dart';
 Map<int, Color> colors =
 {
   50:Color.fromRGBO(136,14,79, .1),
@@ -35,7 +34,7 @@ class _NavBarState extends State<NavBar> {
   var currentIndex=0;
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    HomeScreen(),
+    OffersScreen(),
     CreditPage(),
     Calculator(),
     MoreOptionsPage()
