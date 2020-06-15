@@ -38,8 +38,11 @@ class _WebViewContainerState extends State<WebViewContainer> {
         title: new Text('Loan Kwik'),
         centerTitle: true,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context)),
+          icon: Icon(Icons.arrow_back),
+          onPressed: () async {
+            if (await _confirmExit()) Navigator.pop(context);
+          },
+        ),
       ),
       body: WillPopScope(
         onWillPop: _confirmExit,
