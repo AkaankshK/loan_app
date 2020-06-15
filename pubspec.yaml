@@ -25,6 +25,8 @@ dependencies:
   social_share: ^2.0.4
   url_launcher:
   flutter_inappwebview: ^3.3.0+3
+  flutter_email_sender: ^3.0.1
+  image_picker: ^0.6.7+1
 
 
 dev_dependencies:

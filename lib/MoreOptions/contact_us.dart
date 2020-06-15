@@ -1,7 +1,27 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ContactUs extends StatelessWidget {
+class ContactUs extends StatefulWidget {
+
+  @override
+  _ContactUsState createState() => _ContactUsState();
+}
+
+class _ContactUsState extends State<ContactUs> {
+  String attachment;
+  bool isHTML = false;
+  // final _recipientController = TextEditingController();
+  // final _subjectController = TextEditingController();
+  final _bodyController = TextEditingController();
+  final key = new GlobalKey<ScaffoldState>();
+  final _mobileController = TextEditingController();
+  final _emailController = TextEditingController();
+  String platformResponse;
+
   @override
   Widget build(BuildContext context) {
     const _maxLines = 10;
@@ -25,6 +45,7 @@ class ContactUs extends StatelessWidget {
                     margin: EdgeInsets.all(12.0),
                     height: _maxLines * 20.0,
                     child: new TextField(
+                      controller: _bodyController,
                       maxLines: _maxLines,
                       decoration: InputDecoration(
                         hintText:
@@ -38,7 +59,7 @@ class ContactUs extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: FlatButton(
-                        onPressed: () {},
+                        onPressed: () => _openImagePicker,
                         child: Icon(
                           Icons.add,
                           size: 70.0,
@@ -52,7 +73,9 @@ class ContactUs extends StatelessWidget {
                 padding: EdgeInsets.all(10.0),
               ),
               new TextField(
+                controller: _mobileController,
                 decoration: InputDecoration(
+
                   hintText: 'Mobile Number',
                 ),
                 keyboardType: TextInputType.number,
@@ -61,6 +84,7 @@ class ContactUs extends StatelessWidget {
                 padding: EdgeInsets.all(10.0),
               ),
               new TextField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   hintText: 'Email',
                 ),
@@ -72,8 +96,11 @@ class ContactUs extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 1.5,
                 height: 45.0,
                 child: FlatButton(
-                  onPressed: () {
-                    showDialog(
+                  onPressed: () async {
+                    sendMail();
+                    // 
+                    if(await platformResponse.compareTo('Success') == 0) {
+                      showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         // return object of type Dialog
@@ -94,6 +121,7 @@ class ContactUs extends StatelessWidget {
                         );
                       },
                     );
+                    }
                   },
                   child: new Text(
                     'Submit',
@@ -109,5 +137,34 @@ class ContactUs extends StatelessWidget {
         ),
       ),
     );
+  }
+
+
+  Future<void> sendMail() async {
+    final Email email = Email(
+      body: _bodyController.text,
+      subject: 'Query from LoanKwik Contact Us form',
+      recipients: ['azzamjafri98@gmail.com'],
+      attachmentPaths: [attachment],
+      isHTML: isHTML,
+    );
+    // 
+
+    try{
+      await FlutterEmailSender.send(email);
+      platformResponse = 'Success';
+    }catch(error) {
+      platformResponse = error.toString();
+
+    }
+    if(!mounted) return;
+    key.currentState.showSnackBar(SnackBar(content: Text(platformResponse)));
+  }
+  void _openImagePicker() async {
+    File picked = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      // attachment.add(picked.path);
+      attachment = picked.path;
+    }); 
   }
 }
