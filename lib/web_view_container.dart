@@ -37,99 +37,96 @@ class _WebViewContainerState extends State<WebViewContainer> {
       appBar: AppBar(
         title: new Text('Loan Kwik'),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () async {
-            if (await _confirmExit()) Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        //   onPressed: () async {
+        //     if (await _confirmExit()) Navigator.pop(context);
+        //   },
+        // ),
       ),
-      body: WillPopScope(
-        onWillPop: _confirmExit,
-        child: Container(
-            child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                child: InAppWebView(
-                  key: _key,
-                  initialUrl: _url,
-                  initialHeaders: {},
-                  onWebViewCreated:
-                      (InAppWebViewController inAppWebViewController) {
-                    webview = inAppWebViewController;
-                  },
-                  onLoadStart:
-                      (InAppWebViewController controller, String url) async {
-                    //  print('Loading...****************************');
-                    // setState( () {
-                    //   _isLoadingPage = true;
-                    // } );
+      body: Container(
+          child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              child: InAppWebView(
+                key: _key,
+                initialUrl: _url,
+                initialHeaders: {},
+                onWebViewCreated:
+                    (InAppWebViewController inAppWebViewController) {
+                  webview = inAppWebViewController;
+                },
+                onLoadStart:
+                    (InAppWebViewController controller, String url) async {
+                  //  print('Loading...****************************');
+                  // setState( () {
+                  //   _isLoadingPage = true;
+                  // } );
 
-                    key.currentState.showSnackBar(SnackBar(
-                      content: Text('Loading please wait...'),
-                      backgroundColor: lightBlueColor,
-                    ));
+                  key.currentState.showSnackBar(SnackBar(
+                    content: Text('Loading please wait...'),
+                    backgroundColor: lightBlueColor,
+                  ));
 
-                    // if(await canLaunch(url)) {
-                    //     await launch(url);
-                    //   }else{
-                    //     throw 'Could not launch $url';
-                    //   }
-                  },
-                  onLoadStop: (InAppWebViewController controller, String url) {
-                    //    print('Loaded !***************************************************************************');
-                    // setState( () {
-                    //   _isLoadingPage = false;
-                    // } );
-                  },
-                  onLoadError: (InAppWebViewController controller, String url,
-                      int index, String error) async {
-                    key.currentState.showSnackBar(SnackBar(
-                      content: Text('Redirecting .....'),
-                      backgroundColor: lightBlueColor,
-                    ));
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                ),
+                  // if(await canLaunch(url)) {
+                  //     await launch(url);
+                  //   }else{
+                  //     throw 'Could not launch $url';
+                  //   }
+                },
+                onLoadStop: (InAppWebViewController controller, String url) {
+                  //    print('Loaded !***************************************************************************');
+                  // setState( () {
+                  //   _isLoadingPage = false;
+                  // } );
+                },
+                onLoadError: (InAppWebViewController controller, String url,
+                    int index, String error) async {
+                  key.currentState.showSnackBar(SnackBar(
+                    content: Text('Redirecting .....'),
+                    backgroundColor: lightBlueColor,
+                  ));
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
               ),
-            )
-          ],
-        )),
-      ),
+            ),
+          )
+        ],
+      )),
     );
   }
 
-  Future<bool> _confirmExit() {
-    return showDialog(
-          context: context,
-          builder: (context) => new AlertDialog(
-            title: new Text(
-              'Confirmation',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-            content: new Text('Do you want to exit ?'),
-            actions: <Widget>[
-              new Row(
-                children: <Widget>[
-                  new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(false),
-                    child: Text("NO", style: TextStyle(color: Colors.grey)),
-                  ),
-                  SizedBox(width: MediaQuery.of(context).size.width / 10),
-                  new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(true),
-                    child: Text("YES", style: TextStyle(color: Colors.grey)),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ) ??
-        false;
-  }
+  // Future<bool> _confirmExit() {
+  //   return showDialog(
+  //         context: context,
+  //         builder: (context) => new AlertDialog(
+  //           title: new Text(
+  //             'Confirmation',
+  //             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+  //           ),
+  //           content: new Text('Do you want to exit ?'),
+  //           actions: <Widget>[
+  //             new Row(
+  //               children: <Widget>[
+  //                 new FlatButton(
+  //                   onPressed: () => Navigator.of(context).pop(false),
+  //                   child: Text("NO", style: TextStyle(color: Colors.grey)),
+  //                 ),
+  //                 SizedBox(width: MediaQuery.of(context).size.width / 10),
+  //                 new FlatButton(
+  //                   onPressed: () => Navigator.of(context).pop(true),
+  //                   child: Text("YES", style: TextStyle(color: Colors.grey)),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       ) ??
+  //       false;
+  // }
 }

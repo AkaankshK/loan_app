@@ -53,7 +53,7 @@ class _NavBarState extends State<NavBar> {
       ),
       
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: _widgetOptions[currentIndex],
+      body: WillPopScope(child: _widgetOptions[currentIndex], onWillPop: _confirmExit),
       bottomNavigationBar:BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 0,
@@ -149,4 +149,35 @@ class _NavBarState extends State<NavBar> {
       ),
     );
   }
+
+
+  Future<bool> _confirmExit() {
+    return showDialog(
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text(
+              'Confirmation',
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
+            content: new Text('Do you want to exit ?'),
+            actions: <Widget>[
+              new Row(
+                children: <Widget>[
+                  new FlatButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text("NO", style: TextStyle(color: Colors.grey)),
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width / 10),
+                  new FlatButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: Text("YES", style: TextStyle(color: Colors.grey)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }
+
 }
