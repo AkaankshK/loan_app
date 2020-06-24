@@ -145,7 +145,7 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => ContactUs()));
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => WebViewContainer('https://loankwika.blogspot.com')));
               },
               child: ListTile(
                 leading: Image.asset("assets/MoreOptions/7.png",height: 40,width: 40,),
