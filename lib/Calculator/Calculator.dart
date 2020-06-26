@@ -1,8 +1,12 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loanapp/ad_manager.dart';
+
+const String testDevice = 'Mobile_id';
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -42,6 +46,45 @@ class _CalculatorState extends State<Calculator> {
   String emiString="0";
   String tpaString="0";
   String tpiString="0";
+
+  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevice != null ? <String>[testDevice] : null,
+    nonPersonalizedAds: true,
+    // keywords: <String>['Loan', 'Banking', '']
+  );
+
+  
+  BannerAd _bannerAd;
+
+  BannerAd createBannerAd() {
+    return BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.smartBanner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("Banner $event");
+      }
+    );
+  }
+  @override
+  void initState() {
+    _bannerAd = BannerAd(adUnitId: AdManager.bannerAdUnitId, size: AdSize.banner);
+
+    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    _bannerAd = createBannerAd()..load()..show();
+    // _loadBannerAd();
+  }
+
+  @override
+  void dispose() {
+    try{
+      _bannerAd?.dispose();
+    }catch(error){
+      print(error + '*************************8');
+    }
+
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -385,4 +428,13 @@ class _CalculatorState extends State<Calculator> {
         tpiString=tpi.toStringAsFixed(2);
       });
   }
+
+
+  void _loadBannerAd() {
+    _bannerAd
+        ..load()
+        ..show(anchorType: AnchorType.top);
+  }
+
+  
 }

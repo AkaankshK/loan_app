@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/BusinessLoans/BusinessLoanDetails.dart';
@@ -12,6 +13,7 @@ import 'package:loanapp/LoansAgentProperty/LoanAgentDetails.dart';
 import 'package:loanapp/LoansAgentProperty/LoanAgentList.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanDetails.dart';
 import 'package:loanapp/PersonalLoan/PersonalLoanList.dart';
+import 'package:loanapp/ad_manager.dart';
 
 import '../SelectCity.dart';
 
@@ -1749,6 +1751,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _initAdMob() {
+    return FirebaseAdMob.instance.initialize(appId: AdManager.appId);
   }
 
   var creditcards = [

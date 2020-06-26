@@ -158,9 +158,9 @@ class _RegisterPageState extends State<RegisterPage> {
             borderRadius: BorderRadius.circular(20)
           ),
           onPressed: () async {
-            if(verified) {
+            if(checkBox) {
 
-              if(checkBox) {
+              if(verified) {
                 var user = await FirebaseAuth.instance.currentUser();
 
                 await Firestore.instance

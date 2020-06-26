@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "387691070367",
-    "firebase_url": "https://loan-kwik.firebaseio.com",
-    "project_id": "loan-kwik",
-    "storage_bucket": "loan-kwik.appspot.com"
+    "project_number": "46305671072",
+    "firebase_url": "https://loan-kwik-bb831.firebaseio.com",
+    "project_id": "loan-kwik-bb831",
+    "storage_bucket": "loan-kwik-bb831.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:387691070367:android:d4ec7d492726a532fb33aa",
+        "mobilesdk_app_id": "1:46305671072:android:97989ec11810ef0a1156c5",
         "android_client_info": {
           "package_name": "com.example.loanapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "387691070367-r0vreufbjn14hcfre3q44n3h20pnqu36.apps.googleusercontent.com",
+          "client_id": "46305671072-ullnovahdhav8bgpapl3n998lg136a25.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.loanapp",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "387691070367-t1ube3n444tpgf6mfoea9mr2t90qi8c8.apps.googleusercontent.com",
+          "client_id": "46305671072-jeum8hbfbt8boe46p7bljfrfeao2dpqr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB1p-Quzl_Na1ltm8y0Z4sVOgml9CifJoQ"
+          "current_key": "AIzaSyAi3tHCzdnouLNrNg3b6sDY0DpU26kHY6w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "387691070367-t1ube3n444tpgf6mfoea9mr2t90qi8c8.apps.googleusercontent.com",
+              "client_id": "46305671072-jeum8hbfbt8boe46p7bljfrfeao2dpqr.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
