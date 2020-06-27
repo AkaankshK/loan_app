@@ -45,3 +45,7 @@ app.*.map.json
 
 # Android Gradle settings
 /android/settings.gradle
+
+android/key.properties
+
+android/app/key.jks

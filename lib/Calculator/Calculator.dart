@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/ad_manager.dart';
 
-const String testDevice = 'Mobile_id';
+const String testDevice = '600188C4404472774243966B284E2603';
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -31,60 +31,89 @@ class _CalculatorState extends State<Calculator> {
   MaterialColor yellowColor = MaterialColor(0xffffa812, colors);
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
   MaterialColor darkBlueColor = MaterialColor(0xff0f3f81, colors);
-  var autosizegroup=AutoSizeGroup();
+  var autosizegroup = AutoSizeGroup();
   final _formKey = GlobalKey<FormState>();
-  double interest=0.0;
-  final amountController=TextEditingController();
-  var emi=0.0;
-  var tpa=0.0;
-  var pa=0.0;
-  var tpi=0.0;
-  var years=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
-  var months=[0,1,2,3,4,5,6,7,8,9,10,11,12];
+  double interest = 0.0;
+  final amountController = TextEditingController();
+  var emi = 0.0;
+  var tpa = 0.0;
+  var pa = 0.0;
+  var tpi = 0.0;
+  var years = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ];
+  var months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   var year;
   var month;
-  String emiString="0";
-  String tpaString="0";
-  String tpiString="0";
+  String emiString = "0";
+  String tpaString = "0";
+  String tpiString = "0";
 
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    testDevices: testDevice != null ? <String>[testDevice] : null,
-    nonPersonalizedAds: true,
-    // keywords: <String>['Loan', 'Banking', '']
-  );
+      testDevices: testDevice != null ? <String>[testDevice] : null,
+      nonPersonalizedAds: true,
+      keywords: <String>['Loan', 'Banking']);
 
-  
   BannerAd _bannerAd;
 
   BannerAd createBannerAd() {
     return BannerAd(
-      adUnitId: BannerAd.testAdUnitId,
-      size: AdSize.smartBanner,
-      targetingInfo: targetingInfo,
-      listener: (MobileAdEvent event) {
-        print("Banner $event");
-      }
-    );
+        adUnitId: "ca-app-pub-3515842249805175/8667504188",
+        size: AdSize.smartBanner,
+        targetingInfo: targetingInfo,
+        listener: (MobileAdEvent event) {
+          print("Banner $event");
+        });
   }
+
   @override
   void initState() {
-    _bannerAd = BannerAd(adUnitId: AdManager.bannerAdUnitId, size: AdSize.banner);
+    // _bannerAd = BannerAd(adUnitId: AdManager.bannerAdUnitId, size: AdSize.banner);
 
-    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
-    _bannerAd = createBannerAd()..load()..show();
+    FirebaseAdMob.instance.initialize(appId: 'ca-app-pub-3515842249805175~4711592082');
+    _bannerAd = createBannerAd()
+      ..load()
+      ..show();
     // _loadBannerAd();
+    super.initState();
   }
 
   @override
   void dispose() {
-    try{
+    try {
       _bannerAd?.dispose();
-    }catch(error){
+    } catch (error) {
       print(error + '*************************8');
     }
 
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +123,7 @@ class _CalculatorState extends State<Calculator> {
 
   getBody() {
     return SingleChildScrollView(
-          child: Stack(
+      child: Stack(
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
@@ -138,109 +167,150 @@ class _CalculatorState extends State<Calculator> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 15),
-                  child: Text("Loan Amount",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,),),
+                  child: Text(
+                    "Loan Amount",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 15),
                   child: SizedBox(
                     height: 50,
-                    width: MediaQuery.of(context).size.width/1.3,
-                                  child: TextFormField(
-                                    validator: (value)=> value.isEmpty ? 'Enter Loan Amount' : RegExp(r'^[0-9]+$').hasMatch(value) ? null : 'Enter Valid Loan Amount',
-
-
-                                    controller: amountController,
-                      decoration: InputDecoration(hintText: "Enter Amount from Rs.50,000-10 Crore"),
-                                    keyboardType: TextInputType.number,
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    child: TextFormField(
+                      validator: (value) => value.isEmpty
+                          ? 'Enter Loan Amount'
+                          : RegExp(r'^[0-9]+$').hasMatch(value)
+                              ? null
+                              : 'Enter Valid Loan Amount',
+                      controller: amountController,
+                      decoration: InputDecoration(
+                          hintText: "Enter Amount from Rs.50,000-10 Crore"),
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15,top: 10),
-                  child: Text("Tenure",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,),),
+                  padding: const EdgeInsets.only(left: 15, top: 10),
+                  child: Text(
+                    "Tenure",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     DropdownButton(
                       value: year,
-                      hint: Text("Years",style: TextStyle(color: Colors.black,),),
-                      onChanged: (val){
+                      hint: Text(
+                        "Years",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      onChanged: (val) {
                         setState(() {
-                          year=val;
+                          year = val;
                         });
                       },
-                      items: years.map((val){
+                      items: years.map((val) {
                         return DropdownMenuItem(
                           child: Text("$val"),
                           value: val,
                         );
                       }).toList(),
-
                     ),
                     DropdownButton(
                       value: month,
-                      hint: Text("Months",style: TextStyle(color: Colors.black),),
-                      onChanged: (val){
+                      hint: Text(
+                        "Months",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      onChanged: (val) {
                         setState(() {
-                          month=val;
+                          month = val;
                         });
                       },
-                      items: months.map((val){
+                      items: months.map((val) {
                         return DropdownMenuItem(
                           child: Text("$val"),
                           value: val,
                         );
                       }).toList(),
-
                     ),
-
-
-
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,top: 10),
-                      child: Text("Interest",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,),),
+                      padding: const EdgeInsets.only(left: 15, top: 10),
+                      child: Text(
+                        "Interest",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,top: 10),
-                      child: Text("$interest",style: TextStyle(fontSize: 15,color: lightBlueColor,fontWeight: FontWeight.bold),),
+                      padding: const EdgeInsets.only(left: 15, top: 10),
+                      child: Text(
+                        "$interest",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: lightBlueColor,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15,top: 10),
+                  padding: const EdgeInsets.only(left: 15, top: 10),
                   child: Slider(
                     divisions: 100,
-                    onChanged: (val){
-                    setState(() {
-                      interest=val;
-                    });
-                  },
-                  min: 0,
-                  max: 50,
-                  value: interest,
+                    onChanged: (val) {
+                      setState(() {
+                        interest = val;
+                      });
+                    },
+                    min: 0,
+                    max: 50,
+                    value: interest,
                   ),
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MaterialButton(height: 40, minWidth: 200,
-
-                  child: Text("Calculate EMI",style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold,),),
-                  color: darkBlueColor,
-                  onPressed: (){
-                    if(_formKey.currentState.validate()){
-                      calculate();
-                    }
-
-                  },)
-                ],),
-                SizedBox(height: 40,),
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MaterialButton(
+                      height: 40,
+                      minWidth: 200,
+                      child: Text(
+                        "Calculate EMI",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      color: darkBlueColor,
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          calculate();
+                        }
+                      },
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                ),
               ],
             ),
           )
@@ -259,7 +329,6 @@ class _CalculatorState extends State<Calculator> {
         ),
         height: 200,
         width: MediaQuery.of(context).size.width,
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -270,14 +339,22 @@ class _CalculatorState extends State<Calculator> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Monthly EMI",
-                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Total Payable\nAmount",
-                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
@@ -286,7 +363,7 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  flex:50,
+                  flex: 50,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -301,7 +378,7 @@ class _CalculatorState extends State<Calculator> {
                   ),
                 ),
                 Expanded(
-                  flex:50,
+                  flex: 50,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -324,14 +401,22 @@ class _CalculatorState extends State<Calculator> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Principle Amount",
-                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "Total Payable\nInterest",
-                    style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
@@ -340,7 +425,7 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  flex:50,
+                  flex: 50,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -355,7 +440,7 @@ class _CalculatorState extends State<Calculator> {
                   ),
                 ),
                 Expanded(
-                  flex:50,
+                  flex: 50,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
@@ -410,31 +495,27 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void calculate() {
-      int n=year*12+month;
+    int n = year * 12 + month;
 
-      double r=interest/(12*100);
+    double r = interest / (12 * 100);
 
-      print(pa);
-
+    print(pa);
 
     setState(() {
-        pa=double.parse(amountController.text);
-       //emi=pa*r*((pow(1+r,n))/(pow(1+r,n))-1);
-        emi = (pa * r * pow((1+r), n) / ( pow((1+r),n) -1));
-        emiString=emi.toStringAsFixed(2);
-        tpa=((r*pa*n)/(1-(pow(1+r,-n))));
-        tpaString=tpa.toStringAsFixed(2);
-        tpi=tpa-pa;
-        tpiString=tpi.toStringAsFixed(2);
-      });
+      pa = double.parse(amountController.text);
+      //emi=pa*r*((pow(1+r,n))/(pow(1+r,n))-1);
+      emi = (pa * r * pow((1 + r), n) / (pow((1 + r), n) - 1));
+      emiString = emi.toStringAsFixed(2);
+      tpa = ((r * pa * n) / (1 - (pow(1 + r, -n))));
+      tpaString = tpa.toStringAsFixed(2);
+      tpi = tpa - pa;
+      tpiString = tpi.toStringAsFixed(2);
+    });
   }
-
 
   void _loadBannerAd() {
     _bannerAd
-        ..load()
-        ..show(anchorType: AnchorType.top);
+      ..load()
+      ..show(anchorType: AnchorType.top);
   }
-
-  
 }

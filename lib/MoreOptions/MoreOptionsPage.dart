@@ -1,15 +1,14 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:loanapp/Authentication/RegisterPage.dart';
-import 'package:loanapp/Authentication/authentication.dart';
 import 'package:loanapp/Authentication/page_select.dart';
-import 'package:loanapp/MoreOptions/contact_us.dart';
 import 'package:loanapp/MoreOptions/notifications.dart';
 import 'package:loanapp/MoreOptions/rate_us.dart';
 import 'package:loanapp/MoreOptions/settings.dart';
 import 'package:loanapp/MoreOptions/share_to.dart';
 import 'package:loanapp/web_view_container.dart';
+
+import 'ads.dart';
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
   100: Color.fromRGBO(136, 14, 79, .2),
@@ -58,9 +57,8 @@ class _MoreOptionsPageState extends State<MoreOptionsPage> {
             color: yellowColor,
             child: Text("Login",style: TextStyle(color: Colors.white),),
             onPressed: (){
-
-
               Navigator.push(context, MaterialPageRoute(builder: (context) => PageSelector()));
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => ADS()));
             },
 
           ),

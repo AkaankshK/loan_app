@@ -1,6 +1,9 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/web_view_container.dart';
+
+import '../ad_manager.dart';
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),
@@ -23,6 +26,34 @@ class CreditPage extends StatefulWidget {
 class _CreditPageState extends State<CreditPage> {
   MaterialColor yellow = MaterialColor(0xffde903b, colors);
   MaterialColor darkBlue = MaterialColor(0xff0f3f81, colors);
+
+  BannerAd myBanner;
+  List<String> testDeviceIds = ["600188C4404472774243966B284E2603"];
+  BannerAd buildBannerAd() {
+    return BannerAd(
+        // adUnitId: BannerAd.testAdUnitId,
+        adUnitId: BannerAd.testAdUnitId,
+        size: AdSize.banner,
+        listener: (MobileAdEvent event) {
+          print(event);
+          if (event == MobileAdEvent.loaded)
+            myBanner..show(anchorType: AnchorType.top);
+        });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    myBanner = buildBannerAd()..load();
+  }
+
+  @override
+  void dispose() {
+    myBanner.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,64 +117,66 @@ class _CreditPageState extends State<CreditPage> {
               )
             ],
           ),
-          Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                          flex: 50,
-                          child: AspectRatio(
-                            aspectRatio: 4,
-                            child: GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://www.wishfin.com/cibil-score')));
-                              },
-                              child: Image.asset(
-                                "assets/u.png",
-                              ),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 50,
-                          child: AspectRatio(
-                            aspectRatio: 4,
-                            child: Image.asset(
-                              "assets/uu.png",
-                            ),
-                          )),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                          flex: 50,
-                          child: AspectRatio(
-                            aspectRatio: 4,
-                            child: Image.asset(
-                              "assets/uuu.png",
-                            ),
-                          )),
-                      Expanded(
-                          flex: 50,
-                          child: AspectRatio(
-                            aspectRatio: 4,
-                            child: Image.asset(
-                              "assets/uuuu.png",
-                            ),
-                          )),
-                    ],
-                  ),
-                ),
-              ]),
+          Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                      flex: 50,
+                      child: AspectRatio(
+                        aspectRatio: 4,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => WebViewContainer(
+                                        'https://www.wishfin.com/cibil-score')));
+                          },
+                          child: Image.asset(
+                            "assets/u.png",
+                          ),
+                        ),
+                      )),
+                  Expanded(
+                      flex: 50,
+                      child: AspectRatio(
+                        aspectRatio: 4,
+                        child: Image.asset(
+                          "assets/uu.png",
+                        ),
+                      )),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                      flex: 50,
+                      child: AspectRatio(
+                        aspectRatio: 4,
+                        child: Image.asset(
+                          "assets/uuu.png",
+                        ),
+                      )),
+                  Expanded(
+                      flex: 50,
+                      child: AspectRatio(
+                        aspectRatio: 4,
+                        child: Image.asset(
+                          "assets/uuuu.png",
+                        ),
+                      )),
+                ],
+              ),
+            ),
+          ]),
           Container(
             height: 150,
             width: MediaQuery.of(context).size.width,
@@ -188,7 +221,7 @@ class _CreditPageState extends State<CreditPage> {
                 ),
               ),
               Expanded(
-                flex:50,
+                flex: 50,
                 child: Image.asset(
                   "assets/creditscorestuff.jpg",
                   height: 100,
@@ -199,16 +232,18 @@ class _CreditPageState extends State<CreditPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: [
               Stack(
                 children: <Widget>[
-
                   MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewContainer('https://www.wishfin.com/cibil-score')));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WebViewContainer(
+                                  'https://www.wishfin.com/cibil-score')));
                     },
                     child: Text(
                       "Get it Now!",
@@ -217,28 +252,33 @@ class _CreditPageState extends State<CreditPage> {
                     color: Colors.green,
                     minWidth: 300,
                   ),
-
                   Positioned(
                     top: -5.0,
                     right: 15.0,
                     child: new SizedBox(
-                      height: 30.0,
-                      width: 50.0,
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            height: 30.0,
-                              width: 50.0,
-                              child: new Image.asset('assets/free_tag.png', color: Colors.redAccent, fit: BoxFit.fill,)
-                          ),
-                          new Center(child: new Text('Free', style: new TextStyle(color: Colors.white, fontSize: 12.0, fontFamily: 'Ubuntu')),)
-                        ],
-                      )
-                    ),
+                        height: 30.0,
+                        width: 50.0,
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                                height: 30.0,
+                                width: 50.0,
+                                child: new Image.asset(
+                                  'assets/free_tag.png',
+                                  color: Colors.redAccent,
+                                  fit: BoxFit.fill,
+                                )),
+                            new Center(
+                              child: new Text('Free',
+                                  style: new TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Ubuntu')),
+                            )
+                          ],
+                        )),
                   )
-
                 ],
-
               )
             ],
           ),
@@ -250,4 +290,3 @@ class _CreditPageState extends State<CreditPage> {
     );
   }
 }
-
