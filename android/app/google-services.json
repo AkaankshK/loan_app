@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "790254370040-7bfmse3nkn3so4eqevm1vjr45p1a7qrf.apps.googleusercontent.com",
+          "client_id": "790254370040-snpmclslibjaqpbuqr4mgoom4im2ojq2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.azzam.loanapp",
-            "certificate_hash": "50bd05c2f4e6aafc72448c6a034a9cd346177064"
+            "certificate_hash": "b3d870dfdea00523379d24c82b3d4836bfd25e96"
+          }
+        },
+        {
+          "client_id": "790254370040-q4kg1qucnbiv3auvejdv0c559nimscqu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azzam.loanapp",
+            "certificate_hash": "d18a01bb06b26c8e47dc5741c5fc26bf539bcfc0"
           }
         },
         {
