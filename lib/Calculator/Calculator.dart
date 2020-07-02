@@ -74,42 +74,39 @@ class _CalculatorState extends State<Calculator> {
   String tpaString = "0";
   String tpiString = "0";
 
-  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-      testDevices: testDevice != null ? <String>[testDevice] : null,
-      nonPersonalizedAds: true,
-      keywords: <String>['Loan', 'Banking']);
 
-  BannerAd _bannerAd;
-
-  BannerAd createBannerAd() {
-    return BannerAd(
-        adUnitId: "ca-app-pub-3515842249805175/8667504188",
-        size: AdSize.smartBanner,
-        targetingInfo: targetingInfo,
-        listener: (MobileAdEvent event) {
-          print("Banner $event");
-        });
-  }
+  // static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+  //     testDevices: testDevice != null ? <String>[testDevice] : null,
+  //     nonPersonalizedAds: true,
+  //     keywords: <String>['Loan', 'Banking']);
+  // BannerAd _bannerAd;
+  // BannerAd createBannerAd() {
+  //   return BannerAd(
+  //       adUnitId: "ca-app-pub-3515842249805175/8667504188",
+  //       size: AdSize.smartBanner,
+  //       targetingInfo: targetingInfo,
+  //       listener: (MobileAdEvent event) {
+  //         print("Banner $event");
+  //       });
+  // }
 
   @override
   void initState() {
     // _bannerAd = BannerAd(adUnitId: AdManager.bannerAdUnitId, size: AdSize.banner);
 
     FirebaseAdMob.instance.initialize(appId: 'ca-app-pub-3515842249805175~4711592082');
-    _bannerAd = createBannerAd()
-      ..load()
-      ..show();
+    // _bannerAd = createBannerAd()..load()..show();
     // _loadBannerAd();
     super.initState();
   }
 
   @override
   void dispose() {
-    try {
-      _bannerAd?.dispose();
-    } catch (error) {
-      print(error + '*************************8');
-    }
+    // try {
+      // _bannerAd?.dispose();
+    // } catch (error) {
+    //   print(error + '*************************8');
+    // }
 
     super.dispose();
   }
@@ -514,8 +511,6 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void _loadBannerAd() {
-    _bannerAd
-      ..load()
-      ..show(anchorType: AnchorType.top);
+    // _bannerAd..load()..show(anchorType: AnchorType.top);
   }
 }

@@ -140,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                    codeSent ? AuthService().signInWithOTP(smsCode, verificationId) :
                     verifyPhone("+91" + phoneNumController.text);
                     if(verified) {
-                      print('Verified !!!');
+                      
                       key.currentState.showSnackBar(OTPVerifiedSnackBar);
                     }
                  },
@@ -161,6 +161,8 @@ class _RegisterPageState extends State<RegisterPage> {
             if(checkBox) {
 
               if(verified) {
+
+                print('Verified... starting registration to DB....');
                 var user = await FirebaseAuth.instance.currentUser();
 
                 await Firestore.instance
@@ -169,17 +171,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     .setData({
                   "name": name,
                   "phoneNumber": phoneNumController.text.toString()
-                });
+                }).then((value) {
 
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NavBar()), (route) => false);
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NavBar()), (route) => false);
+
+                });
+                
+
               }else{
-                key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to Terms and Conditions')));
+                key.currentState.showSnackBar(SnackBar(content: new Text('Something Went Wrong')));
               }
 
             }else{
-//              Scaffold.of(context).showSnackBar();
-//                print('Something Went Wrong');
-                key.currentState.showSnackBar(SnackBar(content: new Text('Something Went Wrong')));
+
+                key.currentState.showSnackBar(SnackBar(content: new Text('Please agree to Terms and Conditions')));
+                
             }
           },
           minWidth: MediaQuery.of(context).size.width/1.5,

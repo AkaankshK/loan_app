@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loanapp/web_view_container.dart';
 
-import '../ad_manager.dart';
+
 
 Map<int, Color> colors = {
   50: Color.fromRGBO(136, 14, 79, .1),

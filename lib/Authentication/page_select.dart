@@ -92,7 +92,7 @@ class _PageSelectorState extends State<PageSelector> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)
           ),
-          onPressed: () async {
+          onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
 
           },
@@ -107,9 +107,8 @@ class _PageSelectorState extends State<PageSelector> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)
           ),
-          onPressed: () async {
+          onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterPage()));
-
           },
           minWidth: MediaQuery.of(context).size.width/1.5,
           color: yellowColor,
