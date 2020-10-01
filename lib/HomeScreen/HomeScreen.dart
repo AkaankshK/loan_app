@@ -44,20 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
   MaterialColor lightBlueColor = MaterialColor(0xff3862ff, colors);
 
 
-  // BannerAd myBanner;
-  // List<String> testDeviceIds = ["600188C4404472774243966B284E2603"];
-  // BannerAd buildBannerAd() {
-  //   return BannerAd(
-  //     // adUnitId: BannerAd.testAdUnitId,
-  //     adUnitId: "ca-app-pub-3940256099942544/6300978111",
-  //     size: AdSize.banner,
-  //     listener: (MobileAdEvent event) {
-  //       print(event);
-  //       if(event == MobileAdEvent.loaded) myBanner..show();
-  //     }
-  //   );
-  // }
-
   @override
   void initState() {
     super.initState();
